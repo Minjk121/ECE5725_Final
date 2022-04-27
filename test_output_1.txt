@@ -1,0 +1,319 @@
+# Nmap 7.80 scan initiated Wed Apr 27 17:04:09 2022 as: nmap -sn -oN test_output_1.txt 10.49.30.241/24
+Nmap scan report for dhcp-vl2042-7424.redrover.cornell.edu (10.49.30.0)
+Host is up (0.0093s latency).
+MAC Address: FE:4F:7F:E3:64:B3 (Unknown)
+Nmap scan report for dhcp-vl2042-7425.redrover.cornell.edu (10.49.30.1)
+Host is up (0.038s latency).
+MAC Address: 06:B1:BA:28:2C:D1 (Unknown)
+Nmap scan report for dhcp-vl2042-7426.redrover.cornell.edu (10.49.30.2)
+Host is up (0.079s latency).
+MAC Address: F8:FF:C2:04:A0:DB (Apple)
+Nmap scan report for dhcp-vl2042-7427.redrover.cornell.edu (10.49.30.3)
+Host is up (0.031s latency).
+MAC Address: AE:21:43:32:15:E4 (Unknown)
+Nmap scan report for dhcp-vl2042-7428.redrover.cornell.edu (10.49.30.4)
+Host is up (0.90s latency).
+MAC Address: 38:F9:D3:AB:26:79 (Apple)
+Nmap scan report for dhcp-vl2042-7429.redrover.cornell.edu (10.49.30.5)
+Host is up (0.026s latency).
+MAC Address: 76:7D:3C:01:6A:13 (Unknown)
+Nmap scan report for dhcp-vl2042-7430.redrover.cornell.edu (10.49.30.6)
+Host is up (0.070s latency).
+MAC Address: 38:F9:D3:DD:1A:C2 (Apple)
+Nmap scan report for dhcp-vl2042-7432.redrover.cornell.edu (10.49.30.8)
+Host is up (0.12s latency).
+MAC Address: F2:FA:F8:E6:CD:73 (Unknown)
+Nmap scan report for dhcp-vl2042-7433.redrover.cornell.edu (10.49.30.9)
+Host is up (0.81s latency).
+MAC Address: 4E:74:D8:37:08:13 (Unknown)
+Nmap scan report for dhcp-vl2042-7434.redrover.cornell.edu (10.49.30.10)
+Host is up (0.093s latency).
+MAC Address: F0:18:98:02:DB:69 (Apple)
+Nmap scan report for dhcp-vl2042-7438.redrover.cornell.edu (10.49.30.14)
+Host is up (0.14s latency).
+MAC Address: 7E:18:4F:9A:18:11 (Unknown)
+Nmap scan report for dhcp-vl2042-7439.redrover.cornell.edu (10.49.30.15)
+Host is up (0.26s latency).
+MAC Address: 0E:0D:61:AE:FE:2B (Unknown)
+Nmap scan report for dhcp-vl2042-7440.redrover.cornell.edu (10.49.30.16)
+Host is up (0.013s latency).
+MAC Address: 38:F9:D3:78:FA:CF (Apple)
+Nmap scan report for dhcp-vl2042-7441.redrover.cornell.edu (10.49.30.17)
+Host is up (0.031s latency).
+MAC Address: FA:15:17:F2:D2:58 (Unknown)
+Nmap scan report for dhcp-vl2042-7443.redrover.cornell.edu (10.49.30.19)
+Host is up (0.0097s latency).
+MAC Address: 04:56:E5:5E:17:71 (Unknown)
+Nmap scan report for dhcp-vl2042-7445.redrover.cornell.edu (10.49.30.21)
+Host is up (0.11s latency).
+MAC Address: 76:59:F6:48:EF:3B (Unknown)
+Nmap scan report for dhcp-vl2042-7446.redrover.cornell.edu (10.49.30.22)
+Host is up (0.0094s latency).
+MAC Address: A0:78:17:85:7F:A6 (Unknown)
+Nmap scan report for dhcp-vl2042-7451.redrover.cornell.edu (10.49.30.27)
+Host is up (0.0073s latency).
+MAC Address: 0C:E4:41:E3:49:03 (Unknown)
+Nmap scan report for dhcp-vl2042-7452.redrover.cornell.edu (10.49.30.28)
+Host is up (3.3s latency).
+MAC Address: E2:7F:8E:47:05:EC (Unknown)
+Nmap scan report for dhcp-vl2042-7454.redrover.cornell.edu (10.49.30.30)
+Host is up (0.24s latency).
+MAC Address: BE:2C:B4:7F:19:42 (Unknown)
+Nmap scan report for dhcp-vl2042-7455.redrover.cornell.edu (10.49.30.31)
+Host is up (0.0068s latency).
+MAC Address: 96:C0:AB:FD:3D:D0 (Unknown)
+Nmap scan report for dhcp-vl2042-7458.redrover.cornell.edu (10.49.30.34)
+Host is up (0.0044s latency).
+MAC Address: 90:78:41:DE:5E:40 (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7459.redrover.cornell.edu (10.49.30.35)
+Host is up (0.065s latency).
+MAC Address: E6:3E:F9:1F:4E:8E (Unknown)
+Nmap scan report for dhcp-vl2042-7460.redrover.cornell.edu (10.49.30.36)
+Host is up (0.27s latency).
+MAC Address: FE:8F:64:62:0E:92 (Unknown)
+Nmap scan report for dhcp-vl2042-7462.redrover.cornell.edu (10.49.30.38)
+Host is up (0.073s latency).
+MAC Address: 5E:98:3F:FB:B6:D9 (Unknown)
+Nmap scan report for dhcp-vl2042-7464.redrover.cornell.edu (10.49.30.40)
+Host is up (0.0044s latency).
+MAC Address: 30:35:AD:AC:11:C8 (Apple)
+Nmap scan report for dhcp-vl2042-7473.redrover.cornell.edu (10.49.30.49)
+Host is up (0.24s latency).
+MAC Address: 14:7D:DA:45:32:A7 (Apple)
+Nmap scan report for dhcp-vl2042-7475.redrover.cornell.edu (10.49.30.51)
+Host is up (0.047s latency).
+MAC Address: 3C:22:FB:24:DB:C8 (Apple)
+Nmap scan report for dhcp-vl2042-7476.redrover.cornell.edu (10.49.30.52)
+Host is up (0.19s latency).
+MAC Address: 36:F4:59:38:F7:01 (Unknown)
+Nmap scan report for dhcp-vl2042-7479.redrover.cornell.edu (10.49.30.55)
+Host is up (0.0053s latency).
+MAC Address: 48:E7:DA:28:92:85 (Unknown)
+Nmap scan report for dhcp-vl2042-7481.redrover.cornell.edu (10.49.30.57)
+Host is up (0.12s latency).
+MAC Address: 38:F9:D3:99:54:4F (Apple)
+Nmap scan report for dhcp-vl2042-7482.redrover.cornell.edu (10.49.30.58)
+Host is up (0.055s latency).
+MAC Address: 82:18:6E:B0:C3:0C (Unknown)
+Nmap scan report for dhcp-vl2042-7487.redrover.cornell.edu (10.49.30.63)
+Host is up (0.33s latency).
+MAC Address: CA:2E:37:AC:02:E6 (Unknown)
+Nmap scan report for dhcp-vl2042-7492.redrover.cornell.edu (10.49.30.68)
+Host is up (0.56s latency).
+MAC Address: F8:27:93:38:81:DC (Apple)
+Nmap scan report for dhcp-vl2042-7495.redrover.cornell.edu (10.49.30.71)
+Host is up (0.0034s latency).
+MAC Address: 50:EB:71:A2:3E:8D (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7496.redrover.cornell.edu (10.49.30.72)
+Host is up (0.043s latency).
+MAC Address: 98:43:FA:DE:AE:5E (Unknown)
+Nmap scan report for dhcp-vl2042-7501.redrover.cornell.edu (10.49.30.77)
+Host is up (0.087s latency).
+MAC Address: 60:30:D4:7E:70:E2 (Apple)
+Nmap scan report for dhcp-vl2042-7503.redrover.cornell.edu (10.49.30.79)
+Host is up (0.71s latency).
+MAC Address: 1E:C4:B6:61:A2:A8 (Unknown)
+Nmap scan report for dhcp-vl2042-7504.redrover.cornell.edu (10.49.30.80)
+Host is up (0.0061s latency).
+MAC Address: 38:F9:D3:C8:D3:93 (Apple)
+Nmap scan report for dhcp-vl2042-7505.redrover.cornell.edu (10.49.30.81)
+Host is up (1.7s latency).
+MAC Address: DA:E5:23:6B:31:F9 (Unknown)
+Nmap scan report for dhcp-vl2042-7508.redrover.cornell.edu (10.49.30.84)
+Host is up (0.0049s latency).
+MAC Address: 34:AF:B3:F6:AF:62 (Unknown)
+Nmap scan report for dhcp-vl2042-7509.redrover.cornell.edu (10.49.30.85)
+Host is up (0.57s latency).
+MAC Address: 3C:22:FB:78:0B:84 (Apple)
+Nmap scan report for dhcp-vl2042-7510.redrover.cornell.edu (10.49.30.86)
+Host is up (0.058s latency).
+MAC Address: 3C:06:30:13:0B:78 (Unknown)
+Nmap scan report for dhcp-vl2042-7512.redrover.cornell.edu (10.49.30.88)
+Host is up (0.085s latency).
+MAC Address: 38:F9:D3:B9:84:6E (Apple)
+Nmap scan report for dhcp-vl2042-7516.redrover.cornell.edu (10.49.30.92)
+Host is up (0.51s latency).
+MAC Address: F2:AB:A6:C4:61:31 (Unknown)
+Nmap scan report for dhcp-vl2042-7517.redrover.cornell.edu (10.49.30.93)
+Host is up (0.0040s latency).
+MAC Address: 80:00:0B:F5:44:DE (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7521.redrover.cornell.edu (10.49.30.97)
+Host is up (0.0063s latency).
+MAC Address: EC:63:D7:A8:53:45 (Unknown)
+Nmap scan report for dhcp-vl2042-7522.redrover.cornell.edu (10.49.30.98)
+Host is up (0.097s latency).
+MAC Address: 0C:54:15:73:D1:6F (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7524.redrover.cornell.edu (10.49.30.100)
+Host is up (0.017s latency).
+MAC Address: BC:54:2F:C4:97:80 (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7529.redrover.cornell.edu (10.49.30.105)
+Host is up (0.0048s latency).
+MAC Address: A4:08:01:EE:8B:3F (Amazon Technologies)
+Nmap scan report for dhcp-vl2042-7530.redrover.cornell.edu (10.49.30.106)
+Host is up (0.073s latency).
+MAC Address: 38:F9:D3:BB:23:63 (Apple)
+Nmap scan report for dhcp-vl2042-7531.redrover.cornell.edu (10.49.30.107)
+Host is up (0.0037s latency).
+MAC Address: 48:F1:7F:C5:BB:DD (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7537.redrover.cornell.edu (10.49.30.113)
+Host is up (0.59s latency).
+MAC Address: 38:F9:D3:60:58:BC (Apple)
+Nmap scan report for dhcp-vl2042-7538.redrover.cornell.edu (10.49.30.114)
+Host is up (0.0050s latency).
+MAC Address: 2C:71:FF:73:3C:09 (Unknown)
+Nmap scan report for dhcp-vl2042-7540.redrover.cornell.edu (10.49.30.116)
+Host is up (0.082s latency).
+MAC Address: 3C:06:30:00:2D:95 (Unknown)
+Nmap scan report for dhcp-vl2042-7543.redrover.cornell.edu (10.49.30.119)
+Host is up (0.063s latency).
+MAC Address: B8:8A:EC:85:04:D6 (Nintendo)
+Nmap scan report for dhcp-vl2042-7545.redrover.cornell.edu (10.49.30.121)
+Host is up (0.77s latency).
+MAC Address: 0A:70:8B:04:A6:3E (Unknown)
+Nmap scan report for dhcp-vl2042-7546.redrover.cornell.edu (10.49.30.122)
+Host is up (0.15s latency).
+MAC Address: 5E:AB:4D:38:CA:F3 (Unknown)
+Nmap scan report for dhcp-vl2042-7547.redrover.cornell.edu (10.49.30.123)
+Host is up (0.29s latency).
+MAC Address: 36:5A:3E:12:12:81 (Unknown)
+Nmap scan report for dhcp-vl2042-7548.redrover.cornell.edu (10.49.30.124)
+Host is up (0.0039s latency).
+MAC Address: F0:A3:B2:DC:27:20 (Unknown)
+Nmap scan report for dhcp-vl2042-7549.redrover.cornell.edu (10.49.30.125)
+Host is up (0.79s latency).
+MAC Address: 3C:22:FB:EF:DB:77 (Apple)
+Nmap scan report for dhcp-vl2042-7550.redrover.cornell.edu (10.49.30.126)
+Host is up (0.90s latency).
+MAC Address: 2E:5A:A6:85:2B:B2 (Unknown)
+Nmap scan report for dhcp-vl2042-7551.redrover.cornell.edu (10.49.30.127)
+Host is up (0.93s latency).
+MAC Address: 08:F8:BC:65:74:78 (Apple)
+Nmap scan report for dhcp-vl2042-7552.redrover.cornell.edu (10.49.30.128)
+Host is up (0.0044s latency).
+MAC Address: 48:D6:D5:D4:34:0C (Google)
+Nmap scan report for dhcp-vl2042-7559.redrover.cornell.edu (10.49.30.135)
+Host is up (0.015s latency).
+MAC Address: 88:E9:FE:7E:13:97 (Apple)
+Nmap scan report for dhcp-vl2042-7567.redrover.cornell.edu (10.49.30.143)
+Host is up (0.045s latency).
+MAC Address: A0:78:17:7B:D2:A4 (Unknown)
+Nmap scan report for dhcp-vl2042-7578.redrover.cornell.edu (10.49.30.154)
+Host is up (0.013s latency).
+MAC Address: 82:DE:03:70:5D:1A (Unknown)
+Nmap scan report for dhcp-vl2042-7580.redrover.cornell.edu (10.49.30.156)
+Host is up (1.5s latency).
+MAC Address: 10:98:C3:10:A8:45 (Murata Manufacturing)
+Nmap scan report for dhcp-vl2042-7581.redrover.cornell.edu (10.49.30.157)
+Host is up (0.0034s latency).
+MAC Address: DC:91:BF:D8:94:2A (Amazon Technologies)
+Nmap scan report for dhcp-vl2042-7585.redrover.cornell.edu (10.49.30.161)
+Host is up (0.11s latency).
+MAC Address: 14:7D:DA:83:03:01 (Apple)
+Nmap scan report for dhcp-vl2042-7588.redrover.cornell.edu (10.49.30.164)
+Host is up (0.0052s latency).
+MAC Address: 00:D2:B1:1C:B8:75 (TPV Display Technology (Xiamen))
+Nmap scan report for dhcp-vl2042-7596.redrover.cornell.edu (10.49.30.172)
+Host is up (0.93s latency).
+MAC Address: 0C:E4:41:DA:D1:C7 (Unknown)
+Nmap scan report for dhcp-vl2042-7597.redrover.cornell.edu (10.49.30.173)
+Host is up (0.25s latency).
+MAC Address: E6:46:8B:21:A7:51 (Unknown)
+Nmap scan report for dhcp-vl2042-7599.redrover.cornell.edu (10.49.30.175)
+Host is up (0.65s latency).
+MAC Address: A6:64:5B:93:4E:62 (Unknown)
+Nmap scan report for dhcp-vl2042-7600.redrover.cornell.edu (10.49.30.176)
+Host is up (0.0033s latency).
+MAC Address: A4:B1:C1:D8:26:F1 (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7602.redrover.cornell.edu (10.49.30.178)
+Host is up (0.11s latency).
+MAC Address: 9A:1F:1A:8A:79:22 (Unknown)
+Nmap scan report for dhcp-vl2042-7603.redrover.cornell.edu (10.49.30.179)
+Host is up (0.32s latency).
+MAC Address: 6E:94:2B:65:63:5C (Unknown)
+Nmap scan report for dhcp-vl2042-7605.redrover.cornell.edu (10.49.30.181)
+Host is up (0.010s latency).
+MAC Address: 3C:22:FB:BD:83:0B (Apple)
+Nmap scan report for dhcp-vl2042-7607.redrover.cornell.edu (10.49.30.183)
+Host is up (0.027s latency).
+MAC Address: 12:D9:69:31:22:E8 (Unknown)
+Nmap scan report for dhcp-vl2042-7610.redrover.cornell.edu (10.49.30.186)
+Host is up (0.17s latency).
+MAC Address: 5C:52:1E:9E:3B:EB (Nintendo)
+Nmap scan report for dhcp-vl2042-7611.redrover.cornell.edu (10.49.30.187)
+Host is up (0.11s latency).
+MAC Address: 88:66:5A:3D:7E:84 (Unknown)
+Nmap scan report for dhcp-vl2042-7615.redrover.cornell.edu (10.49.30.191)
+Host is up (0.057s latency).
+MAC Address: FE:9E:1F:05:D4:BB (Unknown)
+Nmap scan report for dhcp-vl2042-7617.redrover.cornell.edu (10.49.30.193)
+Host is up (0.14s latency).
+MAC Address: 3C:22:FB:E6:0A:26 (Apple)
+Nmap scan report for dhcp-vl2042-7618.redrover.cornell.edu (10.49.30.194)
+Host is up (0.10s latency).
+MAC Address: 52:D1:0E:F2:FD:F9 (Unknown)
+Nmap scan report for dhcp-vl2042-7619.redrover.cornell.edu (10.49.30.195)
+Host is up (0.46s latency).
+MAC Address: 1A:A4:23:BC:E3:AD (Unknown)
+Nmap scan report for dhcp-vl2042-7620.redrover.cornell.edu (10.49.30.196)
+Host is up (0.0095s latency).
+MAC Address: F4:0F:24:39:12:59 (Apple)
+Nmap scan report for dhcp-vl2042-7622.redrover.cornell.edu (10.49.30.198)
+Host is up (0.0041s latency).
+MAC Address: 14:7D:DA:07:D7:D8 (Apple)
+Nmap scan report for dhcp-vl2042-7628.redrover.cornell.edu (10.49.30.204)
+Host is up (0.0048s latency).
+MAC Address: 98:5F:D3:5E:37:35 (Microsoft)
+Nmap scan report for dhcp-vl2042-7632.redrover.cornell.edu (10.49.30.208)
+Host is up (0.15s latency).
+MAC Address: 5E:8D:51:A3:54:6D (Unknown)
+Nmap scan report for dhcp-vl2042-7637.redrover.cornell.edu (10.49.30.213)
+Host is up (0.023s latency).
+MAC Address: 06:7B:96:04:2D:4F (Unknown)
+Nmap scan report for dhcp-vl2042-7641.redrover.cornell.edu (10.49.30.217)
+Host is up (0.28s latency).
+MAC Address: 1E:3A:BC:71:E8:B2 (Unknown)
+Nmap scan report for dhcp-vl2042-7642.redrover.cornell.edu (10.49.30.218)
+Host is up (0.076s latency).
+MAC Address: 3E:D4:D0:3E:BF:A8 (Unknown)
+Nmap scan report for dhcp-vl2042-7643.redrover.cornell.edu (10.49.30.219)
+Host is up (0.090s latency).
+MAC Address: 14:98:77:4A:F0:9D (Unknown)
+Nmap scan report for dhcp-vl2042-7645.redrover.cornell.edu (10.49.30.221)
+Host is up (0.092s latency).
+MAC Address: 7A:07:B5:0F:61:B2 (Unknown)
+Nmap scan report for dhcp-vl2042-7649.redrover.cornell.edu (10.49.30.225)
+Host is up (0.15s latency).
+MAC Address: 40:4E:36:8F:13:DC (HTC)
+Nmap scan report for dhcp-vl2042-7652.redrover.cornell.edu (10.49.30.228)
+Host is up (0.24s latency).
+MAC Address: 92:C3:B7:A6:06:37 (Unknown)
+Nmap scan report for dhcp-vl2042-7653.redrover.cornell.edu (10.49.30.229)
+Host is up (0.42s latency).
+MAC Address: CE:9D:CF:49:43:C2 (Unknown)
+Nmap scan report for dhcp-vl2042-7654.redrover.cornell.edu (10.49.30.230)
+Host is up (0.096s latency).
+MAC Address: 8C:C6:81:1C:2F:64 (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7661.redrover.cornell.edu (10.49.30.237)
+Host is up (0.015s latency).
+MAC Address: 34:E8:94:A5:E1:FE (Tp-link Technologies)
+Nmap scan report for dhcp-vl2042-7663.redrover.cornell.edu (10.49.30.239)
+Host is up (0.75s latency).
+MAC Address: 52:08:50:3D:76:0E (Unknown)
+Nmap scan report for dhcp-vl2042-7667.redrover.cornell.edu (10.49.30.243)
+Host is up (0.075s latency).
+MAC Address: 80:D2:E5:11:68:42 (Unknown)
+Nmap scan report for dhcp-vl2042-7668.redrover.cornell.edu (10.49.30.244)
+Host is up (0.0040s latency).
+MAC Address: D4:25:8B:8C:14:C3 (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7670.redrover.cornell.edu (10.49.30.246)
+Host is up (0.0055s latency).
+MAC Address: B0:BE:83:35:26:44 (Unknown)
+Nmap scan report for dhcp-vl2042-7677.redrover.cornell.edu (10.49.30.253)
+Host is up (0.0053s latency).
+MAC Address: 40:74:E0:63:3A:B2 (Intel Corporate)
+Nmap scan report for dhcp-vl2042-7679.redrover.cornell.edu (10.49.30.255)
+Host is up (0.11s latency).
+MAC Address: 4C:17:44:4C:7F:72 (Amazon Technologies)
+Nmap scan report for dhcp-vl2042-7665.redrover.cornell.edu (10.49.30.241)
+Host is up.
+# Nmap done at Wed Apr 27 17:04:42 2022 -- 256 IP addresses (106 hosts up) scanned in 33.17 seconds

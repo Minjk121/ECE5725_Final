@@ -17,3 +17,6 @@ The output txt file when ```sudo nmap -sn $IP``` was ran.
 
 ### test_output_2.txt
 The output txt file when ```sudo nmap -sn -oG $IP``` was ran.
+
+## hardware 
+Model repo: https://github.com/Junyi1995/MagicSelfieMirror

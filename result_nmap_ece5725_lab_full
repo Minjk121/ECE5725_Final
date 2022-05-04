@@ -1,0 +1,999 @@
+Skipping OS Scan against 10.49.46.134 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.136 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.137 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.138 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.140 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.141 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.143 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.145 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.146 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.148 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.153 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.154 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.155 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.156 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.161 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.163 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.168 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.169 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.175 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.178 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.183 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.184 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.188 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.189 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.190 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.196 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.201 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.203 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.204 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.205 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.206 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.213 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.214 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.216 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.218 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.219 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.220 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.225 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.227 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.228 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.229 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.230 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.234 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.235 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.236 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.238 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.239 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.241 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.242 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.244 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.245 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.246 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.248 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.251 due to absence of open (or perhaps closed) ports
+Skipping OS Scan against 10.49.46.255 due to absence of open (or perhaps closed) ports
+Initiating OS detection (try #1) against 2 hosts
+Nmap scan report for 10.49.46.120
+Host is up (0.042s latency).
+Not shown: 107 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 88:66:5A:0D:82:05 (Unknown)
+Device type: firewall
+Running (JUST GUESSING): Fortinet embedded (87%)
+OS CPE: cpe:/h:fortinet:fortigate_100d
+Aggressive OS guesses: Fortinet FortiGate 100D firewall (87%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+Nmap scan report for 10.49.46.123
+Host is up (0.025s latency).
+All 108 scanned ports on 10.49.46.123 are filtered
+MAC Address: B8:31:B5:A0:58:2D (Microsoft)
+
+Nmap scan report for 10.49.46.126
+Host is up (0.0054s latency).
+All 108 scanned ports on 10.49.46.126 are filtered
+MAC Address: C0:B5:D7:B2:55:D5 (Chongqing Fugui Electronics)
+
+Nmap scan report for 10.49.46.127
+Host is up (0.19s latency).
+Not shown: 84 filtered ports
+PORT     STATE  SERVICE
+7/tcp    closed echo
+9/tcp    closed discard
+10/tcp   closed unknown
+14/tcp   closed unknown
+22/tcp   closed ssh
+23/tcp   closed telnet
+30/tcp   closed unknown
+38/tcp   closed rap
+39/tcp   closed rlp
+43/tcp   closed whois
+45/tcp   closed mpm
+53/tcp   closed domain
+65/tcp   closed tacacs-ds
+66/tcp   closed sqlnet
+72/tcp   closed netrjs-2
+73/tcp   closed netrjs-3
+80/tcp   closed http
+82/tcp   closed xfer
+113/tcp  closed ident
+8080/tcp closed http-proxy
+8085/tcp closed unknown
+8091/tcp closed jamlink
+8093/tcp closed unknown
+8100/tcp closed xprint-server
+MAC Address: 92:D5:B4:7E:D1:90 (Unknown)
+
+Nmap scan report for 10.49.46.131
+Host is up (0.18s latency).
+Not shown: 100 closed ports
+PORT     STATE    SERVICE
+8/tcp    filtered unknown
+36/tcp   filtered unknown
+46/tcp   filtered mpm-snd
+50/tcp   filtered re-mail-ck
+61/tcp   filtered ni-mail
+67/tcp   filtered dhcps
+8092/tcp filtered unknown
+8098/tcp filtered unknown
+MAC Address: B2:BE:0E:50:08:A9 (Unknown)
+
+Nmap scan report for 10.49.46.132
+Host is up (0.11s latency).
+All 108 scanned ports on 10.49.46.132 are filtered
+MAC Address: F8:5E:A0:5C:28:A8 (Unknown)
+
+Nmap scan report for 10.49.46.134
+Host is up (0.0057s latency).
+All 108 scanned ports on 10.49.46.134 are closed
+MAC Address: 3C:06:30:0E:E9:8A (Unknown)
+
+Nmap scan report for 10.49.46.136
+Host is up (0.14s latency).
+Not shown: 91 closed ports
+PORT     STATE    SERVICE
+2/tcp    filtered compressnet
+3/tcp    filtered compressnet
+29/tcp   filtered msg-icp
+44/tcp   filtered mpm-flags
+48/tcp   filtered auditd
+51/tcp   filtered la-maint
+54/tcp   filtered xns-ch
+55/tcp   filtered isi-gl
+61/tcp   filtered ni-mail
+67/tcp   filtered dhcps
+85/tcp   filtered mit-ml-dev
+8085/tcp filtered unknown
+8088/tcp filtered radan-http
+8089/tcp filtered unknown
+8092/tcp filtered unknown
+8094/tcp filtered unknown
+8098/tcp filtered unknown
+MAC Address: 0A:E4:3B:0A:2E:7B (Unknown)
+
+Nmap scan report for 10.49.46.137
+Host is up (0.049s latency).
+All 108 scanned ports on 10.49.46.137 are filtered (55) or closed (53)
+MAC Address: B8:B2:F8:DE:F1:19 (Apple)
+
+Nmap scan report for 10.49.46.138
+Host is up (0.017s latency).
+All 108 scanned ports on 10.49.46.138 are filtered
+MAC Address: 14:7D:DA:A3:F5:89 (Apple)
+
+Nmap scan report for 10.49.46.140
+Host is up (0.095s latency).
+All 108 scanned ports on 10.49.46.140 are filtered
+MAC Address: 50:1A:C5:75:C7:9A (Microsoft)
+
+Nmap scan report for 10.49.46.141
+Host is up (0.20s latency).
+Not shown: 98 closed ports
+PORT   STATE    SERVICE
+18/tcp filtered msp
+27/tcp filtered nsw-fe
+46/tcp filtered mpm-snd
+49/tcp filtered tacacs
+56/tcp filtered xns-auth
+57/tcp filtered priv-term
+75/tcp filtered priv-dial
+81/tcp filtered hosts2-ns
+83/tcp filtered mit-ml-dev
+84/tcp filtered ctf
+MAC Address: 2A:CA:05:B7:5F:1F (Unknown)
+
+Nmap scan report for 10.49.46.142
+Host is up (0.012s latency).
+Not shown: 107 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 3C:06:30:4D:BE:B0 (Unknown)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=5/4%OT=22%CT=1%CU=30015%PV=Y%DS=1%DC=D%G=Y%M=3C0630%TM
+OS:=6272AA38%P=arm-unknown-linux-gnueabihf)SEQ(SP=102%GCD=1%ISR=10A%TI=Z%CI
+OS:=RD%II=RI%TS=21)OPS(O1=M56ANW6NNT11SLL%O2=M56ANW6NNT11SLL%O3=M56ANW6NNT1
+OS:1%O4=M56ANW6NNT11SLL%O5=M56ANW6NNT11SLL%O6=M56ANNT11SLL)WIN(W1=FFFF%W2=F
+OS:FFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FFFF)ECN(R=Y%DF=Y%T=40%W=FFFF%O=M56ANW6SL
+OS:L%CC=N%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF
+OS:=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=
+OS:%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=N%T=40%W=
+OS:0%S=Z%A=S%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=38%UN=0%RIPL=G%RID=G%RIPC
+OS:K=G%RUCK=0%RUD=G)IE(R=Y%DFI=S%T=40%CD=S)
+
+Uptime guess: 0.000 days (since Wed May  4 12:30:45 2022)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=258 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+Nmap scan report for 10.49.46.143
+Host is up (0.073s latency).
+Not shown: 64 filtered ports
+PORT     STATE  SERVICE
+2/tcp    closed compressnet
+3/tcp    closed compressnet
+5/tcp    closed rje
+7/tcp    closed echo
+9/tcp    closed discard
+12/tcp   closed unknown
+13/tcp   closed daytime
+16/tcp   closed unknown
+17/tcp   closed qotd
+27/tcp   closed nsw-fe
+29/tcp   closed msg-icp
+31/tcp   closed msg-auth
+33/tcp   closed dsp
+35/tcp   closed priv-print
+36/tcp   closed unknown
+40/tcp   closed unknown
+44/tcp   closed mpm-flags
+46/tcp   closed mpm-snd
+48/tcp   closed auditd
+49/tcp   closed tacacs
+50/tcp   closed re-mail-ck
+51/tcp   closed la-maint
+52/tcp   closed xns-time
+54/tcp   closed xns-ch
+55/tcp   closed isi-gl
+56/tcp   closed xns-auth
+60/tcp   closed unknown
+61/tcp   closed ni-mail
+62/tcp   closed acas
+67/tcp   closed dhcps
+69/tcp   closed tftp
+70/tcp   closed gopher
+74/tcp   closed netrjs-4
+79/tcp   closed finger
+81/tcp   closed hosts2-ns
+83/tcp   closed mit-ml-dev
+85/tcp   closed mit-ml-dev
+8085/tcp closed unknown
+8087/tcp closed simplifymedia
+8089/tcp closed unknown
+8092/tcp closed unknown
+8096/tcp closed unknown
+8098/tcp closed unknown
+8099/tcp closed unknown
+MAC Address: 8A:CC:FF:19:62:31 (Unknown)
+
+Nmap scan report for 10.49.46.145
+Host is up (0.032s latency).
+All 108 scanned ports on 10.49.46.145 are closed
+MAC Address: D4:57:63:F1:A7:33 (Unknown)
+
+Nmap scan report for 10.49.46.146
+Host is up (0.096s latency).
+All 108 scanned ports on 10.49.46.146 are closed
+MAC Address: 90:9C:4A:B7:69:52 (Apple)
+
+Nmap scan report for 10.49.46.148
+Host is up (0.049s latency).
+All 108 scanned ports on 10.49.46.148 are closed
+MAC Address: 38:F9:D3:87:CF:4F (Apple)
+
+Nmap scan report for 10.49.46.153
+Host is up (0.47s latency).
+All 108 scanned ports on 10.49.46.153 are closed
+MAC Address: D4:53:83:89:B7:47 (Murata Manufacturing)
+
+Nmap scan report for 10.49.46.154
+Host is up (0.068s latency).
+Not shown: 100 closed ports
+PORT     STATE    SERVICE
+29/tcp   filtered msg-icp
+49/tcp   filtered tacacs
+50/tcp   filtered re-mail-ck
+54/tcp   filtered xns-ch
+55/tcp   filtered isi-gl
+74/tcp   filtered netrjs-4
+8089/tcp filtered unknown
+8092/tcp filtered unknown
+MAC Address: 2E:79:C7:19:3A:2B (Unknown)
+
+Nmap scan report for 10.49.46.155
+Host is up (0.014s latency).
+All 108 scanned ports on 10.49.46.155 are filtered
+MAC Address: 38:F9:D3:75:19:7E (Apple)
+
+Nmap scan report for 10.49.46.156
+Host is up (0.12s latency).
+All 108 scanned ports on 10.49.46.156 are closed
+MAC Address: C2:EA:BE:11:4D:12 (Unknown)
+
+Nmap scan report for 10.49.46.161
+Host is up (0.0089s latency).
+Not shown: 75 closed ports
+PORT     STATE    SERVICE
+2/tcp    filtered compressnet
+3/tcp    filtered compressnet
+5/tcp    filtered rje
+9/tcp    filtered discard
+12/tcp   filtered unknown
+13/tcp   filtered daytime
+29/tcp   filtered msg-icp
+33/tcp   filtered dsp
+35/tcp   filtered priv-print
+44/tcp   filtered mpm-flags
+46/tcp   filtered mpm-snd
+48/tcp   filtered auditd
+50/tcp   filtered re-mail-ck
+51/tcp   filtered la-maint
+54/tcp   filtered xns-ch
+55/tcp   filtered isi-gl
+61/tcp   filtered ni-mail
+62/tcp   filtered acas
+67/tcp   filtered dhcps
+69/tcp   filtered tftp
+70/tcp   filtered gopher
+79/tcp   filtered finger
+81/tcp   filtered hosts2-ns
+85/tcp   filtered mit-ml-dev
+8085/tcp filtered unknown
+8087/tcp filtered simplifymedia
+8088/tcp filtered radan-http
+8089/tcp filtered unknown
+8092/tcp filtered unknown
+8094/tcp filtered unknown
+8096/tcp filtered unknown
+8098/tcp filtered unknown
+8099/tcp filtered unknown
+MAC Address: 82:4F:0D:BC:7F:26 (Unknown)
+
+Nmap scan report for 10.49.46.163
+Host is up (0.054s latency).
+All 108 scanned ports on 10.49.46.163 are closed
+MAC Address: 38:F9:D3:5B:55:EB (Apple)
+
+Nmap scan report for 10.49.46.168
+Host is up (0.030s latency).
+Not shown: 83 closed ports
+PORT     STATE    SERVICE
+8/tcp    filtered unknown
+10/tcp   filtered unknown
+18/tcp   filtered msp
+27/tcp   filtered nsw-fe
+29/tcp   filtered msg-icp
+30/tcp   filtered unknown
+44/tcp   filtered mpm-flags
+49/tcp   filtered tacacs
+50/tcp   filtered re-mail-ck
+51/tcp   filtered la-maint
+52/tcp   filtered xns-time
+54/tcp   filtered xns-ch
+55/tcp   filtered isi-gl
+56/tcp   filtered xns-auth
+60/tcp   filtered unknown
+62/tcp   filtered acas
+69/tcp   filtered tftp
+72/tcp   filtered netrjs-2
+74/tcp   filtered netrjs-4
+8087/tcp filtered simplifymedia
+8089/tcp filtered unknown
+8093/tcp filtered unknown
+8094/tcp filtered unknown
+8098/tcp filtered unknown
+8100/tcp filtered xprint-server
+MAC Address: AA:B8:79:25:EA:8A (Unknown)
+
+Nmap scan report for 10.49.46.169
+Host is up (0.12s latency).
+All 108 scanned ports on 10.49.46.169 are closed
+MAC Address: 3A:BA:E3:B9:D5:65 (Unknown)
+
+Nmap scan report for 10.49.46.175
+Host is up (0.0091s latency).
+All 108 scanned ports on 10.49.46.175 are closed
+MAC Address: E4:A8:DF:16:AC:72 (Compal Information (kunshan))
+
+Nmap scan report for 10.49.46.178
+Host is up (0.094s latency).
+Not shown: 94 filtered ports
+PORT     STATE  SERVICE
+3/tcp    closed compressnet
+8/tcp    closed unknown
+18/tcp   closed msp
+32/tcp   closed unknown
+44/tcp   closed mpm-flags
+46/tcp   closed mpm-snd
+48/tcp   closed auditd
+61/tcp   closed ni-mail
+62/tcp   closed acas
+67/tcp   closed dhcps
+69/tcp   closed tftp
+75/tcp   closed priv-dial
+79/tcp   closed finger
+8085/tcp closed unknown
+MAC Address: 9E:75:FB:2C:20:6D (Unknown)
+
+Nmap scan report for 10.49.46.183
+Host is up (0.097s latency).
+Not shown: 101 filtered ports
+PORT     STATE  SERVICE
+3/tcp    closed compressnet
+44/tcp   closed mpm-flags
+48/tcp   closed auditd
+51/tcp   closed la-maint
+61/tcp   closed ni-mail
+8085/tcp closed unknown
+8094/tcp closed unknown
+MAC Address: 16:05:F0:28:E5:99 (Unknown)
+
+Nmap scan report for 10.49.46.184
+Host is up (0.12s latency).
+Not shown: 83 closed ports
+PORT     STATE    SERVICE
+2/tcp    filtered compressnet
+3/tcp    filtered compressnet
+5/tcp    filtered rje
+9/tcp    filtered discard
+12/tcp   filtered unknown
+13/tcp   filtered daytime
+33/tcp   filtered dsp
+35/tcp   filtered priv-print
+44/tcp   filtered mpm-flags
+46/tcp   filtered mpm-snd
+48/tcp   filtered auditd
+51/tcp   filtered la-maint
+61/tcp   filtered ni-mail
+62/tcp   filtered acas
+67/tcp   filtered dhcps
+69/tcp   filtered tftp
+70/tcp   filtered gopher
+79/tcp   filtered finger
+81/tcp   filtered hosts2-ns
+85/tcp   filtered mit-ml-dev
+8085/tcp filtered unknown
+8088/tcp filtered radan-http
+8094/tcp filtered unknown
+8096/tcp filtered unknown
+8099/tcp filtered unknown
+MAC Address: 3A:E5:21:6A:5D:6C (Unknown)
+
+Nmap scan report for 10.49.46.188
+Host is up (0.051s latency).
+Not shown: 103 closed ports
+PORT     STATE    SERVICE
+6/tcp    filtered unknown
+26/tcp   filtered rsftp
+32/tcp   filtered unknown
+57/tcp   filtered priv-term
+8089/tcp filtered unknown
+MAC Address: 62:EA:1E:9A:A6:53 (Unknown)
+
+Nmap scan report for 10.49.46.189
+Host is up (0.091s latency).
+All 108 scanned ports on 10.49.46.189 are closed
+MAC Address: A2:FA:D1:BD:61:83 (Unknown)
+
+Nmap scan report for 10.49.46.190
+Host is up (0.061s latency).
+All 108 scanned ports on 10.49.46.190 are filtered
+MAC Address: 20:0B:CF:E8:F7:1E (Unknown)
+
+Nmap scan report for 10.49.46.196
+Host is up (0.038s latency).
+Not shown: 87 closed ports
+PORT     STATE    SERVICE
+5/tcp    filtered rje
+9/tcp    filtered discard
+12/tcp   filtered unknown
+16/tcp   filtered unknown
+27/tcp   filtered nsw-fe
+31/tcp   filtered msg-auth
+33/tcp   filtered dsp
+36/tcp   filtered unknown
+46/tcp   filtered mpm-snd
+49/tcp   filtered tacacs
+50/tcp   filtered re-mail-ck
+52/tcp   filtered xns-time
+54/tcp   filtered xns-ch
+56/tcp   filtered xns-auth
+60/tcp   filtered unknown
+74/tcp   filtered netrjs-4
+79/tcp   filtered finger
+81/tcp   filtered hosts2-ns
+8087/tcp filtered simplifymedia
+8089/tcp filtered unknown
+8098/tcp filtered unknown
+MAC Address: 3C:06:30:0D:E6:BB (Unknown)
+
+Nmap scan report for 10.49.46.201
+Host is up (0.23s latency).
+Not shown: 104 filtered ports
+PORT     STATE  SERVICE
+62/tcp   closed acas
+70/tcp   closed gopher
+85/tcp   closed mit-ml-dev
+8096/tcp closed unknown
+MAC Address: B4:FA:48:E0:58:F1 (Unknown)
+
+Nmap scan report for 10.49.46.203
+Host is up (0.054s latency).
+All 108 scanned ports on 10.49.46.203 are closed
+MAC Address: 6A:E1:67:4C:49:FA (Unknown)
+
+Nmap scan report for 10.49.46.204
+Host is up (0.087s latency).
+All 108 scanned ports on 10.49.46.204 are closed
+MAC Address: 1E:8D:3C:56:38:01 (Unknown)
+
+Nmap scan report for 10.49.46.205
+Host is up (0.0059s latency).
+All 108 scanned ports on 10.49.46.205 are filtered
+MAC Address: 94:E6:F7:B7:63:AD (Intel Corporate)
+
+Nmap scan report for 10.49.46.206
+Host is up (0.043s latency).
+Not shown: 104 closed ports
+PORT   STATE    SERVICE
+5/tcp  filtered rje
+46/tcp filtered mpm-snd
+79/tcp filtered finger
+81/tcp filtered hosts2-ns
+MAC Address: DE:17:DC:52:0F:BD (Unknown)
+
+Nmap scan report for 10.49.46.213
+Host is up (0.16s latency).
+Not shown: 104 filtered ports
+PORT   STATE  SERVICE
+5/tcp  closed rje
+46/tcp closed mpm-snd
+79/tcp closed finger
+81/tcp closed hosts2-ns
+MAC Address: 30:35:AD:B8:4F:4E (Apple)
+
+Nmap scan report for 10.49.46.214
+Host is up (0.25s latency).
+Not shown: 82 closed ports
+PORT     STATE    SERVICE
+4/tcp    filtered unknown
+6/tcp    filtered unknown
+8/tcp    filtered unknown
+13/tcp   filtered daytime
+16/tcp   filtered unknown
+18/tcp   filtered msp
+26/tcp   filtered rsftp
+27/tcp   filtered nsw-fe
+32/tcp   filtered unknown
+35/tcp   filtered priv-print
+36/tcp   filtered unknown
+37/tcp   filtered time
+49/tcp   filtered tacacs
+57/tcp   filtered priv-term
+58/tcp   filtered xns-mail
+60/tcp   filtered unknown
+61/tcp   filtered ni-mail
+67/tcp   filtered dhcps
+70/tcp   filtered gopher
+74/tcp   filtered netrjs-4
+75/tcp   filtered priv-dial
+84/tcp   filtered ctf
+8081/tcp filtered blackice-icecap
+8085/tcp filtered unknown
+8089/tcp filtered unknown
+8099/tcp filtered unknown
+MAC Address: 06:5F:9E:A4:E2:D2 (Unknown)
+
+Nmap scan report for 10.49.46.216
+Host is up (0.047s latency).
+Not shown: 91 closed ports
+PORT     STATE    SERVICE
+3/tcp    filtered compressnet
+5/tcp    filtered rje
+9/tcp    filtered discard
+12/tcp   filtered unknown
+13/tcp   filtered daytime
+33/tcp   filtered dsp
+35/tcp   filtered priv-print
+46/tcp   filtered mpm-snd
+51/tcp   filtered la-maint
+62/tcp   filtered acas
+67/tcp   filtered dhcps
+69/tcp   filtered tftp
+70/tcp   filtered gopher
+79/tcp   filtered finger
+81/tcp   filtered hosts2-ns
+8096/tcp filtered unknown
+8099/tcp filtered unknown
+MAC Address: 46:13:98:7A:3D:A3 (Unknown)
+
+Nmap scan report for 10.49.46.218
+Host is up (0.0032s latency).
+All 108 scanned ports on 10.49.46.218 are filtered
+MAC Address: 7C:50:79:67:B8:08 (Unknown)
+
+Nmap scan report for 10.49.46.219
+Host is up (0.011s latency).
+Not shown: 103 closed ports
+PORT   STATE    SERVICE
+27/tcp filtered nsw-fe
+50/tcp filtered re-mail-ck
+60/tcp filtered unknown
+64/tcp filtered covia
+84/tcp filtered ctf
+MAC Address: 6E:AA:0C:12:02:7A (Unknown)
+
+Nmap scan report for 10.49.46.220
+Host is up (0.030s latency).
+Not shown: 98 closed ports
+PORT     STATE    SERVICE
+13/tcp   filtered daytime
+33/tcp   filtered dsp
+50/tcp   filtered re-mail-ck
+55/tcp   filtered isi-gl
+70/tcp   filtered gopher
+74/tcp   filtered netrjs-4
+8087/tcp filtered simplifymedia
+8089/tcp filtered unknown
+8096/tcp filtered unknown
+8098/tcp filtered unknown
+MAC Address: 8A:A9:F4:77:04:EB (Unknown)
+
+Nmap scan report for 10.49.46.225
+Host is up (0.14s latency).
+Not shown: 69 closed ports
+PORT     STATE    SERVICE
+3/tcp    filtered compressnet
+4/tcp    filtered unknown
+6/tcp    filtered unknown
+13/tcp   filtered daytime
+18/tcp   filtered msp
+26/tcp   filtered rsftp
+27/tcp   filtered nsw-fe
+33/tcp   filtered dsp
+35/tcp   filtered priv-print
+36/tcp   filtered unknown
+44/tcp   filtered mpm-flags
+48/tcp   filtered auditd
+49/tcp   filtered tacacs
+50/tcp   filtered re-mail-ck
+51/tcp   filtered la-maint
+52/tcp   filtered xns-time
+54/tcp   filtered xns-ch
+56/tcp   filtered xns-auth
+57/tcp   filtered priv-term
+60/tcp   filtered unknown
+61/tcp   filtered ni-mail
+62/tcp   filtered acas
+64/tcp   filtered covia
+65/tcp   filtered tacacs-ds
+67/tcp   filtered dhcps
+69/tcp   filtered tftp
+70/tcp   filtered gopher
+74/tcp   filtered netrjs-4
+75/tcp   filtered priv-dial
+83/tcp   filtered mit-ml-dev
+84/tcp   filtered ctf
+8085/tcp filtered unknown
+8087/tcp filtered simplifymedia
+8088/tcp filtered radan-http
+8089/tcp filtered unknown
+8094/tcp filtered unknown
+8096/tcp filtered unknown
+8098/tcp filtered unknown
+8099/tcp filtered unknown
+MAC Address: 32:DA:C1:1F:08:65 (Unknown)
+
+Nmap scan report for 10.49.46.227
+Host is up (0.0056s latency).
+All 108 scanned ports on 10.49.46.227 are filtered
+MAC Address: 30:59:B7:89:3B:8B (Microsoft)
+
+Nmap scan report for 10.49.46.228
+Host is up (0.0069s latency).
+All 108 scanned ports on 10.49.46.228 are filtered
+MAC Address: E0:2B:E9:33:3C:3B (Unknown)
+
+Nmap scan report for 10.49.46.229
+Host is up (0.44s latency).
+All 108 scanned ports on 10.49.46.229 are filtered
+MAC Address: 08:F8:BC:69:B5:F7 (Apple)
+
+Nmap scan report for 10.49.46.230
+Host is up (0.23s latency).
+All 108 scanned ports on 10.49.46.230 are closed
+MAC Address: A2:2B:3B:2E:CF:FC (Unknown)
+
+Nmap scan report for 10.49.46.234
+Host is up (0.044s latency).
+All 108 scanned ports on 10.49.46.234 are closed
+MAC Address: 28:CF:E9:21:45:87 (Apple)
+
+Nmap scan report for 10.49.46.235
+Host is up (0.030s latency).
+Not shown: 103 filtered ports
+PORT    STATE  SERVICE
+10/tcp  closed unknown
+43/tcp  closed whois
+71/tcp  closed netrjs-1
+76/tcp  closed deos
+113/tcp closed ident
+MAC Address: 3C:06:30:46:ED:06 (Unknown)
+
+Nmap scan report for 10.49.46.236
+Host is up (0.68s latency).
+Not shown: 106 filtered ports
+PORT   STATE  SERVICE
+42/tcp closed nameserver
+63/tcp closed via-ftp
+MAC Address: 3C:22:FB:EA:2D:01 (Apple)
+
+Nmap scan report for 10.49.46.238
+Host is up (0.28s latency).
+Not shown: 99 filtered ports
+PORT     STATE  SERVICE
+29/tcp   closed msg-icp
+48/tcp   closed auditd
+54/tcp   closed xns-ch
+55/tcp   closed isi-gl
+61/tcp   closed ni-mail
+67/tcp   closed dhcps
+85/tcp   closed mit-ml-dev
+8092/tcp closed unknown
+8098/tcp closed unknown
+MAC Address: 8A:30:8C:85:31:2B (Unknown)
+
+Nmap scan report for 10.49.46.239
+Host is up (0.065s latency).
+Not shown: 86 closed ports
+PORT     STATE    SERVICE
+2/tcp    filtered compressnet
+16/tcp   filtered unknown
+27/tcp   filtered nsw-fe
+29/tcp   filtered msg-icp
+35/tcp   filtered priv-print
+36/tcp   filtered unknown
+49/tcp   filtered tacacs
+50/tcp   filtered re-mail-ck
+51/tcp   filtered la-maint
+52/tcp   filtered xns-time
+54/tcp   filtered xns-ch
+55/tcp   filtered isi-gl
+56/tcp   filtered xns-auth
+60/tcp   filtered unknown
+74/tcp   filtered netrjs-4
+85/tcp   filtered mit-ml-dev
+8087/tcp filtered simplifymedia
+8088/tcp filtered radan-http
+8089/tcp filtered unknown
+8092/tcp filtered unknown
+8094/tcp filtered unknown
+8098/tcp filtered unknown
+MAC Address: 0E:E7:21:85:68:75 (Unknown)
+
+Nmap scan report for 10.49.46.241
+Host is up (0.0097s latency).
+Not shown: 89 closed ports
+PORT     STATE    SERVICE
+4/tcp    filtered unknown
+6/tcp    filtered unknown
+7/tcp    filtered echo
+14/tcp   filtered unknown
+18/tcp   filtered msp
+26/tcp   filtered rsftp
+30/tcp   filtered unknown
+37/tcp   filtered time
+38/tcp   filtered rap
+45/tcp   filtered mpm
+58/tcp   filtered xns-mail
+65/tcp   filtered tacacs-ds
+66/tcp   filtered sqlnet
+72/tcp   filtered netrjs-2
+73/tcp   filtered netrjs-3
+82/tcp   filtered xfer
+8091/tcp filtered jamlink
+8093/tcp filtered unknown
+8100/tcp filtered xprint-server
+MAC Address: 1C:91:80:EB:7E:95 (Unknown)
+
+Nmap scan report for 10.49.46.242
+Host is up (0.025s latency).
+Not shown: 69 filtered ports
+PORT     STATE  SERVICE
+2/tcp    closed compressnet
+3/tcp    closed compressnet
+5/tcp    closed rje
+9/tcp    closed discard
+12/tcp   closed unknown
+13/tcp   closed daytime
+27/tcp   closed nsw-fe
+29/tcp   closed msg-icp
+33/tcp   closed dsp
+35/tcp   closed priv-print
+44/tcp   closed mpm-flags
+46/tcp   closed mpm-snd
+48/tcp   closed auditd
+49/tcp   closed tacacs
+50/tcp   closed re-mail-ck
+51/tcp   closed la-maint
+52/tcp   closed xns-time
+54/tcp   closed xns-ch
+55/tcp   closed isi-gl
+56/tcp   closed xns-auth
+60/tcp   closed unknown
+61/tcp   closed ni-mail
+62/tcp   closed acas
+67/tcp   closed dhcps
+69/tcp   closed tftp
+70/tcp   closed gopher
+74/tcp   closed netrjs-4
+79/tcp   closed finger
+81/tcp   closed hosts2-ns
+85/tcp   closed mit-ml-dev
+8085/tcp closed unknown
+8087/tcp closed simplifymedia
+8088/tcp closed radan-http
+8089/tcp closed unknown
+8092/tcp closed unknown
+8094/tcp closed unknown
+8096/tcp closed unknown
+8098/tcp closed unknown
+8099/tcp closed unknown
+MAC Address: 92:B6:B0:63:99:63 (Unknown)
+
+Nmap scan report for 10.49.46.244
+Host is up (0.0048s latency).
+All 108 scanned ports on 10.49.46.244 are filtered
+MAC Address: 08:6A:E5:0D:4D:0B (Unknown)
+
+Nmap scan report for 10.49.46.245
+Host is up (0.025s latency).
+Not shown: 61 filtered ports
+PORT     STATE  SERVICE
+1/tcp    closed tcpmux
+10/tcp   closed unknown
+11/tcp   closed systat
+14/tcp   closed unknown
+15/tcp   closed netstat
+17/tcp   closed qotd
+19/tcp   closed chargen
+20/tcp   closed ftp-data
+21/tcp   closed ftp
+22/tcp   closed ssh
+23/tcp   closed telnet
+24/tcp   closed priv-mail
+25/tcp   closed smtp
+28/tcp   closed unknown
+30/tcp   closed unknown
+34/tcp   closed unknown
+39/tcp   closed rlp
+40/tcp   closed unknown
+41/tcp   closed graphics
+42/tcp   closed nameserver
+43/tcp   closed whois
+45/tcp   closed mpm
+47/tcp   closed ni-ftp
+53/tcp   closed domain
+59/tcp   closed priv-file
+63/tcp   closed via-ftp
+68/tcp   closed dhcpc
+71/tcp   closed netrjs-1
+72/tcp   closed netrjs-2
+73/tcp   closed netrjs-3
+76/tcp   closed deos
+77/tcp   closed priv-rje
+78/tcp   closed vettcp
+80/tcp   closed http
+82/tcp   closed xfer
+113/tcp  closed ident
+443/tcp  closed https
+8080/tcp closed http-proxy
+8082/tcp closed blackice-alerts
+8083/tcp closed us-srv
+8084/tcp closed unknown
+8086/tcp closed d-s-n
+8090/tcp closed opsmessaging
+8093/tcp closed unknown
+8095/tcp closed unknown
+8097/tcp closed sac
+8100/tcp closed xprint-server
+MAC Address: 9A:65:20:28:09:98 (Unknown)
+
+Nmap scan report for 10.49.46.246
+Host is up (0.18s latency).
+Not shown: 94 closed ports
+PORT     STATE    SERVICE
+14/tcp   filtered unknown
+27/tcp   filtered nsw-fe
+31/tcp   filtered msg-auth
+32/tcp   filtered unknown
+44/tcp   filtered mpm-flags
+50/tcp   filtered re-mail-ck
+51/tcp   filtered la-maint
+56/tcp   filtered xns-auth
+58/tcp   filtered xns-mail
+60/tcp   filtered unknown
+65/tcp   filtered tacacs-ds
+74/tcp   filtered netrjs-4
+8087/tcp filtered simplifymedia
+8091/tcp filtered jamlink
+MAC Address: AE:3B:3F:8C:13:F3 (Unknown)
+
+Nmap scan report for 10.49.46.248
+Host is up (0.0089s latency).
+All 108 scanned ports on 10.49.46.248 are closed
+MAC Address: A0:78:17:62:AE:69 (Unknown)
+
+Nmap scan report for 10.49.46.251
+Host is up (0.051s latency).
+All 108 scanned ports on 10.49.46.251 are closed
+MAC Address: 3C:06:30:13:46:2D (Unknown)
+
+Nmap scan report for 10.49.46.255
+Host is up (0.016s latency).
+Not shown: 62 filtered ports
+PORT     STATE  SERVICE
+1/tcp    closed tcpmux
+2/tcp    closed compressnet
+3/tcp    closed compressnet
+5/tcp    closed rje
+7/tcp    closed echo
+9/tcp    closed discard
+10/tcp   closed unknown
+12/tcp   closed unknown
+13/tcp   closed daytime
+14/tcp   closed unknown
+17/tcp   closed qotd
+19/tcp   closed chargen
+24/tcp   closed priv-mail
+26/tcp   closed rsftp
+29/tcp   closed msg-icp
+33/tcp   closed dsp
+35/tcp   closed priv-print
+38/tcp   closed rap
+39/tcp   closed rlp
+40/tcp   closed unknown
+41/tcp   closed graphics
+43/tcp   closed whois
+44/tcp   closed mpm-flags
+46/tcp   closed mpm-snd
+48/tcp   closed auditd
+51/tcp   closed la-maint
+54/tcp   closed xns-ch
+55/tcp   closed isi-gl
+61/tcp   closed ni-mail
+62/tcp   closed acas
+67/tcp   closed dhcps
+69/tcp   closed tftp
+70/tcp   closed gopher
+73/tcp   closed netrjs-3
+74/tcp   closed netrjs-4
+78/tcp   closed vettcp
+79/tcp   closed finger
+81/tcp   closed hosts2-ns
+85/tcp   closed mit-ml-dev
+8085/tcp closed unknown
+8088/tcp closed radan-http
+8091/tcp closed jamlink
+8092/tcp closed unknown
+8094/tcp closed unknown
+8096/tcp closed unknown
+8099/tcp closed unknown
+MAC Address: F0:76:6F:62:4B:91 (Apple)
+
+Initiating SYN Stealth Scan at 12:30
+Scanning 10.49.46.221 [108 ports]
+Discovered open port 22/tcp on 10.49.46.221
+Completed SYN Stealth Scan at 12:30, 0.09s elapsed (108 total ports)
+Initiating OS detection (try #1) against 10.49.46.221
+Nmap scan report for 10.49.46.221
+Host is up (0.000069s latency).
+Not shown: 107 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6.32
+OS details: Linux 2.6.32
+Uptime guess: 12.735 days (since Thu Apr 21 18:51:44 2022)
+Network Distance: 0 hops
+TCP Sequence Prediction: Difficulty=251 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+Read data files from: /usr/bin/../share/nmap
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 256 IP addresses (127 hosts up) scanned in 1934.76 seconds
+           Raw packets sent: 28189 (1.243MB) | Rcvd: 10190 (409.308KB)

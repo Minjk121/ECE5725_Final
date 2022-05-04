@@ -1,0 +1,6 @@
+gateway 10.49.0.1
+
+usable low
+10.49.0.1
+usable high
+10.49.255.254

@@ -5,7 +5,6 @@ webscraper that gets data from the multiple mrtg websites
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
-from zmq import device
 
 # returns tuple of daily average (in, out)
 def daily_in_out(url):

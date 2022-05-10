@@ -15,12 +15,12 @@ os.putenv('SDL_FBDEV','/dev/fb0')
 # os.putenv('SDL_MOUSEDEV','/dev/input/touchscreen')
 
 pygame.init()
-pygame.mouse.set_visible(False)
+#pygame.mouse.set_visible(False)
 WHITE=255,255,255
 BLACK=0,0,0
 screen=pygame.display.set_mode((1920,1080))
 my_font=pygame.font.Font(None, 25)
-my_buttons={'quit':(1800,800),'touch at ':(200,200)}
+my_buttons={'quit':(1800,900),'touch at ':(200,200)}
 screen.fill(BLACK) # erase the workspace
 end_time = time.time()+30
 

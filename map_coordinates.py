@@ -24,6 +24,8 @@ my_buttons={'quit':(1800,900),'touch at ':(200,200)}
 screen.fill(BLACK) # erase the workspace
 end_time = time.time()+30
 
+image = pygame.image.load(r'./img/map.png')
+
 my_buttons_rect={}
 for my_text, text_pos in my_buttons.items():
     text_surface=my_font.render(my_text, True, WHITE)
@@ -43,6 +45,7 @@ while True:
     if (time.time() > end_time): # timeout timer
         print("TIMEOUT")
         sys.exit()
+    screen.blit(image, (0,0))
     for event in pygame.event.get():
         if(event.type is MOUSEBUTTONDOWN):
             pos=pygame.mouse.get_pos()

@@ -1,4 +1,4 @@
-# ECE5725_Final
+# Campus congestion
 Building a smart mirror with RPi 4 that shows a human density map on campus. This project is for ECE5725 and worked by Esther In and Minjung Kwon.. 
 
 ### Caution

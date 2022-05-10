@@ -68,7 +68,8 @@ while True:
                         screen.fill(BLACK)
                         screen.blit(text_surface,rect)
                         screen.blit(quit_text_surface,my_buttons_rect['quit'])
+                        screen.blit(image, (250,0))
                         pygame.display.flip()
                         pygame.display.update([rect,my_buttons_rect['quit']])
-        screen.blit(image, (250,0))
+        # screen.blit(image, (250,0))
 

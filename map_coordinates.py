@@ -24,7 +24,7 @@ my_buttons={'quit':(1800,900),'touch at ':(200,200)}
 screen.fill(BLACK) # erase the workspace
 end_time = time.time()+30
 
-image = pygame.image.load(r'./img/map.png')
+image = pygame.image.load('./img/map.png')
 
 my_buttons_rect={}
 for my_text, text_pos in my_buttons.items():

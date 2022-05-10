@@ -59,6 +59,7 @@ def updateSurfaceAndRect(buttons):
         displayString = my_text
         text_surface = my_font.render(displayString, True, WHITE)
         rect = text_surface.get_rect(center=text_pos)
+        screen.blit(text_surface,rect)
     #if it's the congestion menu
     # TODO: this might not work, need to double check
     if buttons=='congestion_menu':
@@ -71,15 +72,12 @@ def updateSurfaceAndRect(buttons):
             else:
                 pygame.draw.circle(screen, GREEN, text_pos, 15, 0)
         
-    screen.blit(text_surface,rect)
-
 def updateScreen():
     screen.fill(BLACK)
     if menu_level == 1:
         updateSurfaceAndRect(menu_buttons)
         pygame.draw.rect(screen, RED, menu_buttons_rect[0])
         pygame.draw.rect(screen, GREEN, menu_buttons_rect[1])
-        updateSurfaceAndRect(menu_buttons)
     elif menu_level ==2:
         determine_congestion_level()
         # TODO: need to draw the map (import image?)

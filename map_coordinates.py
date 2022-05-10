@@ -25,7 +25,8 @@ screen.fill(BLACK) # erase the workspace
 end_time = time.time()+30
 
 image = pygame.image.load('./img/map.png')
-screen.blit(image, (0,0))
+image = pygame.transform.scale(image, (1400, 1080))
+screen.blit(image, (250,0))
 
 my_buttons_rect={}
 for my_text, text_pos in my_buttons.items():
@@ -69,3 +70,5 @@ while True:
                         screen.blit(quit_text_surface,my_buttons_rect['quit'])
                         pygame.display.flip()
                         pygame.display.update([rect,my_buttons_rect['quit']])
+                screen.blit(image, (0,0))
+

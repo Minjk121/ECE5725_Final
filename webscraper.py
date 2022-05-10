@@ -1,5 +1,5 @@
 '''
-webscrapper that gets data from the mrtg website
+webscraper that gets data from the mrtg website
 '''
 
 import pandas as pd

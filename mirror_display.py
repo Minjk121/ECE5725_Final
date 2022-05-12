@@ -30,7 +30,7 @@ my_font = pygame.font.Font(None, 25)
 # these store the screen coordinates of the logs
 menu_buttons={'congestion map':(160,120),'study spaces':(270,200)}
 # TODO: find the coordinates on the map and add them below
-congestion_menu={'duffield':(0,0),'upson':(0,0),'another study space':(0,0)}
+congestion_menu={'phillips':(0,0),'duffield':(0,0),'upson':(0,0),'rhodes':(0,0)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 
 # TODO: need to somehow import the congestion level data from the webscraper and put in below as dictionary

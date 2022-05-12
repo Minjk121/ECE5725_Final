@@ -34,7 +34,7 @@ menu_buttons={'congestion map':(160,120),'study spaces':(270,200)}
 congestion_menu={'phillips':(0,0),'duffield':(0,0),'upson':(0,0),'rhodes':(0,0)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 
-# TODO: need to somehow import the congestion level data from the webscraper and put in below as dictionary
+# updated in the helper function below
 congestion_data = mult_webscraper.main()
 # {'Duffield atrium': 24279.1, 'ECE lounge': 3084.5, 'Upson 2nd floor': 8187.6, 'Upson 3rd floor': 378.9, 'CIS lounge': 23667.4, 'Rhodes 3rd floor': 5300.0, 'Rhodes 4th floor': 14697.4, 'Rhodes 5th floor': 1512.7}
 
@@ -57,6 +57,10 @@ def determine_congestion_level():
         else:
             space_list[study_space] = 'green'
 
+# updates and returns dictionary type of congestion data
+def update_congestion_data():
+    return mult_webscraper.main()
+
 def updateSurfaceAndRect(buttons):
     for my_text, text_pos in buttons.items():
         displayString = my_text
@@ -78,7 +82,9 @@ def updateSurfaceAndRect(buttons):
     
     #TODO: if it's the study spaces menu
     # if buttons=='study spaces':
-
+    #     for study_space in space_list:
+    #         # TODO: draw rects for each loc
+    #         pygame.draw.rect(screen, YELLOW, text_pos, 15, 0)
         
 def updateScreen():
     screen.fill(BLACK)

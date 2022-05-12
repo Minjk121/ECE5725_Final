@@ -31,9 +31,9 @@ YELLOW=255,255,0
 # Full monitor mode
 infoObject = pygame.display.Info()
 screen=pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
-my_font = pygame.font.Font(None, 25)
+my_font = pygame.font.Font(None, 40) # 25
 # these store the screen coordinates of the logs
-menu_buttons={'congestion map':(160,120),'study spaces':(270,200)}
+menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
 congestion_menu={'phillips':(1140,373),'duffield':(932,467),'upson':(1012,629),'rhodes':(1200,872)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 

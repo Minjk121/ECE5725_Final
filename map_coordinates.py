@@ -51,9 +51,9 @@ while True:
     if ( not GPIO.input(17)): # quit button 17
         print("bailing out")
         sys.exit()
-    if (time.time() > end_time): # timeout timer
-        print("TIMEOUT")
-        sys.exit()
+    # if (time.time() > end_time): # timeout timer
+    #     print("TIMEOUT")
+    #     sys.exit()
 
     for event in pygame.event.get():
         if(event.type is MOUSEBUTTONDOWN):

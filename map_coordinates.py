@@ -18,8 +18,8 @@ pygame.init()
 #pygame.mouse.set_visible(False)
 WHITE=255,255,255
 BLACK=0,0,0
-# screen=pygame.display.set_mode((1920,1080))
-screen=pygame.display.set_mode((0,0),pygame.FULLSCREEN)
+screen=pygame.display.set_mode((1920,1080))
+# screen=pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 my_font=pygame.font.Font(None, 25)
 my_buttons={'quit':(1800,900),'touch at ':(200,200)}
 screen.fill(BLACK) # erase the workspace

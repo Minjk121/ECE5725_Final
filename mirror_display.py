@@ -30,8 +30,7 @@ screen=pygame.display.set_mode((320,240))
 my_font = pygame.font.Font(None, 25)
 # these store the screen coordinates of the logs
 menu_buttons={'congestion map':(160,120),'study spaces':(270,200)}
-# TODO: find the coordinates on the map and add them below
-congestion_menu={'phillips':(0,0),'duffield':(0,0),'upson':(0,0),'rhodes':(0,0)}
+congestion_menu={'phillips':(1140,373),'duffield':(932,467),'upson':(1012,629),'rhodes':(1200,872)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 
 # updated in the helper function below

@@ -44,13 +44,7 @@ level_yellow = 5000
 level_green = 0
 
 screen.fill(BLACK) # erase the workspace
-menu_buttons_rect={} # 'congestion map': (1600,300), 'main meun': (1600,500), 'quit':(1600,700) 
-# for my_text, text_pos in menu_buttons.items():
-#     text_surface=my_font.render(my_text, True, WHITE)
-#     rect=text_surface.get_rect(center=text_pos)
-#     screen.blit(text_surface, rect)
-#     menu_buttons_rect[my_text] = rect
-
+menu_buttons_rect={} 
 menu_level = 1  # start on "main menu"
 
 def determine_congestion_level():
@@ -97,8 +91,8 @@ def updateScreen():
     screen.fill(BLACK)
     if menu_level == 1:
         updateSurfaceAndRect(menu_buttons)
-        pygame.draw.rect(screen, RED, menu_buttons_rect[0])
-        pygame.draw.rect(screen, GREEN, menu_buttons_rect[1])
+        pygame.draw.rect(screen, RED, menu_buttons_rect.values()[0])
+        pygame.draw.rect(screen, GREEN, menu_buttons_rect.values()[1])
     elif menu_level ==2:
         determine_congestion_level()
         # TODO: check if the map image is shown on monitor

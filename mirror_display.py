@@ -53,8 +53,8 @@ menu_buttons_rect={}
 menu_level = 1  # start on "main menu"
 
 def determine_congestion_level():
-    for study_space, current_traffic in space_list.items():
-        # current_traffic = congestion_data[study_space]
+    for study_space in space_list:
+        current_traffic = congestion_data[study_space]
         if current_traffic > level_red:
             space_list[study_space] = 'red'
         elif current_traffic > level_yellow:

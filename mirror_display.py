@@ -89,11 +89,11 @@ def updateSurfaceAndRect(buttons):
             current_traffic = congestion_data[study_space]
             # TODO: congestion_data should be updated in every 5 minutes
             if current_traffic > level_red:
-                pygame.draw.circle(screen, RED, text_pos, 15, 0)
+                pygame.draw.circle(screen, RED, text_pos, 50, 0, 2)
             elif current_traffic > level_yellow:
-                pygame.draw.circle(screen, YELLOW, text_pos, 15, 0)
+                pygame.draw.circle(screen, YELLOW, text_pos, 50, 0, 2)
             else:
-                pygame.draw.circle(screen, GREEN, text_pos, 15, 0)
+                pygame.draw.circle(screen, GREEN, text_pos, 50, 0, 2)
     
     #TODO: if it's the study spaces menu
     # if buttons=='study spaces':

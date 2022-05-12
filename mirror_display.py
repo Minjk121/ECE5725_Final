@@ -51,8 +51,8 @@ menu_buttons_rect={}
 menu_level = 1  # start on "main menu"
 
 def determine_congestion_level():
-    for study_space in space_list.items():
-        current_traffic = congestion_data[study_space]
+    for study_space, current_traffic in space_list.items():
+        # current_traffic = congestion_data[study_space]
         if current_traffic > level_red:
             space_list[study_space] = 'red'
         elif current_traffic > level_yellow:
@@ -79,6 +79,7 @@ def updateSurfaceAndRect(buttons):
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect
+
     #if it's the congestion menu
     # TODO: this might not work, need to double check
     if buttons=='congestion_menu':

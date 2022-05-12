@@ -64,10 +64,18 @@ def determine_congestion_level():
 def update_congestion_data():
     return mult_webscraper.main()
 
+def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
+    text_surface = my_font.render(displayString, True, text_color)
+    box_surface = pygame.Surface(text_surface.get_rect().inflate(margin_x, margin_y).size)
+    box_surface.fill(box_color)
+    box_surface.blit(text_surface, text_surface.get_rect(center = box_surface.get_rect().center))
+    return box_surface
+
 def updateSurfaceAndRect(buttons):
     for my_text, text_pos in buttons.items():
         displayString = my_text
-        text_surface = my_font.render(displayString, True, WHITE)
+        # text_surface = my_font.render(displayString, True, WHITE)
+        text_surface = create_text_box(displayString, WHITE, BLACK, 10,10)
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect

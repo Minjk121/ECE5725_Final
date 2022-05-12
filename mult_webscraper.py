@@ -107,9 +107,9 @@ def main():
             ]
 
     df = convert_url_to_df(urls)
-    print(df)
+    # print(df)
     data = convert_df_to_dict(df)
-    print(data)
+    # print(data)
     return data
 if __name__ == "__main__":
     main()

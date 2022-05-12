@@ -86,18 +86,18 @@ def updateSurfaceAndRect(buttons):
         menu_buttons_rect[my_text] = rect
 
     #if it's the congestion menu
-    # TODO: this might not work, need to double check
+    # TODO: This is not called. Need to fix!
     if buttons=='congestion_menu':
         print("congestion menu clicked")
         for study_space, text_pos in buttons.items():
             current_traffic = congestion_data[study_space]
             # TODO: congestion_data should be updated in every 5 minutes
             if current_traffic > level_red:
-                pygame.draw.circle(screen, RED, text_pos, 50, 0, 2)
+                pygame.draw.circle(screen, RED, text_pos, 50, 0)
             elif current_traffic > level_yellow:
-                pygame.draw.circle(screen, YELLOW, text_pos, 50, 0, 2)
+                pygame.draw.circle(screen, YELLOW, text_pos, 50, 0)
             else:
-                pygame.draw.circle(screen, GREEN, text_pos, 50, 0, 2)
+                pygame.draw.circle(screen, GREEN, text_pos, 50, 0) # maybe add ', 2' to draw circle without filling inside
     
     #TODO: if it's the study spaces menu
     # if buttons=='study spaces':

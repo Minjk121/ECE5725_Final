@@ -21,7 +21,7 @@ GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 # initialize pygame for piTFT 
 pygame.init()
-pygame.mouse.set_visible(False)
+# pygame.mouse.set_visible(False)
 WHITE=255,255,255
 BLACK=0,0,0
 RED=139,0,0

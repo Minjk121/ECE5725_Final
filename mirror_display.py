@@ -80,9 +80,11 @@ def updateScreen():
         pygame.draw.rect(screen, GREEN, menu_buttons_rect[1])
     elif menu_level ==2:
         determine_congestion_level()
-        # TODO: need to draw the map (import image?)
-        campus_map = pygame.image.load("campus_map.png")
-        campus_map_rect = campus_map.get_rect()
+        # TODO: check if the map image is shown on monitor
+        campus_map = pygame.image.load('./img/map.png')
+        campus_map = pygame.transform.scale(campus_map, (1400, 1080))
+        campus_map_rect = campus_map.get_rect()       
+        screen.blit(campus_map, (250,0))
         updateSurfaceAndRect(congestion_menu)
         
     pygame.display.flip()

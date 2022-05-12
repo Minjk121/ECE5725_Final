@@ -14,7 +14,7 @@ os.putenv('SDL_FBDEV','/dev/fb0') #so that this will be visible on the monitor
 
 # in case the Pi freezes
 t0 = time.time()
-end_time = t0 + 30
+end_time = t0 + 60 # changed timeout to 60 sec
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
@@ -27,7 +27,10 @@ BLACK=0,0,0
 RED=139,0,0
 GREEN=0,128,0
 YELLOW=255,255,0
-screen=pygame.display.set_mode((320,240))
+
+# Full monitor mode
+infoObject = pygame.display.Info()
+screen=pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
 my_font = pygame.font.Font(None, 25)
 # these store the screen coordinates of the logs
 menu_buttons={'congestion map':(160,120),'study spaces':(270,200)}

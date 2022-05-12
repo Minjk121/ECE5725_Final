@@ -16,6 +16,7 @@ os.putenv('SDL_FBDEV','/dev/fb0') #so that this will be visible on the monitor
 t0 = time.time()
 end_time = t0 + 30
 
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 # initialize pygame for piTFT 

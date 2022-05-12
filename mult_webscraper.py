@@ -49,26 +49,9 @@ def convert_df_to_dict(df):
         congestion_data[spaces] = float(filtered_df['In'].sum()) + float(filtered_df['Out'].sum())
 
     return congestion_data
-def main():
-    urls = [('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips1-5400.252.html', 'ECE lounge'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120.html', 'Duffield atrium'), # near phillips
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.132.html', 'Duffield atrium'), # near upsonv
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.119.html', 'Duffield atrium'), # near duffield
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.131.html', 'Duffield atrium'), # Mattins
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.33.html', 'Upson 2nd floor'), # middle
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.3.html', 'Upson 2nd floor'), #stairs
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson5-5400r.71.html', 'Upson 3rd floor'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.194.html', 'CIS lounge'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.202.html', 'CIS lounge'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.203.html', 'CIS lounge'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.204.html', 'CIS lounge'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes3-1-5400.37.html', 'Rhodes 3rd floor'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes3-1-5400.38.html', 'Rhodes 3rd floor'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes4-1-5400.25.html', 'Rhodes 4th floor'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes4-1-5400.26.html', 'Rhodes 4th floor'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes5-1-5400.25.html', 'Rhodes 5th floor'),
-            ]
     
+def convert_url_to_df(urls):
+
     name_lst = []
     port_lst = []
     in_lst = []
@@ -90,8 +73,30 @@ def main():
          'Out': out_lst,
          'Graph': mrtg_lst
         })
+    return df
+def main():
+    urls = [('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips1-5400.252.html', 'ECE lounge'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120.html', 'Duffield atrium'), # near phillips
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.132.html', 'Duffield atrium'), # near upsonv
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.119.html', 'Duffield atrium'), # near duffield
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.131.html', 'Duffield atrium'), # Mattins
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.33.html', 'Upson 2nd floor'), # middle
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.3.html', 'Upson 2nd floor'), #stairs
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson5-5400r.71.html', 'Upson 3rd floor'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.194.html', 'CIS lounge'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.202.html', 'CIS lounge'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.203.html', 'CIS lounge'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.204.html', 'CIS lounge'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes3-1-5400.37.html', 'Rhodes 3rd floor'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes3-1-5400.38.html', 'Rhodes 3rd floor'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes4-1-5400.25.html', 'Rhodes 4th floor'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes4-1-5400.26.html', 'Rhodes 4th floor'),
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes5-1-5400.25.html', 'Rhodes 5th floor'),
+            ]
 
-    print(df)
-    print(convert_df_to_dict(df))
+    df = convert_url_to_df(urls)
+    # print(df)
+    data = convert_df_to_dict(df)
+    return data
 if __name__ == "__main__":
     main()

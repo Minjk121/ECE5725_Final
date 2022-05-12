@@ -6,6 +6,7 @@ import sys
 import pygame
 from pygame.locals import * # for event MOUSE variables
 import os
+import mult_webscraper
 
 ## pygame/piTFT setup
 os.putenv('SDL_VIDEODRIVER','fbcon') 
@@ -34,7 +35,9 @@ congestion_menu={'phillips':(0,0),'duffield':(0,0),'upson':(0,0),'rhodes':(0,0)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 
 # TODO: need to somehow import the congestion level data from the webscraper and put in below as dictionary
-congestion_data={''}
+congestion_data = mult_webscraper.main()
+# {'Duffield atrium': 24279.1, 'ECE lounge': 3084.5, 'Upson 2nd floor': 8187.6, 'Upson 3rd floor': 378.9, 'CIS lounge': 23667.4, 'Rhodes 3rd floor': 5300.0, 'Rhodes 4th floor': 14697.4, 'Rhodes 5th floor': 1512.7}
+
 # thresholds in kb, additive
 level_red = 10000
 level_yellow = 5000

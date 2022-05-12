@@ -39,12 +39,14 @@ space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'gr
 
 # updated in the helper function below
 congestion_data = mult_webscraper.main()
+print(congestion_data)
+print(type(congestion_data['ECE lounge']))
 # {'Duffield atrium': 24279.1, 'ECE lounge': 3084.5, 'Upson 2nd floor': 8187.6, 'Upson 3rd floor': 378.9, 'CIS lounge': 23667.4, 'Rhodes 3rd floor': 5300.0, 'Rhodes 4th floor': 14697.4, 'Rhodes 5th floor': 1512.7}
 
 # thresholds in kb, additive
-level_red = 10000
-level_yellow = 5000
-level_green = 0
+level_red = 10000.0
+level_yellow = 5000.0
+level_green = 0.0
 
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} 

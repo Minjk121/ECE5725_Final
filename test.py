@@ -10,6 +10,7 @@ import os
 # d = mult_webscraper.main()
 # print(d)
 # print(type(d))
+pygame.init()
 
 infoObject = pygame.display.Info()
 print(infoObject.current_w, infoObject.current_h)

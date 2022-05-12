@@ -91,8 +91,8 @@ def updateScreen():
     screen.fill(BLACK)
     if menu_level == 1:
         updateSurfaceAndRect(menu_buttons)
-        pygame.draw.rect(screen, RED, menu_buttons_rect.values()[0])
-        pygame.draw.rect(screen, GREEN, menu_buttons_rect.values()[1])
+        pygame.draw.rect(screen, RED, list(menu_buttons_rect.values())[0])
+        pygame.draw.rect(screen, GREEN, list(menu_buttons_rect.values())[1])
     elif menu_level ==2:
         determine_congestion_level()
         # TODO: check if the map image is shown on monitor

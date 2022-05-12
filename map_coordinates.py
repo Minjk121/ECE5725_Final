@@ -18,7 +18,13 @@ pygame.init()
 #pygame.mouse.set_visible(False)
 WHITE=255,255,255
 BLACK=0,0,0
-screen=pygame.display.set_mode((1920,1080))
+
+# find the monitor resolution
+infoObject = pygame.display.Info()
+print(infoObject.current_w, infoObject.current_h)
+pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
+# screen=pygame.display.set_mode((1920,1080))
+ 
 # screen=pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 my_font=pygame.font.Font(None, 25)
 my_buttons={'quit':(1800,900),'touch at ':(200,200)}

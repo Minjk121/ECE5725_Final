@@ -45,11 +45,11 @@ level_green = 0
 
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} # 'congestion map': (1600,300), 'main meun': (1600,500), 'quit':(1600,700) 
-for my_text, text_pos in menu_buttons.items():
-    text_surface=my_font.render(my_text, True, WHITE)
-    rect=text_surface.get_rect(center=text_pos)
-    screen.blit(text_surface, rect)
-    menu_buttons_rect[my_text] = rect
+# for my_text, text_pos in menu_buttons.items():
+#     text_surface=my_font.render(my_text, True, WHITE)
+#     rect=text_surface.get_rect(center=text_pos)
+#     screen.blit(text_surface, rect)
+#     menu_buttons_rect[my_text] = rect
 
 menu_level = 1  # start on "main menu"
 
@@ -73,6 +73,7 @@ def updateSurfaceAndRect(buttons):
         text_surface = my_font.render(displayString, True, WHITE)
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface,rect)
+        menu_buttons_rect[my_text] = rect
     #if it's the congestion menu
     # TODO: this might not work, need to double check
     if buttons=='congestion_menu':

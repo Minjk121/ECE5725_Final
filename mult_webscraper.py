@@ -41,25 +41,36 @@ def daily_in_out(url):
 def convert_df_to_dict(df):
     congestion_data = {}
     space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
-    
+    congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872)}
+
     for spaces in space_list:
         filter = df['Location Name'] == spaces
         filtered_df = df.loc[filter]
         # print(filtered_df)
         congestion_data[spaces] = float(filtered_df['In'].sum()) + float(filtered_df['Out'].sum())
 
+    for halls in congestion_menu:
+        filter = df['Hall Name'] == halls.lower()
+        filtered_df = df.loc[filter]
+        congestion_data[halls] = float(filtered_df['In'].sum()) + float(filtered_df['Out'].sum())
+
     return congestion_data
     
 def convert_url_to_df(urls):
 
     name_lst = []
+    hall_lst = []
     port_lst = []
     in_lst = []
     out_lst = []
     mrtg_lst = []
 
     for url, location in urls: 
+        # hall_name = url.split('/')[-1].split('-')[0]
         result = daily_in_out(url)
+
+        hall_name = result[3].split('-')[0]
+        hall_lst.append(hall_name)
         name_lst.append(location) 
         port_lst.append(result[3])
         in_lst.append(result[0])
@@ -68,6 +79,7 @@ def convert_url_to_df(urls):
 
     df = pd.DataFrame(
         {'Port Name': port_lst,
+         'Hall Name': hall_lst,
          'Location Name': name_lst,
          'In': in_lst,
          'Out': out_lst,
@@ -95,8 +107,9 @@ def main():
             ]
 
     df = convert_url_to_df(urls)
-    # print(df)
+    print(df)
     data = convert_df_to_dict(df)
+    print(data)
     return data
 if __name__ == "__main__":
     main()

@@ -34,14 +34,17 @@ screen=pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
 my_font = pygame.font.Font(None, 40) # 25
 # these store the screen coordinates of the logs
 menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
-congestion_menu={'phillips':(1140,373),'duffield':(932,467),'upson':(1012,629),'rhodes':(1200,872)}
+congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 
-# updated in the helper function below
+# congestion_data contains study spaces + halls
 congestion_data = mult_webscraper.main()
-print(congestion_data)
-print(type(congestion_data['ECE lounge']))
-# {'Duffield atrium': 24279.1, 'ECE lounge': 3084.5, 'Upson 2nd floor': 8187.6, 'Upson 3rd floor': 378.9, 'CIS lounge': 23667.4, 'Rhodes 3rd floor': 5300.0, 'Rhodes 4th floor': 14697.4, 'Rhodes 5th floor': 1512.7}
+'''
+{'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
+'Upson 3rd floor': 9788.3, 'CIS lounge': 11801.9, 'Rhodes 3rd floor': 7744.799999999999, 
+'Rhodes 4th floor': 7257.500000000001, 'Rhodes 5th floor': 1268.6, 'Phillips': 139.8, 'Duffield': 15053.199999999999,
+ 'Upson': 16351.0, 'Rhodes': 28072.8} 
+ '''
 
 # thresholds in kb, additive
 level_red = 10000.0
@@ -85,6 +88,7 @@ def updateSurfaceAndRect(buttons):
     #if it's the congestion menu
     # TODO: this might not work, need to double check
     if buttons=='congestion_menu':
+        print("congestion menu clicked")
         for study_space, text_pos in buttons.items():
             current_traffic = congestion_data[study_space]
             # TODO: congestion_data should be updated in every 5 minutes

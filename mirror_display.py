@@ -75,7 +75,7 @@ def updateSurfaceAndRect(buttons):
     for my_text, text_pos in buttons.items():
         displayString = my_text
         # text_surface = my_font.render(displayString, True, WHITE)
-        text_surface = create_text_box(displayString, WHITE, BLACK, 10,10)
+        text_surface = create_text_box(displayString, WHITE, BLACK, 50,50)
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect

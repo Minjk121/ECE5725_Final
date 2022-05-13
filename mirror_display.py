@@ -15,7 +15,8 @@ os.putenv('SDL_FBDEV','/dev/fb0') #so that this will be visible on the monitor
 
 # in case the Pi freezes
 t0 = time.time()
-end_time = t0 + 60 # changed timeout to 60 sec
+end_time = t0 + 600 # changed timeout to 10 min 
+update_time = t0 + 300 # update traffic rates by 5 min
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
@@ -42,7 +43,8 @@ space_buttons={'Duffield atrium':(300, 300),'ECE lounge':(300, 400),'Upson 2nd f
 
 
 # congestion_data contains study spaces + halls
-congestion_data = mult_webscraper.main()
+congestion_df = mult_webscraper.main() # data frame
+congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
 ''' 
 {'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
 'Upson 3rd floor': 9788.3, 'CIS lounge': 11801.9, 'Rhodes 3rd floor': 7744.799999999999, 
@@ -73,7 +75,8 @@ def determine_congestion_level():
 
 # updates and returns dictionary type of congestion data
 def update_congestion_data():
-    return mult_webscraper.main()
+    df = mult_webscraper.main() # data frame
+    return mult_webscraper.convert_df_to_dict(df)
 
 def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
     text_surface = my_font.render(displayString, True, text_color)
@@ -92,8 +95,7 @@ def updateSurfaceAndRect(buttons):
         menu_buttons_rect[my_text] = rect
 
     #if it's the congestion menu
-    # TODO: This is not called. Need to fix!
-    if buttons=='congestion_menu':
+    if menu_level == 2: #buttons=='congestion_menu':
         print("congestion menu clicked")
         for study_space, text_pos in buttons.items():
             current_traffic = congestion_data[study_space]
@@ -115,17 +117,16 @@ def updateScreen():
         pygame.draw.rect(screen, GREEN, list(menu_buttons_rect.values())[1], 2)
     elif menu_level == 2:
         determine_congestion_level()
-        # TODO: check if the map image is shown on monitor
         campus_map = pygame.image.load('./img/map.png')
         campus_map = pygame.transform.scale(campus_map, (1400, 1080))
         campus_map_rect = campus_map.get_rect()       
         screen.blit(campus_map, (250,0))
         updateSurfaceAndRect(congestion_menu)
     
-    '''
     elif menu_level == 3: # when map is clicked, shows traffic data & diagram of study spaces
         # load image of study space (multiple if upson / rhodes)
         # load mrtg graph
+        mrtg_graph = pygame.image.load()
         # load congestion data (Daily - max & avg & curr)
     
     elif menu_level == 4: # space_list 
@@ -136,7 +137,7 @@ def updateScreen():
         
     elif menu_level == 5:  # when destination space is clicked, recommend a route
         # state machine
-    '''
+        print("Enter through Duffield")
         
     pygame.display.flip()
 

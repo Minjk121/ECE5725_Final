@@ -13,9 +13,9 @@ from varname import nameof
 # print(d)
 # print(type(d))
 # print(type(d['ECE lounge']))
-congestion_menu = {'test':'tmp'}
-buttons = congestion_menu
-if nameof(buttons)=='congestion_menu':
+congestion_menu = {'Test':'tmp', '2':'two'}
+name = "Test"
+if name in congestion_menu:
     print("!")
 
 # pygame.init()

@@ -59,9 +59,11 @@ level_green = 0.0
 
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} 
+graph_buttons_rect={}
 space_buttons_rect={}
 
 menu_level = 1  # start on "main menu"
+hall_name = ''
 
 def determine_congestion_level():
     for study_space in space_list:
@@ -85,21 +87,29 @@ def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
     box_surface.blit(text_surface, text_surface.get_rect(center = box_surface.get_rect().center))
     return box_surface
 
-def updateSurfaceAndRect(buttons):
+def updateSurfaceAndRect(buttons, buttons_rect):
     for my_text, text_pos in buttons.items():
         displayString = my_text
         # text_surface = my_font.render(displayString, True, WHITE)
         text_surface = create_text_box(displayString, WHITE, BLACK, 50,50)
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface, rect)
-        menu_buttons_rect[my_text] = rect
+        buttons_rect[my_text] = rect
+
+    if menu_level == 1:
+        pygame.draw.rect(screen, RED, list(buttons_rect.values())[0], 2)
+        pygame.draw.rect(screen, GREEN, list(buttons_rect.values())[1], 2)
 
     #if it's the congestion menu
     if menu_level == 2: #buttons=='congestion_menu':
         print("congestion menu clicked")
+        # congestion_data updated in every 5 minutes - needs to be fixed
+        if time.time() > update_time:
+            congestion_data = update_congestion_data()
+            update_time = time.time() + 300 # update in next 5 min
+
         for study_space, text_pos in buttons.items():
             current_traffic = congestion_data[study_space]
-            # TODO: congestion_data should be updated in every 5 minutes
             if current_traffic > level_red:
                 pygame.draw.circle(screen, RED, text_pos, 50, 0)
             elif current_traffic > level_yellow:
@@ -110,29 +120,34 @@ def updateSurfaceAndRect(buttons):
 def updateScreen():
     screen.fill(BLACK)
     if menu_level == 1:
-        updateSurfaceAndRect(menu_buttons)
+        updateSurfaceAndRect(menu_buttons, menu_buttons_rect)
         # TODO: Add current time at a certain location & Add other images to menu (to look nicer?) 
         # curr_time = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
-        pygame.draw.rect(screen, RED, list(menu_buttons_rect.values())[0], 2)
-        pygame.draw.rect(screen, GREEN, list(menu_buttons_rect.values())[1], 2)
+        
     elif menu_level == 2:
         determine_congestion_level()
         campus_map = pygame.image.load('./img/map.png')
-        campus_map = pygame.transform.scale(campus_map, (1400, 1080))
-        campus_map_rect = campus_map.get_rect()       
+        campus_map = pygame.transform.scale(campus_map, (1400, 1080)) # TODO: change to full screen & update coordinates of halls
         screen.blit(campus_map, (250,0))
-        updateSurfaceAndRect(congestion_menu)
+        updateSurfaceAndRect(congestion_menu, graph_buttons_rect) # TODO: graph_buttons_rect updated but not used - need to fix updateSurfaceAndRect later
     
+    #TODO: this might not work
     elif menu_level == 3: # when map is clicked, shows traffic data & diagram of study spaces
         # load image of study space (multiple if upson / rhodes)
         # load mrtg graph
-        mrtg_graph = pygame.image.load()
+        graph_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, hall_name)
+        y_coord = 300
+        for graph in graph_lst:
+            mrtg_graph = pygame.image.load(graph)
+            mrtg_graph = pygame.transform.scale(mrtg_graph, (900, 200)) # TODO: update scale
+            screen.blit(campus_map, (1000, y_coord)) # TODO: modify if needed
+            y_coord += 300
         # load congestion data (Daily - max & avg & curr)
     
     elif menu_level == 4: # space_list 
         # list of study spaces
-        updateSurfaceAndRect(space_buttons)
-        for position in space_buttons_rect.values()
+        updateSurfaceAndRect(space_buttons, space_buttons_rect)
+        for position in space_buttons_rect.values():
             pygame.draw.rect(screen, SKYBLUE, position, 2)
         
     elif menu_level == 5:  # when destination space is clicked, recommend a route
@@ -164,16 +179,28 @@ while (time.time() < end_time):
                         newRect = rect
                         updateScreen()
                         break
-                    if (my_text=='main menu'):
+                    if (my_text=='main menu'): 
                         menu_level = 1
                         tempText = my_text
                         menu_buttons['congestion map'] = menu_buttons.pop('main menu')
+                        newText = my_text
+                        newRect = rect
+                        hall_name = my_text.lower()
+                        updateScreen()
+                        break
+                    # congestion map clicked & shows dashboard (menu 2->3)
+                    # TODO: check if this works
+                    if (my_text in congestion_menu and menu_level == 2):
+                        menu_level = 3
+                        tempText = my_text
+                        menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
                         newText = my_text
                         newRect = rect
                         updateScreen()
                         break
                     if (my_text=='quit'):
                         sys.exit()
+                        
             del menu_buttons_rect[tempText]
             menu_buttons_rect[newText] = newRect
     if ( not GPIO.input(17) ):

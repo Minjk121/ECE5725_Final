@@ -7,6 +7,7 @@ import pygame
 from pygame.locals import * # for event MOUSE variables
 import os
 import mult_webscraper
+import datetime
 
 ## pygame/piTFT setup
 os.putenv('SDL_VIDEODRIVER','fbcon') 
@@ -27,6 +28,7 @@ BLACK=0,0,0
 RED=139,0,0
 GREEN=0,128,0
 YELLOW=255,255,0
+SKYBLUE=137,207,240
 
 # Full monitor mode
 infoObject = pygame.display.Info()
@@ -36,10 +38,12 @@ my_font = pygame.font.Font(None, 40) # 25
 menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
 congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
+space_buttons={'Duffield atrium':(300, 300),'ECE lounge':(300, 400),'Upson 2nd floor':(300, 500),'Upson 3rd floor':(300, 600),'CIS lounge':(1100, 300),'Rhodes 3rd floor':(1100, 400),'Rhodes 4th floor':(1100, 500),'Rhodes 5th floor':(1100, 600)}
+
 
 # congestion_data contains study spaces + halls
 congestion_data = mult_webscraper.main()
-'''
+''' 
 {'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
 'Upson 3rd floor': 9788.3, 'CIS lounge': 11801.9, 'Rhodes 3rd floor': 7744.799999999999, 
 'Rhodes 4th floor': 7257.500000000001, 'Rhodes 5th floor': 1268.6, 'Phillips': 139.8, 'Duffield': 15053.199999999999,
@@ -53,6 +57,8 @@ level_green = 0.0
 
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} 
+space_buttons_rect={}
+
 menu_level = 1  # start on "main menu"
 
 def determine_congestion_level():
@@ -98,20 +104,16 @@ def updateSurfaceAndRect(buttons):
                 pygame.draw.circle(screen, YELLOW, text_pos, 50, 0)
             else:
                 pygame.draw.circle(screen, GREEN, text_pos, 50, 0) # maybe add ', 2' to draw circle without filling inside
-    
-    #TODO: if it's the study spaces menu
-    # if buttons=='study spaces':
-    #     for study_space in space_list:
-    #         # TODO: draw rects for each loc
-    #         pygame.draw.rect(screen, YELLOW, text_pos, 15, 0)
-        
+            
 def updateScreen():
     screen.fill(BLACK)
     if menu_level == 1:
         updateSurfaceAndRect(menu_buttons)
+        # TODO: Add current time at a certain location & Add other images to menu (to look nicer?) 
+        # curr_time = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
         pygame.draw.rect(screen, RED, list(menu_buttons_rect.values())[0], 2)
         pygame.draw.rect(screen, GREEN, list(menu_buttons_rect.values())[1], 2)
-    elif menu_level ==2:
+    elif menu_level == 2:
         determine_congestion_level()
         # TODO: check if the map image is shown on monitor
         campus_map = pygame.image.load('./img/map.png')
@@ -119,6 +121,22 @@ def updateScreen():
         campus_map_rect = campus_map.get_rect()       
         screen.blit(campus_map, (250,0))
         updateSurfaceAndRect(congestion_menu)
+    
+    '''
+    elif menu_level == 3: # when map is clicked, shows traffic data & diagram of study spaces
+        # load image of study space (multiple if upson / rhodes)
+        # load mrtg graph
+        # load congestion data (Daily - max & avg & curr)
+    
+    elif menu_level == 4: # space_list 
+        # list of study spaces
+        updateSurfaceAndRect(space_buttons)
+        for position in space_buttons_rect.values()
+            pygame.draw.rect(screen, SKYBLUE, position, 2)
+        
+    elif menu_level == 5:  # when destination space is clicked, recommend a route
+        # state machine
+    '''
         
     pygame.display.flip()
 

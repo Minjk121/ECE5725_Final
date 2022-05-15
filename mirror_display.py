@@ -173,9 +173,12 @@ while (time.time() < end_time):
                         updateScreen()
                         break
                     if (my_text=='main menu'): 
+                        if (menu_level == 2):
+                            menu_buttons['congestion map'] = menu_buttons.pop('main menu')
+                        elif (menu_level == 3):
+                            menu_buttons['study spaces'] = menu_buttons.pop('main menu')
                         menu_level = 1
                         tempText = my_text
-                        menu_buttons['congestion map'] = menu_buttons.pop('main menu')
                         #pygame.draw.circle(screen, (139,0,0), (160,120),35,0)
                         newText = my_text
                         newRect = rect
@@ -184,7 +187,7 @@ while (time.time() < end_time):
                     if (my_text=='study spaces'):
                         menu_level = 3
                         tempText = my_text
-                        menu_buttons['main menu'] =  menu_buttons.pop('study spaces')
+                        menu_buttons['main menu'] = menu_buttons.pop('study spaces')
                         newText = my_text
                         newRect = rect
                         hall_name = my_text.lower()

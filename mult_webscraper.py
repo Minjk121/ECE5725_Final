@@ -55,6 +55,14 @@ def convert_df_to_dict(df):
         congestion_data[halls] = float(filtered_df['In'].sum()) + float(filtered_df['Out'].sum())
 
     return congestion_data
+
+# convert df to list of mrtg graphs
+def convert_df_to_graph_lst(df, hall_name):
+    filter = df['Hall Name'] == hall_name.lower()
+    filtered_df = df.loc[filter]
+    graph_lst = list(filtered_df['Graph'])
+    return graph_lst
+    
     
 def convert_url_to_df(urls):
 
@@ -107,9 +115,12 @@ def main():
             ]
 
     df = convert_url_to_df(urls)
-    # print(df)
-    data = convert_df_to_dict(df)
+    print(df)
+    print(convert_df_to_graph_lst(df, 'Upson'))
+    return df
+    
+    # data = convert_df_to_dict(df)
     # print(data)
-    return data
+    
 if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
 # Campus congestion
-Building a smart mirror with RPi 4 that shows a human density map on campus. This project is for ECE5725 and worked by Esther In and Minjung Kwon.. 
+Building a smart mirror with RPi 4 that shows a human density map on campus. 
+To find the network traffic & devices on campus, we first used nmap.
 
 ### Caution
 nmap, ifconfig should be installed with ```sudo apt-get install``` first.

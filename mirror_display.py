@@ -99,10 +99,6 @@ def updateSurfaceAndRect(buttons):
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect
 
-    # if menu_level == 1:
-    #     pygame.draw.rect(screen, RED, list(menu_buttons_rect.values())[0], 2)
-    #     pygame.draw.rect(screen, GREEN, list(menu_buttons_rect.values())[1], 2)
-
     if menu_level == 2:
         #print("congestion menu clicked")
         for study_space, text_pos in buttons.items():
@@ -127,6 +123,11 @@ def updateSurfaceAndRect_StudySpace():
             screen.blit(text_surface, rect)
             menu_buttons_rect[space] = rect
             index += 1
+        if space == "main menu":
+            text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
+            rect = text_surface.get_rect(center=congestion_menu['main menu'])
+            screen.blit(text_surface, rect)
+            menu_buttons_rect[space] = rect
              
         
 def updateScreen():

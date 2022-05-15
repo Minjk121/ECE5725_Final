@@ -125,7 +125,7 @@ def updateSurfaceAndRect_StudySpace():
             screen.blit(text_surface, rect)
             space_buttons_rect[space] = rect
             index += 1
-            pygame.draw.rect(screen, SKYBLUE, list(space_buttons_rect.values())[index], 2)
+            pygame.draw.rect(screen, SKYBLUE, v, 2)
              
         
 def updateScreen():

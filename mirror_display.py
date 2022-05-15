@@ -86,7 +86,7 @@ def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
     box_surface = pygame.Surface(text_surface.get_rect().inflate(margin_x, margin_y).size)
     box_surface.fill(BLACK)
     box_surface.blit(text_surface, text_surface.get_rect(center = box_surface.get_rect().center))
-    pygame.draw.rect(box_surface, box_color, text_surface.get_rect(center = box_surface.get_rect().center), 2)
+    pygame.draw.rect(box_surface, box_color, box_surface.get_rect(center = box_surface.get_rect().center), 2)
 
     return box_surface
 

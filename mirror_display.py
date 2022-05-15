@@ -81,7 +81,7 @@ def update_congestion_data():
     return mult_webscraper.convert_df_to_dict(df)
 
 # creates a margin between text and text box
-def create_margin(displayString, text_color, box_color, margin_x, margin_y):
+def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
     text_surface = my_font.render(displayString, True, text_color)
     box_surface = pygame.Surface(text_surface.get_rect().inflate(margin_x, margin_y).size)
     box_surface.fill(BLACK)
@@ -94,7 +94,7 @@ def updateSurfaceAndRect(buttons):
     for my_text, text_pos in buttons.items():
         displayString = my_text
         # text_surface = my_font.render(displayString, True, WHITE)
-        text_surface = create_margin(displayString, WHITE, SKYBLUE, 50,50)
+        text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50,50)
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect
@@ -122,7 +122,7 @@ def updateSurfaceAndRect_StudySpace():
     for space, v in sorted(space_list.items()):
         if (index < 6):
             displayString = "#"+str(index)+": "+space
-            text_surface = create_margin(displayString, WHITE, SKYBLUE, 50, 50)
+            text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
             menu_buttons_rect[space] = rect

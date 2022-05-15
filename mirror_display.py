@@ -155,6 +155,13 @@ updateScreen()
 while (time.time() < end_time):
     time.sleep(0.2)
     #stop_button()
+    if time.time() > update_time:
+        congestion_data = update_congestion_data()
+        determine_congestion_level()
+        if menu_level == 2:
+            updateSurfaceAndRect()
+        update_time = time.time() + 300
+
     for event in pygame.event.get():
         if (event.type is MOUSEBUTTONDOWN):
             pos = pygame.mouse.get_pos()

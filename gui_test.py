@@ -27,4 +27,4 @@ class MyApp(App):
 
 # starts the web server
 # start(MyApp)
-start(MyApp, address='10.49.46.221', multiple_instance=False, enable_file_cache=True, update_interval=0.1, start_browser=True)
+start(MyApp, address='10.49.46.221', port=0, multiple_instance=False, enable_file_cache=True, update_interval=0.1, start_browser=True)

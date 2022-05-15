@@ -87,18 +87,14 @@ def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
     box_surface.blit(text_surface, text_surface.get_rect(center = box_surface.get_rect().center))
     return box_surface
 
-def updateSurfaceAndRect(buttons, buttons_rect):
+def updateSurfaceAndRect(buttons):
     for my_text, text_pos in buttons.items():
         displayString = my_text
         # text_surface = my_font.render(displayString, True, WHITE)
         text_surface = create_text_box(displayString, WHITE, BLACK, 50,50)
         rect = text_surface.get_rect(center=text_pos)
         screen.blit(text_surface, rect)
-        buttons_rect[my_text] = rect
-
-    if menu_level == 1:
-        pygame.draw.rect(screen, RED, list(buttons_rect.values())[0], 2)
-        pygame.draw.rect(screen, GREEN, list(buttons_rect.values())[1], 2)
+        menu_buttons_rect[my_text] = rect
 
     #if it's the congestion menu
     # TODO: This is not called. Need to fix!

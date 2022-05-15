@@ -123,8 +123,8 @@ def updateSurfaceAndRect_StudySpace():
             text_surface = create_margin(displayString, WHITE, BLACK, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
-            space_buttons_rect[space] = rect
-            pygame.draw.rect(screen, SKYBLUE, list(space_buttons_rect.values())[index-1], 2)
+            menu_buttons_rect[space] = rect
+            pygame.draw.rect(screen, SKYBLUE, list(menu_buttons_rect.values())[index-1], 2)
             index += 1
              
         
@@ -202,8 +202,7 @@ while (time.time() < end_time):
                         sys.exit()
             del menu_buttons_rect[tempText]
             menu_buttons_rect[newText] = newRect
-            del space_buttons_rect[tempText]
-            space_buttons_rect[newText] = newRect
+        
     if ( not GPIO.input(17) ):
         sys.exit()
     updateScreen()

@@ -34,7 +34,7 @@ screen=pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
 my_font = pygame.font.Font(None, 40) # 25
 # these store the screen coordinates of the logs
 menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
-congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872)}
+congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872),"main menu":(1500,1000)}
 space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
 
 # congestion_data contains study spaces + halls
@@ -87,38 +87,45 @@ def updateSurfaceAndRect(buttons):
 
     #if it's the congestion menu
     # TODO: This is not called. Need to fix!
-    if buttons=='congestion_menu':
-        print("congestion menu clicked")
+    if menu_level == 2:
+        #print("congestion menu clicked")
         for study_space, text_pos in buttons.items():
-            current_traffic = congestion_data[study_space]
-            # TODO: congestion_data should be updated in every 5 minutes
-            if current_traffic > level_red:
-                pygame.draw.circle(screen, RED, text_pos, 50, 0)
-            elif current_traffic > level_yellow:
-                pygame.draw.circle(screen, YELLOW, text_pos, 50, 0)
-            else:
-                pygame.draw.circle(screen, GREEN, text_pos, 50, 0) # maybe add ', 2' to draw circle without filling inside
+            if (study_space != "main menu"):
+                current_traffic = congestion_data[study_space]
+                # TODO: congestion_data should be updated in every 5 minutes
+                if current_traffic > level_red:
+                    pygame.draw.circle(screen, RED, text_pos, 85, 4)
+                elif current_traffic > level_yellow:
+                    pygame.draw.circle(screen, YELLOW, text_pos, 85, 4)
+                else:
+                    pygame.draw.circle(screen, GREEN, text_pos, 85, 4) # maybe add ', 2' to draw circle without filling inside
     
+def updateSurfaceAndRect_SpaceList():
     #TODO: if it's the study spaces menu
-    # if buttons=='study spaces':
-    #     for study_space in space_list:
-    #         # TODO: draw rects for each loc
-    #         pygame.draw.rect(screen, YELLOW, text_pos, 15, 0)
+    update_space_ordering()
+    for study_space in space_list:
+
+        # TODO: draw rects for each loc
+        #pygame.draw.rect(screen, YELLOW, text_pos, 15, 0)
         
 def updateScreen():
     screen.fill(BLACK)
-    if menu_level == 1:
+    if menu_level == 1: # main menu
         updateSurfaceAndRect(menu_buttons)
         pygame.draw.rect(screen, RED, list(menu_buttons_rect.values())[0], 2)
         pygame.draw.rect(screen, GREEN, list(menu_buttons_rect.values())[1], 2)
-    elif menu_level ==2:
+    elif menu_level ==2: # congestion map
         determine_congestion_level()
-        # TODO: check if the map image is shown on monitor
+        # map is shown properly on monitor
         campus_map = pygame.image.load('./img/map.png')
         campus_map = pygame.transform.scale(campus_map, (1400, 1080))
         campus_map_rect = campus_map.get_rect()       
         screen.blit(campus_map, (250,0))
         updateSurfaceAndRect(congestion_menu)
+    elif menu_level == 3: # study spaces
+        determine_congestion_level()
+        updateSurfaceAndRect_SpaceList()
+
         
     pygame.display.flip()
 
@@ -149,12 +156,22 @@ while (time.time() < end_time):
                         menu_level = 1
                         tempText = my_text
                         menu_buttons['congestion map'] = menu_buttons.pop('main menu')
+                        #pygame.draw.circle(screen, (139,0,0), (160,120),35,0)
+                        newText = my_text
+                        newRect = rect
+                        updateScreen()
+                        break
+                    if (my_text=='study spaces'):
+                        menu_level = 3
+                        tempText = my_text
+                        menu_buttons['main menu'] =  menu_buttons.pop('study spaces')
                         newText = my_text
                         newRect = rect
                         updateScreen()
                         break
                     if (my_text=='quit'):
                         sys.exit()
+
             del menu_buttons_rect[tempText]
             menu_buttons_rect[newText] = newRect
     if ( not GPIO.input(17) ):

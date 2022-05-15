@@ -40,7 +40,7 @@ menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
 congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872),"main menu":(1500,1000)}
 # the space list colors have been renamed so that we can actually sort them; 1 = green, 2 = yellow, 3 = red
 space_list={'Duffield atrium':'1','ECE lounge':'1','Upson 2nd floor':'1','Upson 3rd floor':'1','CIS lounge':'1','Rhodes 3rd floor':'1','Rhodes 4th floor':'1','Rhodes 5th floor':'1'}
-space_list_pos={1:(1000,200),2:(1000,400),3:(1000,600),4:(1000,800),5:(1000,1000)}
+space_list_pos={1:(1000,100),2:(1000,300),3:(1000,500),4:(1000,700),5:(1000,900)}
 
 # congestion_data contains study spaces + halls
 congestion_df = mult_webscraper.main() # data frame

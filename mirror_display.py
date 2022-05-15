@@ -35,7 +35,9 @@ my_font = pygame.font.Font(None, 40) # 25
 # these store the screen coordinates of the logs
 menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
 congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872),"main menu":(1500,1000)}
-space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
+# the space list colors have been renamed so that we can actually sort them; 1 = green, 2 = yellow, 3 = red
+space_list={'Duffield atrium':'1','ECE lounge':'1','Upson 2nd floor':'1','Upson 3rd floor':'1','CIS lounge':'1','Rhodes 3rd floor':'1','Rhodes 4th floor':'1','Rhodes 5th floor':'1'}
+space_list_pos={1:(1000,200),2:(1000,400),3:(1000,600),4:(1000,800),5:(1000,1000)}
 
 # congestion_data contains study spaces + halls
 congestion_data = mult_webscraper.main()
@@ -59,11 +61,11 @@ def determine_congestion_level():
     for study_space in space_list:
         current_traffic = congestion_data[study_space]
         if current_traffic > level_red:
-            space_list[study_space] = 'red'
+            space_list[study_space] = '3' #red
         elif current_traffic > level_yellow:
-            space_list[study_space] = 'yellow'
+            space_list[study_space] = '2' #yellow
         else:
-            space_list[study_space] = 'green'
+            space_list[study_space] = '1' #green
 
 # updates and returns dictionary type of congestion data
 def update_congestion_data():
@@ -99,14 +101,19 @@ def updateSurfaceAndRect(buttons):
                     pygame.draw.circle(screen, YELLOW, text_pos, 85, 4)
                 else:
                     pygame.draw.circle(screen, GREEN, text_pos, 85, 4) # maybe add ', 2' to draw circle without filling inside
-    
-def updateSurfaceAndRect_SpaceList():
-    #TODO: if it's the study spaces menu
-    update_space_ordering()
-    for study_space in space_list:
 
-        # TODO: draw rects for each loc
-        #pygame.draw.rect(screen, YELLOW, text_pos, 15, 0)
+def updateSurfaceAndRect_StudySpace():
+    #space_list_ordered = sorted(space_list,key=space_list.get)
+    index = 1
+    for space,v in sorted(space_list.items()):
+        if (index < 6):
+            displayString = "#"+str(index)+": "+space
+            text_surface = create_text_box(displayString, WHITE, BLACK, 50, 50)
+            rect = text_surface.get_rect(center=space_list_pos[index])
+            screen.blit(text_surface, rect)
+            menu_buttons_rect[space] = rect
+            index += 1
+             
         
 def updateScreen():
     screen.fill(BLACK)
@@ -124,7 +131,7 @@ def updateScreen():
         updateSurfaceAndRect(congestion_menu)
     elif menu_level == 3: # study spaces
         determine_congestion_level()
-        updateSurfaceAndRect_SpaceList()
+        updateSurfaceAndRect_StudySpace()
 
         
     pygame.display.flip()

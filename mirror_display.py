@@ -72,6 +72,8 @@ space_buttons_rect={}
 menu_level = 1  # start on "main menu"
 hall_name = ''
 
+# helper function to determine congestion level based on the congestion_data dictionary
+# (which is from the webscraper and converted from the dataframe)
 def determine_congestion_level():
     for study_space in space_list:
         current_traffic = congestion_data[study_space]
@@ -97,6 +99,9 @@ def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
 
     return box_surface
 
+# generalized helper function to update the surfaces and rects
+# input: buttons, the dictionary
+# no outputs
 def updateSurfaceAndRect(buttons):
     for my_text, text_pos in buttons.items():
         displayString = my_text
@@ -111,7 +116,6 @@ def updateSurfaceAndRect(buttons):
         for study_space, text_pos in buttons.items():
             if (study_space != "main menu"):
                 current_traffic = congestion_data[study_space]
-                # TODO: congestion_data should be updated in every 5 minutes
                 if current_traffic > level_red:
                     pygame.draw.circle(screen, RED, tuple(map(int,text_pos)), 85, 4)
                 elif current_traffic > level_yellow:
@@ -119,12 +123,16 @@ def updateSurfaceAndRect(buttons):
                 else:
                     pygame.draw.circle(screen, GREEN, tuple(map(int,text_pos)), 85, 4) 
 
+# specialized helper function to update the surfaces and rects of the study space list
+# takes no inputs, has no outputs
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
     for space, v in sorted(space_list.items()):
         if (index < 6):
-            displayString = "#"+str(index)+": "+space
+            congestion_level = 'green' if (v == '1') else 'yellow'
+            congestion_level = 'red' if (v == '3') else 'yellow'
+            displayString = "#"+str(index)+": "+space+"( level "+congestion_level+")"
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
@@ -135,7 +143,7 @@ def updateSurfaceAndRect_StudySpace():
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
              
-        
+# general all-purpose use helper function to update screen
 def updateScreen():
     screen.fill(BLACK)
     if menu_level == 1: # main menu
@@ -155,12 +163,20 @@ def updateScreen():
         
     pygame.display.flip()
 
+# helper function to determine the route from outside of the engineering quad buildings to a specified study "space"
+# takes one input
+# returns an ordered array of the recommended route (starting from index 0)
+def determine_route(space):
+    if (space=='Duffield atrium'):
+        return ['Duffield atrium']
 
 updateScreen()
 
 while (time.time() < end_time):
     time.sleep(0.2)
     #stop_button()
+
+    # update the congestion level data in script every five minutes
     if time.time() > update_time:
         congestion_data = update_congestion_data()
         determine_congestion_level()

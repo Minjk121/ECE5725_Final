@@ -124,7 +124,10 @@ def updateSurfaceAndRect(buttons):
                     pygame.draw.circle(screen, GREEN, tuple(map(int,text_pos)), 85, 4) 
 
 # specialized helper function to update the surfaces and rects of the study space list
-# takes no inputs, has no outputs
+# we will only consider the top five least congested areas for study space recommendations
+# default ordering is in alphabetical order, such that popular spaces like CIS lounge, ECE lounge, and Duffield
+# always show up near the top (if all else are equal)
+# function takes no inputs, has no outputs
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
@@ -138,30 +141,13 @@ def updateSurfaceAndRect_StudySpace():
             screen.blit(text_surface, rect)
             menu_buttons_rect[space] = rect
             index += 1
+    
+    # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
     rect = text_surface.get_rect(center=congestion_menu['main menu'])
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
-             
-# general all-purpose use helper function to update screen
-def updateScreen():
-    screen.fill(BLACK)
-    if menu_level == 1: # main menu
-        updateSurfaceAndRect(menu_buttons)
-        
-    elif menu_level ==2: # congestion map
-        determine_congestion_level()
-        # map is shown properly on monitor
-        campus_map = pygame.image.load('./img/map.png')
-        campus_map = pygame.transform.scale(campus_map, (1400, 1080)) # TODO: change to full screen & update coordinates of halls
-        screen.blit(campus_map, (250,0))
-        updateSurfaceAndRect(congestion_menu)
-    elif menu_level == 3: # study spaces
-        determine_congestion_level()
-        updateSurfaceAndRect_StudySpace()
 
-        
-    pygame.display.flip()
 
 # helper function to determine the route from outside of the engineering quad buildings to a specified study "space"
 # takes one input
@@ -185,8 +171,8 @@ def determine_route(space):
     route_start = 'Phillips' if (int(space_list['Phillips']) <=2 ) else 'Upson'
     route.append(route_start)
 
-    # if in rhodes, need to go through upson
-    if ('Upson' not in route): route.append('Upson')
+    # if in rhodes, need to go through upson; if in upson, of course go through upson
+    route.append('Upson')
     # if in upson, end here
     if (space == 'CIS lounge') or ('Upson' in space):
         return route
@@ -194,6 +180,60 @@ def determine_route(space):
     # if nothing above and code comes all the way down here, the space must be in rhodes
     route.append('Rhodes')    
     return route
+ 
+# show map & draw route on it - specialized version of updateSurfaceAndRect
+def draw_route_on_map(route):
+    # for each item in the route, draw it on the map
+    for my_text in route.items():
+        displayString = my_text
+        text_surface = my_font.render(displayString, True, WHITE)
+        text_pos = congestion_menu[my_text]
+        rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
+        screen.blit(text_surface, rect)
+        menu_buttons_rect[my_text] = rect
+    for i in range(len(route) - 1):
+        line_start_pos = tuple(map(int,congestion_menu[route[i]]))
+        line_end_pos = tuple(map(int,congestion_menu[route[i+1]]))
+        pygame.draw.line(screen, BLACK, line_start_pos, line_end_pos, 1) # increase the last parameter for thicker line
+
+    # draw main menu button
+    text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
+    rect = text_surface.get_rect(center=congestion_menu['main menu'])
+    screen.blit(text_surface, rect)
+    menu_buttons_rect['main menu'] = rect
+
+# general all-purpose use helper function to update screen
+def updateScreen():
+    screen.fill(BLACK)
+    if menu_level == 1: # main menu
+        updateSurfaceAndRect(menu_buttons)
+        
+    elif menu_level ==2: # congestion map
+        determine_congestion_level()
+        # map is shown properly on monitor
+        campus_map = pygame.image.load('./img/map.png')
+        campus_map = pygame.transform.scale(campus_map, (1400, 1080)) # TODO: change to full screen & update coordinates of halls
+        screen.blit(campus_map, (250,0))
+        updateSurfaceAndRect(congestion_menu)
+    elif menu_level == 3: # study spaces
+        determine_congestion_level()
+        updateSurfaceAndRect_StudySpace()
+        
+    pygame.display.flip()
+
+# specialized updateScreen because it needs route passed into it...
+def updateRouteScreen(route):
+    screen.fill(BLACK)
+    if menu_level == 5: # study space route
+        # map is shown properly on monitor
+        campus_map = pygame.image.load('./img/map.png')
+        campus_map = pygame.transform.scale(campus_map, (1400, 1080))
+        screen.blit(campus_map, (250,0))
+        #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
+        # until then, here's a placeholder variable for route
+        route = []
+        draw_route_on_map(route)
+    pygame.display.flip()
 
 updateScreen()
 
@@ -256,6 +296,17 @@ while (time.time() < end_time):
                         newText = my_text
                         newRect = rect
                         updateScreen()
+                        break
+                    
+                    #TODO: check in lab if this works! it should show a map & draw lines between the recommended route
+                    if (my_text in space_list) and (menu_level == 3):
+                        menu_level = 5
+                        tempText = my_text
+                        menu_buttons['main menu'] = menu_buttons.pop('study spaces')
+                        newText = my_text
+                        newRect = rect
+                        route = determine_route(my_text)
+                        updateRouteScreen(route)
                         break
                     if (my_text=='quit'):
                         sys.exit()

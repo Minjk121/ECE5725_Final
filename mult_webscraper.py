@@ -23,6 +23,7 @@ def daily_in_out(url):
         for i in item.findAll("td"):
             if 'Traffic' not in i.text:
                 in_lst.append(i.text)
+                # print(i.text)
     for item in soup.findAll("tr", {"class":"out"}):
         for i in item.findAll("td"):
             if 'Traffic' not in i.text:
@@ -32,8 +33,16 @@ def daily_in_out(url):
         # print(item["src"])
         mrtg = item["src"]
 
+    print(in_lst[2])
     day_cur_in = float(in_lst[2].split()[0])
     day_cur_out = float(out_lst[2].split()[0])
+
+    if "kb/s" in in_lst[2]:
+        day_cur_in *= 1000
+    if "kb/s" in out_lst[2]:
+        day_cur_out *= 1000
+
+    print(day_cur_in)
 
     return (day_cur_in, day_cur_out, mrtg, port)
 
@@ -115,8 +124,8 @@ def main():
             ]
 
     df = convert_url_to_df(urls)
-    print(df)
-    print(convert_df_to_graph_lst(df, 'Upson'))
+    # print(df)
+    # print(convert_df_to_graph_lst(df, 'Upson'))
     return df
     
     # data = convert_df_to_dict(df)

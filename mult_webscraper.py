@@ -33,16 +33,16 @@ def daily_in_out(url):
         # print(item["src"])
         mrtg = item["src"]
 
-    print(in_lst[2])
+    # print(in_lst[2])
     day_cur_in = float(in_lst[2].split()[0])
     day_cur_out = float(out_lst[2].split()[0])
 
     if "kb/s" in in_lst[2]:
-        day_cur_in *= 1000
+        day_cur_in *= 0.001
     if "kb/s" in out_lst[2]:
-        day_cur_out *= 1000
+        day_cur_out *= 0.001
 
-    print(day_cur_in)
+    # print(day_cur_in)
 
     return (day_cur_in, day_cur_out, mrtg, port)
 

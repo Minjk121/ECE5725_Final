@@ -34,13 +34,19 @@ SKYBLUE=137,207,240
 # Full monitor mode
 infoObject = pygame.display.Info()
 screen=pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
+screen_width = infoObject.current_w
+screen_height = infoObject.current_h
 my_font = pygame.font.Font(None, 40) # 25
 # these store the screen coordinates of the logs
-menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
-congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872),"main menu":(1500,1000)}
+menu_buttons={'congestion map':(0.573*screen_width,0.417*screen_height),'study spaces':(0.573*screen_width,0.602*screen_height)}
+congestion_menu={'Phillips':(0.593*screen_width,0.345*screen_height),'Duffield':(0.485*screen_width,0.432*screen_height),'Upson':(0.527*screen_width,0.582*screen_height),'Rhodes':(0.625*screen_width,0.807*screen_height),"main menu":(0.781*screen_width,0.926*screen_height)}
+# menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
+# congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872),"main menu":(1500,1000)}
+
 # the space list colors have been renamed so that we can actually sort them; 1 = green, 2 = yellow, 3 = red
 space_list={'Duffield atrium':'1','ECE lounge':'1','Upson 2nd floor':'1','Upson 3rd floor':'1','CIS lounge':'1','Rhodes 3rd floor':'1','Rhodes 4th floor':'1','Rhodes 5th floor':'1'}
-space_list_pos={1:(1000,100),2:(1000,300),3:(1000,500),4:(1000,700),5:(1000,900)}
+space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width,0.278*screen_height),3:(0.521*screen_width,0.463*screen_height),4:(0.521*screen_width,0.648*screen_height),5:(0.521*screen_width,0.833*screen_height)}
+# space_list_pos={1:(1000,100),2:(1000,300),3:(1000,500),4:(1000,700),5:(1000,900)}
 # space_list_pos={'1':(1000,100),'2':(1000,300),'3':(1000,500),'4':(1000,700),'5':(1000,900), 'main menu': (1500, 1000)}
 
 # congestion_data contains study spaces + halls
@@ -54,8 +60,8 @@ congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
  '''
 
 # thresholds in kb, additive
-level_red = 10000.0
-level_yellow = 5000.0
+level_red = 500.0 #Mb/s
+level_yellow = 250.0 #Mb/s
 level_green = 0.0
 
 screen.fill(BLACK) # erase the workspace
@@ -159,7 +165,7 @@ while (time.time() < end_time):
         congestion_data = update_congestion_data()
         determine_congestion_level()
         if menu_level == 2:
-            updateSurfaceAndRect()
+            updateScreen() # this function also detects menu_level so it'll be able to update the surface & rect properly
         update_time = time.time() + 300
 
     for event in pygame.event.get():

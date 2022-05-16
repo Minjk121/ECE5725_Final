@@ -102,7 +102,7 @@ def updateSurfaceAndRect(buttons):
         displayString = my_text
         # text_surface = my_font.render(displayString, True, WHITE)
         text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50,50)
-        rect = text_surface.get_rect(center=text_pos)
+        rect = text_surface.get_rect(center=int(text_pos))
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect
 
@@ -113,11 +113,11 @@ def updateSurfaceAndRect(buttons):
                 current_traffic = congestion_data[study_space]
                 # TODO: congestion_data should be updated in every 5 minutes
                 if current_traffic > level_red:
-                    pygame.draw.circle(screen, RED, text_pos, 85, 4)
+                    pygame.draw.circle(screen, RED, int(text_pos), 85, 4)
                 elif current_traffic > level_yellow:
-                    pygame.draw.circle(screen, YELLOW, text_pos, 85, 4)
+                    pygame.draw.circle(screen, YELLOW, int(text_pos), 85, 4)
                 else:
-                    pygame.draw.circle(screen, GREEN, text_pos, 85, 4) 
+                    pygame.draw.circle(screen, GREEN, int(text_pos), 85, 4) 
 
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)

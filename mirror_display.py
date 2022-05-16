@@ -167,8 +167,33 @@ def updateScreen():
 # takes one input
 # returns an ordered array of the recommended route (starting from index 0)
 def determine_route(space):
-    if (space=='Duffield atrium'):
-        return ['Duffield atrium']
+    # duffield atrium and ECE lounge accesible without crossing through any other area; short circuit
+    if (space == 'Duffield atrium'): return ['Duffield']
+    if (space == 'ECE lounge'): return ['Phillips']
+
+    # short circuit: if duffield, phillips, and upson are all congested, skip them and go straight to upson/rhodes
+    if ('Rhodes' in space) and (space_list['Duffield atrium'] == 3 and space_list['ECE lounge'] == 3):
+        return ['Rhodes']
+
+    # otherwise, determine route through buildings
+    # the values, even in strings, can be compared with operators such as >, <, >=, etc
+    route = []
+
+    # start from duffield atrium if it is green or yellow level, otherwise start at phillips
+    route_start = 'Duffield' if (int(space_list['Duffield atrium']) <= 2) else route.append('Phillips')
+    # but if phillips is red then go through upson instead
+    route_start = 'Phillips' if (int(space_list['Phillips']) <=2 ) else 'Upson'
+    route.append(route_start)
+
+    # if in rhodes, need to go through upson
+    if ('Upson' not in route): route.append('Upson')
+    # if in upson, end here
+    if (space == 'CIS lounge') or ('Upson' in space):
+        return route
+    
+    # if nothing above and code comes all the way down here, the space must be in rhodes
+    route.append('Rhodes')    
+    return route
 
 updateScreen()
 

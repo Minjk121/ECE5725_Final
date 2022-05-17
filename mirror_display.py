@@ -159,16 +159,17 @@ def determine_route(space):
 
     # short circuit: if duffield, phillips, and upson are all congested, skip them and go straight to upson/rhodes
     if ('Rhodes' in space) and (space_list['Duffield atrium'] == 3 and space_list['ECE lounge'] == 3):
-        return ['Rhodes']
+        return ["Rhodes"]
 
     # otherwise, determine route through buildings
     # the values, even in strings, can be compared with operators such as >, <, >=, etc
     route = []
 
     # start from duffield atrium if it is green or yellow level, otherwise start at phillips
-    route_start = 'Duffield' if (int(space_list['Duffield atrium']) <= 2) else route.append('Phillips')
+    route_start = ""
+    route_start = "Duffield" if (int(space_list['Duffield atrium']) <= 2) else route.append("Phillips")
     # but if phillips is red then go through upson instead
-    route_start = 'Phillips' if (int(space_list['Phillips']) <=2 ) else 'Upson'
+    route_start = "Phillips" if (int(space_list['ECE lounge']) <=2 ) else "Upson"
     route.append(route_start)
 
     # if in rhodes, need to go through upson; if in upson, of course go through upson

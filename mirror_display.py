@@ -60,7 +60,7 @@ congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
  '''
 
 # thresholds in Mb, additive
-level_red = 250.0 #Mb/s
+level_red = 200.0 #Mb/s
 level_yellow = 100.0 #Mb/s
 level_green = 0.0
 
@@ -133,8 +133,8 @@ def updateSurfaceAndRect_StudySpace():
     index = 1
     for space, v in sorted(space_list.items()):
         if (index < 6):
-            congestion_level = 'green' if (v == '1') else 'yellow'
-            congestion_level = 'red' if (v == '3') else 'yellow'
+            congestion_colors = ['green','yellow','red']
+            congestion_level = congestion_colors[int(v)-1]
             displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
@@ -197,7 +197,8 @@ def draw_route_on_map(route):
     for i in range(len(route)):
         my_text = route[i]
         displayString = my_text
-        text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
+        box_color = SKYBLUE if (i != (len(route)-1)) else RED
+        text_surface = create_text_box(displayString, WHITE, box_color, 50, 50)
         text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)

@@ -190,16 +190,16 @@ def draw_route_on_map(route):
     for i in range(len(route)):
         my_text = route[i]
         displayString = my_text
-        text_surface = create_text_box(displayString, SKYBLUE, WHITE, 50, 50)
+        text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
         text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect
     # between each label, draw the line
-    # for i in range(len(route) - 1):
-    #     line_start_pos = tuple(map(int,congestion_menu[route[i]]))
-    #     line_end_pos = tuple(map(int,congestion_menu[route[i+1]]))
-    #     pygame.draw.line(screen, BLACK, line_start_pos, line_end_pos, 1) # increase the last parameter for thicker line
+    for i in range(len(route) - 1):
+        line_start_pos = tuple(map(int,congestion_menu[route[i]]))
+        line_end_pos = tuple(map(int,congestion_menu[route[i+1]]))
+        pygame.draw.line(screen, BLACK, line_start_pos, line_end_pos, 1) # increase the last parameter for thicker line
 
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)

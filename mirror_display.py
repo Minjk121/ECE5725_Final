@@ -186,11 +186,12 @@ def determine_route(space):
  
 # show map & draw route on it - specialized version of updateSurfaceAndRect
 def draw_route_on_map(route):
-    # for each item in the route, label it on the map
+    # for each item in the route, draw label on the map
     for i in range(len(route)):
-        displayString = route[i]
+        my_text = route[i]
+        displayString = my_text
         text_surface = my_font.render(displayString, True, WHITE)
-        text_pos = congestion_menu[route[i]]
+        text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
         menu_buttons_rect[my_text] = rect

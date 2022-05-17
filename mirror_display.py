@@ -368,43 +368,43 @@ while (time.time() < end_time):
     # if in congestion map, the buttons are top-to-bottom sequential
     if (menu_level == 2):
         menu_level = 4 #go to dashboard
-        if ( not GPIO.input(26) ): # Phillips
+        if ( not GPIO.input(27) ): # Phillips
             drawDashboard("Phillips")
             updateScreen()
             break
-        if ( not GPIO.input(13 )): # Duffield
+        if ( not GPIO.input(23) ): # Duffield
             drawDashboard("Duffield")
             updateScreen()
             break
-        if ( not GPIO.input(13 )): # Upson
+        if ( not GPIO.input(22)): # Upson
             drawDashboard("Upson")
             updateScreen()
             break
-        if ( not GPIO.input(13 )): #Rhodes
+        if ( not GPIO.input(17)): #Rhodes
             drawDashboard("Rhodes")
             updateScreen()
             break
     if (menu_level == 3):
         menu_level = 5 #go to routing
-        if ( not GPIO.input(26) ):
+        if ( not GPIO.input(27) ):
             route = determine_route(recommended_spaces_list[0])
             updateScreen(route)
             break
-        if ( not GPIO.input(13 )):
+        if ( not GPIO.input(23)):
             route = determine_route(recommended_spaces_list[1])
             updateScreen(route)
             break
-        if ( not GPIO.input(13 )):
+        if ( not GPIO.input(22)):
             route = determine_route(recommended_spaces_list[2])
             updateScreen(route)
             break
-        if ( not GPIO.input(13 )):
+        if ( not GPIO.input(17)):
             route = determine_route(recommended_spaces_list[3])
             updateScreen(route)
             break
     
     # clicked main menu button
-    if ( not GPIO.input(23) ):
+    if ( not GPIO.input(26) ):
         menu_level = 1
         updateScreen()
         break

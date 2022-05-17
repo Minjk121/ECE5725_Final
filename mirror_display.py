@@ -59,9 +59,9 @@ congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
  'Upson': 16351.0, 'Rhodes': 28072.8} 
  '''
 
-# thresholds in kb, additive
-level_red = 500.0 #Mb/s
-level_yellow = 250.0 #Mb/s
+# thresholds in Mb, additive
+level_red = 250.0 #Mb/s
+level_yellow = 100.0 #Mb/s
 level_green = 0.0
 
 screen.fill(BLACK) # erase the workspace

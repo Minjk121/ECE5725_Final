@@ -226,7 +226,7 @@ def updateScreen(route=[]):
         determine_congestion_level()
         # map is shown properly on monitor
         campus_map = pygame.image.load('./img/map.png')
-        campus_map = pygame.transform.scale(campus_map, (1400, 1080)) # TODO: change to full screen & update coordinates of halls
+        campus_map = pygame.transform.scale(campus_map, (screen_width, screen_height)) # TODO: change to full screen & update coordinates of halls
         screen.blit(campus_map, (250,0))
         updateSurfaceAndRect(congestion_menu)
     elif menu_level == 3: # study spaces
@@ -236,7 +236,7 @@ def updateScreen(route=[]):
     elif menu_level == 5:
         # map is shown properly on monitor
         campus_map = pygame.image.load('./img/map.png')
-        campus_map = pygame.transform.scale(campus_map, (1400, 1080))
+        campus_map = pygame.transform.scale(campus_map, (screen_width, screen_height))
         screen.blit(campus_map, (250,0))
         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
         # until then, here's a placeholder variable for route

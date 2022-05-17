@@ -208,7 +208,9 @@ def draw_route_on_map(route):
     menu_buttons_rect['main menu'] = rect
 
 # general all-purpose use helper function to update screen
-def updateScreen():
+# OPTIONAL input argument: route, so that we can continue to use updateScreen as a generalized function
+#   while also correctly updating the route 
+def updateScreen(route=[]):
     screen.fill(BLACK)
     if menu_level == 1: # main menu
         updateSurfaceAndRect(menu_buttons)
@@ -223,22 +225,34 @@ def updateScreen():
     elif menu_level == 3: # study spaces
         determine_congestion_level()
         updateSurfaceAndRect_StudySpace()
-        
-    pygame.display.flip()
 
-# specialized updateScreen because it needs route passed into it...
-def updateRouteScreen(route):
-    screen.fill(BLACK)
-    if menu_level == 5: # study space route
+    elif menu_level == 5:
         # map is shown properly on monitor
         campus_map = pygame.image.load('./img/map.png')
         campus_map = pygame.transform.scale(campus_map, (1400, 1080))
         screen.blit(campus_map, (250,0))
         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
         # until then, here's a placeholder variable for route
-        #route = []
-        #draw_route_on_map(route)
+        route = determine_route(my_text)
+        draw_route_on_map(route)
+        
     pygame.display.flip()
+
+
+###BUG: DON'T USE THIS BECAUSE WHEN updateScreen() IS CALLED IN THE WHILE LOOP, IT DOESN'T EVEN HIT THIS AT ALL
+# # specialized updateScreen because it needs route passed into it...
+# def updateRouteScreen(route):
+#     screen.fill(BLACK)
+#     if menu_level == 5: # study space route
+#         # map is shown properly on monitor
+#         campus_map = pygame.image.load('./img/map.png')
+#         campus_map = pygame.transform.scale(campus_map, (1400, 1080))
+#         screen.blit(campus_map, (250,0))
+#         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
+#         # until then, here's a placeholder variable for route
+#         #route = []
+#         #draw_route_on_map(route)
+#     pygame.display.flip()
 
 updateScreen()
 
@@ -310,8 +324,7 @@ while (time.time() < end_time):
                         # menu_buttons['study spaces'] = menu_buttons.pop('main menu')
                         # newText = my_text
                         # newRect = rect
-                        route = determine_route(my_text)
-                        updateRouteScreen(route)
+                        updateScreen()
                         break
                     if (my_text=='quit'):
                         sys.exit()

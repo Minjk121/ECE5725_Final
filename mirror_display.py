@@ -336,4 +336,3 @@ while (time.time() < end_time):
         
     if ( not GPIO.input(17) ):
         sys.exit()
-    updateScreen()

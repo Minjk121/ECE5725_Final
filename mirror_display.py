@@ -176,12 +176,12 @@ def determine_route(space):
     route.append('Upson')
     # if in upson, end here
     if (space == 'CIS lounge') or ('Upson' in space):
-        print (route)
+        #print (route)
         return route
     
     # if nothing above and code comes all the way down here, the space must be in rhodes
     route.append('Rhodes')
-    print("THE ROUTE IS ",route)
+    #print("THE ROUTE IS ",route)
     return route
  
 # show map & draw route on it - specialized version of updateSurfaceAndRect
@@ -279,30 +279,30 @@ while (time.time() < end_time):
                     if (my_text=='congestion map'):
                         # print('hit congestion map')
                         menu_level = 2
-                        tempText = my_text
-                        menu_buttons['main menu'] = menu_buttons.pop('congestion map')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['main menu'] = menu_buttons.pop('congestion map')
+                        # newText = my_text
+                        # newRect = rect
                         updateScreen()
                         break
                     if (my_text=='main menu'): 
-                        if (menu_level == 2):
-                            menu_buttons['congestion map'] = menu_buttons.pop('main menu')
-                        elif (menu_level == 3):
-                            menu_buttons['study spaces'] = menu_buttons.pop('main menu')
+                        # if (menu_level == 2):
+                        #     menu_buttons['congestion map'] = menu_buttons.pop('main menu')
+                        # elif (menu_level == 3):
+                        #     menu_buttons['study spaces'] = menu_buttons.pop('main menu')
                         menu_level = 1
-                        tempText = my_text
-                        #pygame.draw.circle(screen, (139,0,0), (160,120),35,0)
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # #pygame.draw.circle(screen, (139,0,0), (160,120),35,0)
+                        # newText = my_text
+                        # newRect = rect
                         updateScreen()
                         break
                     if (my_text=='study spaces'):
                         menu_level = 3
-                        tempText = my_text
-                        menu_buttons['main menu'] = menu_buttons.pop('study spaces')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['main menu'] = menu_buttons.pop('study spaces')
+                        # newText = my_text
+                        # newRect = rect
                         hall_name = my_text.lower()
                         updateScreen()
                         break
@@ -310,10 +310,10 @@ while (time.time() < end_time):
                     # TODO: check if this works
                     if (my_text in congestion_menu) and (menu_level == 2):
                         menu_level = 3
-                        tempText = my_text
-                        menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
+                        # newText = my_text
+                        # newRect = rect
                         updateScreen()
                         break
                     
@@ -328,8 +328,8 @@ while (time.time() < end_time):
                         break
                     if (my_text=='quit'):
                         sys.exit()
-            del menu_buttons_rect[tempText]
-            menu_buttons_rect[newText] = newRect
+            # del menu_buttons_rect[tempText]
+            # menu_buttons_rect[newText] = newRect
         
     if ( not GPIO.input(17) ):
         sys.exit()

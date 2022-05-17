@@ -236,8 +236,8 @@ def updateRouteScreen(route):
         screen.blit(campus_map, (250,0))
         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
         # until then, here's a placeholder variable for route
-        route = []
-        draw_route_on_map(route)
+        #route = []
+        #draw_route_on_map(route)
     pygame.display.flip()
 
 updateScreen()

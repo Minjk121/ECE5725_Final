@@ -135,7 +135,7 @@ def updateSurfaceAndRect_StudySpace():
         if (index < 6):
             congestion_level = 'green' if (v == '1') else 'yellow'
             congestion_level = 'red' if (v == '3') else 'yellow'
-            displayString = "#"+str(index)+": "+space+"(level "+congestion_level+")"
+            displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
@@ -176,10 +176,12 @@ def determine_route(space):
     route.append('Upson')
     # if in upson, end here
     if (space == 'CIS lounge') or ('Upson' in space):
+        print (route)
         return route
     
     # if nothing above and code comes all the way down here, the space must be in rhodes
-    route.append('Rhodes')    
+    route.append('Rhodes')
+    print(route)
     return route
  
 # show map & draw route on it - specialized version of updateSurfaceAndRect

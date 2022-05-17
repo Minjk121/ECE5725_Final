@@ -190,7 +190,7 @@ def draw_route_on_map(route):
     for i in range(len(route)):
         my_text = route[i]
         displayString = my_text
-        text_surface = my_font.render(displayString, True, WHITE)
+        text_surface = create_text_box(displayString, SKYBLUE, WHITE, 50, 50)
         text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)

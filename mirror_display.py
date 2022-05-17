@@ -243,7 +243,7 @@ def updateScreen(route=[]):
     pygame.display.flip()
 
 
-###BUG: DON'T USE THIS BECAUSE WHEN updateScreen() IS CALLED IN THE WHILE LOOP, IT DOESN'T EVEN HIT THIS AT ALL
+###NOTE: DON'T USE THIS BECAUSE WHEN updateScreen() IS CALLED IN THE WHILE LOOP, IT DOESN'T EVEN HIT THIS AT ALL
 # # specialized updateScreen because it needs route passed into it...
 # def updateRouteScreen(route):
 #     screen.fill(BLACK)

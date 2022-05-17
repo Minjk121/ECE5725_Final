@@ -135,7 +135,7 @@ def updateSurfaceAndRect_StudySpace():
         if (index < 6):
             congestion_level = 'green' if (v == '1') else 'yellow'
             congestion_level = 'red' if (v == '3') else 'yellow'
-            displayString = "#"+str(index)+": "+space+"( level "+congestion_level+")"
+            displayString = "#"+str(index)+": "+space+"(level "+congestion_level+")"
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
@@ -289,7 +289,7 @@ while (time.time() < end_time):
                         break
                     # congestion map clicked & shows dashboard (menu 2->3)
                     # TODO: check if this works
-                    if (my_text in congestion_menu and menu_level == 2):
+                    if (my_text in congestion_menu) and (menu_level == 2):
                         menu_level = 3
                         tempText = my_text
                         menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
@@ -301,10 +301,10 @@ while (time.time() < end_time):
                     #TODO: check in lab if this works! it should show a map & draw lines between the recommended route
                     if (my_text in space_list) and (menu_level == 3):
                         menu_level = 5
-                        tempText = my_text
-                        menu_buttons['main menu'] = menu_buttons.pop('study spaces')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['study spaces'] = menu_buttons.pop('main menu')
+                        # newText = my_text
+                        # newRect = rect
                         route = determine_route(my_text)
                         updateRouteScreen(route)
                         break

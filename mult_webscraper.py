@@ -5,15 +5,30 @@ webscraper that gets data & images from the multiple mrtg websites
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
-import matplotlib.pyplot as plt
-import pandas as pd
-# from pandas.plotting import table
-import numpy as np
-import dataframe_image as dfi
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# # from pandas.plotting import table
+# import numpy as np
+from bokeh.io import export_png, export_svgs
+from bokeh.models import ColumnDataSource, DataTable, TableColumn
 
-def save_df_as_image(df, path="dashboard_img.png"):
-    df_styled = df.style.background_gradient() #adding a gradient based on values in cell
-    dfi.export(df_styled, path)
+def save_df_as_image(df, path):
+    source = ColumnDataSource(df)
+    df_columns = [df.index.name]
+    df_columns.extend(df.columns.values)
+    columns_for_table=[]
+    for column in df_columns:
+        columns_for_table.append(TableColumn(field=column, title=column))
+
+    data_table = DataTable(source=source, columns=columns_for_table,height_policy="auto",width_policy="auto",index_position=None)
+    export_png(data_table, filename = path)
+
+# def get_in_out_df_by_port(hall_name):
+#     port_df = 
+#     return port_df
+# def save_df_as_image(df, path="dashboard_img.png"):
+#     df_styled = df.style.background_gradient() #adding a gradient based on values in cell
+#     dfi.export(df_styled, path)
 
 # returns tuple of daily average (in, out)
 def daily_in_out(url):

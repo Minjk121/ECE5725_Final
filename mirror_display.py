@@ -181,7 +181,7 @@ def determine_route(space):
     
     # if nothing above and code comes all the way down here, the space must be in rhodes
     route.append('Rhodes')
-    print(route)
+    print("THE ROUTE IS ",route)
     return route
  
 # show map & draw route on it - specialized version of updateSurfaceAndRect

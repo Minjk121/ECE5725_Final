@@ -166,10 +166,13 @@ def determine_route(space):
     route = []
 
     # start from duffield atrium if it is green or yellow level, otherwise start at phillips
-    route_start = ""
-    route_start = "Duffield" if (int(space_list['Duffield atrium']) <= 2) else route.append("Phillips")
     # but if phillips is red then go through upson instead
-    route_start = "Phillips" if (int(space_list['ECE lounge']) <=2 ) else "Upson"
+    route_start = ""
+    if (int(space_list['Duffield atrium']) <= 2):
+        route_start = "Duffield"
+    elif (int(space_list['ECE lounge']) <=2):
+        route_start = "Phillips"
+    else: route_start = "Upson"
     route.append(route_start)
 
     # if in rhodes, need to go through upson; if in upson, of course go through upson
@@ -271,6 +274,7 @@ while (time.time() < end_time):
         if menu_level == 2:
             updateScreen() # this function also detects menu_level so it'll be able to update the surface & rect properly
         update_time = time.time() + 300
+        # after 10 minutes, the congestion map crashed?
 
     for event in pygame.event.get():
         if (event.type is MOUSEBUTTONDOWN):

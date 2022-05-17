@@ -214,6 +214,15 @@ def draw_route_on_map(route):
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
 
+def drawDashboard(hall_name):
+    mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, hall_name)
+    count = 1.0
+    for images in mrtg_lst:
+        # draw mrtg graphs
+        mrtg_graph = pygame.image.load(images)
+        screen.blit(mrtg_graph, (screen_width/8.0, (screen_height/8.0) * count))
+        # draw tables
+
 # general all-purpose use helper function to update screen
 # OPTIONAL input argument: route, so that we can continue to use updateScreen as a generalized function
 #   while also correctly updating the route 
@@ -314,10 +323,11 @@ while (time.time() < end_time):
                         hall_name = my_text.lower()
                         updateScreen()
                         break
-                    # congestion map clicked & shows dashboard (menu 2->3)
+                    # congestion map clicked & shows dashboard (menu 2->4)
                     # TODO: check if this works
                     if (my_text in congestion_menu) and (menu_level == 2):
-                        menu_level = 3
+                        menu_level = 4
+                        drawDashboard(my_text)
                         # tempText = my_text
                         # menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
                         # newText = my_text

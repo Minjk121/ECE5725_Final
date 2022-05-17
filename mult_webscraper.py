@@ -5,6 +5,15 @@ webscraper that gets data & images from the multiple mrtg websites
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
+import matplotlib.pyplot as plt
+import pandas as pd
+# from pandas.plotting import table
+import numpy as np
+import dataframe_image as dfi
+
+def save_df_as_image(df, path="dashboard_img.png"):
+    df_styled = df.style.background_gradient() #adding a gradient based on values in cell
+    dfi.export(df_styled, path)
 
 # returns tuple of daily average (in, out)
 def daily_in_out(url):
@@ -126,10 +135,12 @@ def main():
     df = convert_url_to_df(urls)
     # print(df)
     # print(convert_df_to_graph_lst(df, 'Upson'))
+    save_df_as_image(df)
     return df
     
     # data = convert_df_to_dict(df)
     # print(data)
     
+
 if __name__ == "__main__":
     main()

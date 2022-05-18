@@ -279,10 +279,15 @@ def updateScreen(route=[]):
         mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
         print(mrtg_lst)
         count = 1
+        count_2 = 1
         for images in mrtg_lst:
         #     # draw mrtg graphs
             mrtg_graph = pygame.image.load("./img/"+images)
-            screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
+            if count >= 5:
+                screen.blit(mrtg_graph, (int(screen_width/8)*5, int(screen_height/6) * count_2))
+                count_2+=1
+            else:
+                screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
             count+=1
 
     elif menu_level == 5:

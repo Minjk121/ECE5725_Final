@@ -309,7 +309,7 @@ def updateScreen(route=[]):
             for names in name_lst:
                 text_info = create_text_box("Study Space           Current Traffic (Mb/s)", SKYBLUE, SKYBLUE, 10, 10)
                 name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
-                traff_info = create_text_box(congestion_data[names], SKYBLUE, SKYBLUE, 10, 10)
+                traff_info = create_text_box(str(congestion_data[names]), SKYBLUE, SKYBLUE, 10, 10)
                 screen.blit(name_info, (int(screen_width/2)+50, int(screen_height/6) * count+30))
                 screen.blit(traff_info, (int(screen_width/2)+100, int(screen_height/6) * count-30))
                 screen.blit(text_info, (int(screen_width/2)+50, int(screen_height/6) * count))

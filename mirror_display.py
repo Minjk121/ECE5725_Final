@@ -32,7 +32,7 @@ GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(26, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 # initialize pygame for piTFT 
-pygame.display.init()
+# pygame.display.init()
 pygame.init()
 # pygame.mouse.set_visible(False)
 WHITE=255,255,255

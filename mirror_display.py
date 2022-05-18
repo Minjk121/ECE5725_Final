@@ -80,6 +80,7 @@ level_green = 0.0
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} 
 graph_buttons_rect={}
+congestion_button_rect={}
 space_buttons_rect={}
 
 menu_level = 1  # start on "main menu"
@@ -122,7 +123,10 @@ def updateSurfaceAndRect(buttons):
         text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50,50)
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
-        menu_buttons_rect[my_text] = rect
+        if (menu_level == 1):
+            menu_buttons_rect[my_text] = rect
+        elif (menu_level == 2):
+            congestion_button_rect[my_text] = rect
 
     if menu_level == 2:
         #print("congestion menu clicked")
@@ -152,7 +156,7 @@ def updateSurfaceAndRect_StudySpace():
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
-            menu_buttons_rect[space] = rect
+            space_buttons_rect[space] = rect
             index += 1
             recommended_spaces_list.append(space)
     
@@ -219,7 +223,7 @@ def draw_route_on_map(route):
         text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
-        menu_buttons_rect[my_text] = rect
+        #menu_buttons_rect[my_text] = rect
     
 
     # draw main menu button
@@ -306,7 +310,16 @@ while (time.time() < end_time):
         elif (event.type is MOUSEBUTTONUP):
             pos = pygame.mouse.get_pos()
             x,y = pos
-            for (my_text, rect) in menu_buttons_rect.items():
+            buttons_rect_list = {}
+            if (menu_level == 1):
+                buttons_rect_list = menu_buttons_rect
+            if (menu_level == 2):
+                buttons_rect_list = congestion_button_rect
+            if (menu_level == 3):
+                buttons_rect_list = space_buttons_rect
+            else:
+                buttons_rect_list = menu_buttons_rect
+            for (my_text, rect) in buttons_rect_list.items():
                 if (rect.collidepoint(pos)):
                     if (my_text=='congestion map'):
                         # print('hit congestion map')

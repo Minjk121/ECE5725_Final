@@ -165,9 +165,9 @@ def updateSurfaceAndRect(buttons):
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
+    congestion_colors = ['green','yellow','red']
     for space in sorted(space_list,key=space_list.get):
         if (index < 5):
-            congestion_colors = ['green','yellow','red']
             v = space_list[space]
             congestion_level = congestion_colors[int(v)-1]
             displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
@@ -177,6 +177,15 @@ def updateSurfaceAndRect_StudySpace():
             space_buttons_rect[space] = rect
             index += 1
             recommended_spaces_list.append(space)
+        # sneaking rhodes in there
+    v_rhodes = space_list["CIS lounge"]
+    congestion_level = congestion_colors[int(v_rhodes)-1]
+    displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
+    text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
+    rect = text_surface.get_rect(center=space_list_pos[index])
+    screen.blit(text_surface, rect)
+    space_buttons_rect[space] = rect
+           #NOT AVAILABLE VIA BUTTONS ONLY MONITORS
     
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
@@ -538,5 +547,7 @@ while (time.time() < end_time):
         pygame.quit()
         sys.exit()
 
-    # update for the time
-    updateScreen()
+    
+    if (menu_level==1):
+        # update screen for time
+        updateScreen()

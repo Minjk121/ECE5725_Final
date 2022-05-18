@@ -164,7 +164,7 @@ def updateSurfaceAndRect(buttons):
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
-    for space, v in sorted(space_list.items()):
+    for space, v in sorted(space_list,key=space_list.get):
         if (index < 5):
             congestion_colors = ['green','yellow','red']
             congestion_level = congestion_colors[int(v)-1]
@@ -212,7 +212,7 @@ def determine_route(space):
     # if in rhodes, need to go through upson; if in upson, of course go through upson
     route.append('Upson')
     # if in upson, end here
-    if (space == 'CIS lounge') or ('Upson' in space):
+    if ('Upson' in space):
         #print (route)
         return route
     
@@ -379,7 +379,6 @@ while (time.time() < end_time):
         if menu_level == 2:
             updateScreen() # this function also detects menu_level so it'll be able to update the surface & rect properly
         update_time = time.time() + 300
-        # after 10 minutes, the congestion map crashed?
 
     for event in pygame.event.get():
         if (event.type is MOUSEBUTTONDOWN):

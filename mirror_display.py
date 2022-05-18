@@ -419,7 +419,7 @@ while (time.time() < end_time):
             break
         if ( not GPIO.input(23) ):
             menu_level = 3 #go to study spaces
-            hall_name = my_text.lower()
+            # hall_name = my_text.lower()
             updateScreen()
             break
 

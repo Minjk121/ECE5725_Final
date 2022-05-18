@@ -282,7 +282,7 @@ def updateScreen(route=[]):
         for images in mrtg_lst:
         #     # draw mrtg graphs
             mrtg_graph = pygame.image.load("./img/"+images)
-            screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
+            screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
             count+=1
 
     elif menu_level == 5:
@@ -426,22 +426,22 @@ while (time.time() < end_time):
     elif (menu_level == 2):
         if ( not GPIO.input(27) ): # Phillips
             menu_level = 4 #go to dashboard
-            drawDashboard("Phillips")
+            # drawDashboard("Phillips")
             updateScreen()
             break
         if ( not GPIO.input(23) ): # Duffield
             menu_level = 4 #go to dashboard
-            drawDashboard("Duffield")
+            # drawDashboard("Duffield")
             updateScreen()
             break
         if ( not GPIO.input(22)): # Upson
             menu_level = 4 #go to dashboard
-            drawDashboard("Upson")
+            # drawDashboard("Upson")
             updateScreen()
             break
         if ( not GPIO.input(17)): #Rhodes
             menu_level = 4 #go to dashboard
-            drawDashboard("Rhodes")
+            # drawDashboard("Rhodes")
             updateScreen()
             break
     elif (menu_level == 3):

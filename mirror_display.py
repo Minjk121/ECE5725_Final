@@ -270,11 +270,14 @@ def updateScreen(route=[]):
         determine_congestion_level()
         recommended_spaces_list = updateSurfaceAndRect_StudySpace()
         #updateSurfaceAndRect_StudySpace()
+    
+    elif menu_level == 4:
+        mrtg_graph = pygame.image.load("./img/duffield2-5400.120-day.png")
+        screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
 
     elif menu_level == 5:
         # map is shown properly on monitor
         campus_map = pygame.image.load('./img/map.png')
-        campus_map = pygame.transform.scale(campus_map, (screen_width, screen_height))
         screen.blit(campus_map, (0,0))
         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
         # until then, here's a placeholder variable for route
@@ -365,7 +368,7 @@ while (time.time() < end_time):
                     # TODO: check if this works
                     if (my_text in congestion_menu):
                         menu_level = 4
-                        drawDashboard(my_text)
+                        # drawDashboard(my_text)
                         # tempText = my_text
                         # menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
                         # newText = my_text

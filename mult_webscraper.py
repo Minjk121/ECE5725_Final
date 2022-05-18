@@ -158,8 +158,9 @@ def in_out_by_hall(df, hall_name, index=0):
     s = filtered_df.values.tolist()
     # print(type(s))
     print("HERE index:",index)
+    print(s)
     s_each = s[0]
-    print(s_each)
+    
     print(len(s))
     # print(s_each)
     str1 = '         '.join(s_each[0])

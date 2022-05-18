@@ -164,9 +164,10 @@ def updateSurfaceAndRect(buttons):
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
-    for space, v in sorted(space_list,key=space_list.get):
+    for space in sorted(space_list,key=space_list.get):
         if (index < 5):
             congestion_colors = ['green','yellow','red']
+            v = space_list[space]
             congestion_level = congestion_colors[int(v)-1]
             displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)

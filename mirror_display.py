@@ -449,28 +449,28 @@ while (time.time() < end_time):
             route = determine_route(recommended_spaces_list[0])
             menu_level = 5 #go to routing
             updateScreen(route)
-            break
+            # break
         if ( not GPIO.input(23)):
             route = determine_route(recommended_spaces_list[1])
             menu_level = 5 #go to routing
             updateScreen(route)
-            break
+            # break
         if ( not GPIO.input(22)):
             route = determine_route(recommended_spaces_list[2])
             menu_level = 5 #go to routing
             updateScreen(route)
-            break
+            # break
         if ( not GPIO.input(17)):
             route = determine_route(recommended_spaces_list[3])
             menu_level = 5 #go to routing
             updateScreen(route)
-            break
+            # break
     
     # clicked main menu button
     if ( not GPIO.input(26) ):
         menu_level = 1
         updateScreen()
-        break
+        # break
     # panic button
     if ( not GPIO.input(13) ):
         pygame.quit()

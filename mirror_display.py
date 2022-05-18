@@ -61,7 +61,9 @@ space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width
 recommended_spaces_list = [] 
 
 # congestion_data contains study spaces + halls
-congestion_df = mult_webscraper.main() # data frame
+df = mult_webscraper.main()
+congestion_df = df[0] # data frame
+congestion_df_dashboard = df[1] # df for dashboard
 congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
 ''' 
 {'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
@@ -98,7 +100,7 @@ def determine_congestion_level():
 # updates and returns dictionary type of congestion data
 def update_congestion_data():
     df = mult_webscraper.main() # data frame
-    return mult_webscraper.convert_df_to_dict(df)
+    return mult_webscraper.convert_df_to_dict(df[0])
 
 # creates a margin between text and text box
 def create_text_box(displayString, text_color, box_color, margin_x, margin_y):

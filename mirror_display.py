@@ -88,6 +88,7 @@ space_buttons_rect={}
 
 menu_level = 1  # start on "main menu"
 hall_name = ''
+dashboard_hall = ''
 
 # helper function to determine congestion level based on the congestion_data dictionary
 # (which is from the webscraper and converted from the dataframe)
@@ -235,19 +236,20 @@ def draw_route_on_map(route):
     screen.blit(text_surface, rect)
     congestion_buttons_rect['main menu'] = rect
 
-def drawDashboard(hall_name):
-    mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, hall_name)
-    count = 1
-    for images in mrtg_lst:
-    #     # draw mrtg graphs
-    #     response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
-    #     file = open("sample_image.png", "wb")
-    #     file.write(response.content)
-    #     file.close()
-        print(images + " are here!")
-        mrtg_graph = pygame.image.load("./img/duffield2-5400.120-day.png")
-        # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
-        # draw tables
+# def drawDashboard(hall_name):
+#     mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
+#     count = 1
+#     for images in mrtg_lst:
+#     #     # draw mrtg graphs
+#         response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
+#         file = open("sample_image.png", "wb")
+#         file.write(response.content)
+#         file.close()
+
+#         print(images + " are here!")
+#         mrtg_graph = pygame.image.load("./img/duffield2-5400.120-day.png")
+#         # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
+#         # draw tables
         
 
 # general all-purpose use helper function to update screen
@@ -367,7 +369,14 @@ while (time.time() < end_time):
                     # TODO: check if this works
                     if (my_text in congestion_menu):
                         menu_level = 4
-                        # drawDashboard(my_text)
+                        dashboard_hall = my_text
+                        mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
+                        count = 1
+                        for images in mrtg_lst:
+                        #     # draw mrtg graphs
+                            mrtg_graph = pygame.image.load("./img/"+images)
+                            screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
+                            count+=1
                         # tempText = my_text
                         # menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
                         # newText = my_text

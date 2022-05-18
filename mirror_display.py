@@ -304,22 +304,22 @@ def updateScreen(route=[]):
                 screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-30))
             count+=1
         count = 1
-        if not change_orienation:
-            for names in name_lst:
-                text_info = create_text_box("Study Space           Current Traffic (Mb/s)", SKYBLUE, SKYBLUE, 10, 10)
-                name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
-                traff_info = create_text_box(congestion_data[names], SKYBLUE, SKYBLUE, 10, 10)
-                screen.blit(name_info, (int(screen_width/2)+50, int(screen_height/6) * count-30))
-                screen.blit(traff_info, (int(screen_width/2)+100, int(screen_height/6) * count-30))
-                screen.blit(text_info, (int(screen_width/2)+50, int(screen_height/6) * count))
-                count+=1
-        else:
-            for names in name_lst:
-                name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
-                traff_info = create_text_box(str(congestion_data[names]), SKYBLUE, SKYBLUE, 10, 10)
-                screen.blit(name_info+":  ", (int(screen_width/8)+50, int(screen_height/6) * count-30))
-                screen.blit(traff_info, (int(screen_width/8)+100, int(screen_height/6) * count-30))
-                count+=1
+        # if not change_orienation:
+        #     for names in name_lst:
+        #         text_info = create_text_box("Study Space           Current Traffic (Mb/s)", SKYBLUE, SKYBLUE, 10, 10)
+        #         name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
+        #         traff_info = create_text_box(congestion_data[names], SKYBLUE, SKYBLUE, 10, 10)
+        #         screen.blit(name_info, (int(screen_width/2)+50, int(screen_height/6) * count-30))
+        #         screen.blit(traff_info, (int(screen_width/2)+100, int(screen_height/6) * count-30))
+        #         screen.blit(text_info, (int(screen_width/2)+50, int(screen_height/6) * count))
+        #         count+=1
+        # else:
+        #     for names in name_lst:
+        #         name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
+        #         traff_info = create_text_box(str(congestion_data[names]), SKYBLUE, SKYBLUE, 10, 10)
+        #         screen.blit(name_info+":  ", (int(screen_width/8)+50, int(screen_height/6) * count-30))
+        #         screen.blit(traff_info, (int(screen_width/8)+100, int(screen_height/6) * count-30))
+        #         count+=1
 
     elif menu_level == 5:
         # map is shown properly on monitor

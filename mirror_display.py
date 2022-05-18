@@ -297,7 +297,7 @@ def updateScreen(route=[]):
                 count_2+=1
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
-                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count340))
+                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-30))
             count+=1
 
     elif menu_level == 5:

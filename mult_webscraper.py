@@ -156,7 +156,10 @@ def in_out_by_hall(df, hall_name, index=0):
     filtered_df = filtered_df[['Info','In','Out']]
     s = filtered_df.values.tolist()
     # print(type(s))
+    print("HERE index:",index)
     s_each = s[index]
+    print(s_each)
+    print(len(s))
     # print(s_each)
     str1 = '         '.join(s_each[0])
     str2 = ' '.join(s_each[1])

@@ -5,11 +5,11 @@ webscraper that gets data & images from the multiple mrtg websites
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
-# import matplotlib.pyplot as plt
-# import pandas as pd
-# # from pandas.plotting import table
-# import numpy as np
-import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+from tabulate import tabulate
+import numpy as np
+# import matplotlib
 # import seaborn as sns
 
 # def get_in_out_df_by_port(df, png):
@@ -146,11 +146,23 @@ def convert_url_to_df(urls):
     # df_daily_in_out.swapaxes("index", "columns")
     return df_whole, df_daily_in_out
 
+# gets dashboard dataframe & returns txt file of traffic rates in hall
 def in_out_by_hall(df, hall_name):
     filter = df['Hall Name'] == hall_name.lower()
     filtered_df = df.loc[filter]
-    return filtered_df[['Info','In','Out']].swapaxes("index", "columns")
+    filtered_df = filtered_df[['Info','In','Out']].swapaxes("index", "columns")
 
+    fig, ax = plt.subplots()
+    table = ax.table(cellText=df.values, colLabels=df.columns, loc='center')
+    # open('./table.txt', 'w').write(tabulate(table))
+    # with open('table.txt', 'w') as f:
+    #     f.write(tabulate(table))
+    # print(table)
+    # return 'table.txt'
+
+# in mirror_display:
+
+    
 def main():
     urls = [('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips1-5400.252.html', 'ECE lounge'),
             ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120.html', 'Duffield atrium'), # near phillips
@@ -171,21 +183,15 @@ def main():
             ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes5-1-5400.25.html', 'Rhodes 5th floor'),
             ]
 
-    df = convert_url_to_df(urls)[0]
-    # print(df)
-    df = convert_url_to_df(urls)[1]
-    # print(df)
-    print(in_out_by_hall(df, "upson"))
+    # df = convert_url_to_df(urls)[0]
+    # # print(df)
+    # df = convert_url_to_df(urls)[1]
+    # # print(df)
+    # print(in_out_by_hall(df, "upson"))
     
     # print(convert_df_to_graph_lst(df, 'Upson'))
     # save_df_as_image(df)
-    '''
-    filter = df['Hall Name'] == 'duffield'
-    filtered_df = df.loc[filter]
-    filtered_df.append
-    new_df = filtered_df[[,'In','Out']]
-    print(new_df)
-    '''
+   
     return convert_url_to_df(urls)[0], convert_url_to_df(urls)[1]
     
     # data = convert_df_to_dict(df)

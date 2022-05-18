@@ -188,18 +188,18 @@ def main():
     # df = convert_url_to_df(urls)[0]
     # # print(df)
 
-    df = convert_url_to_df(urls)[1]
+    # df = convert_url_to_df(urls)[1]
     # # print(df)
     # print(in_out_by_hall(df, "upson",3,1))
     
 
     # images = 'duffield2-5400.120-day.png'
     # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
-    response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120-day.png")
+    # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120-day.png")
 
-    file = open("sample_image.png", "wb")
-    file.write(response.content)
-    file.close()
+    # file = open("sample_image.png", "wb")
+    # file.write(response.content)
+    # file.close()
    
     return convert_url_to_df(urls)[0], convert_url_to_df(urls)[1]
     

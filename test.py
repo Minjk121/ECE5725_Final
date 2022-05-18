@@ -1,5 +1,5 @@
 import mult_webscraper
-from varname import nameof
+# from varname import nameof
 import requests
 
 # import RPi.GPIO as GPIO
@@ -14,10 +14,10 @@ import requests
 # print(d)
 # print(type(d))
 # print(type(d['ECE lounge']))
-congestion_menu = {'Test':'tmp', '2':'two'}
-name = "Test"
-if name in congestion_menu:
-    print("!")
+# congestion_menu = {'Test':'tmp', '2':'two'}
+# name = "Test"
+# if name in congestion_menu:
+#     print("!")
 
 response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120-day.png")
 

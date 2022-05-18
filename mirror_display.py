@@ -285,7 +285,7 @@ def updateScreen(route=[]):
         count_2 = 1
         text_surface = create_text_box(dashboard_hall.upper(), YELLOW, YELLOW, 10, 10)
         screen.blit(text_surface, (int(screen_width/2)-30,int(screen_height/8-50)))
-        df = congestion_df_dashboard[1]
+        df = congestion_df_dashboard
         for index, images in enumerate(mrtg_lst):
             # draw mrtg graphs
             mrtg_graph = pygame.image.load("./img/"+images)

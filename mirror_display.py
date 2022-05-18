@@ -61,9 +61,7 @@ space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width
 recommended_spaces_list = [] 
 
 # congestion_data contains study spaces + halls
-df = mult_webscraper.main()
-congestion_df = df[0] # data frame
-congestion_df_dashboard = df[1] # data frame
+congestion_df = mult_webscraper.main() # data frame
 congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
 ''' 
 {'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
@@ -99,8 +97,8 @@ def determine_congestion_level():
 
 # updates and returns dictionary type of congestion data
 def update_congestion_data():
-    df = mult_webscraper.main() # data frame (df1, df2)
-    return mult_webscraper.convert_df_to_dict(df[0])
+    df = mult_webscraper.main() # data frame
+    return mult_webscraper.convert_df_to_dict(df)
 
 # creates a margin between text and text box
 def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
@@ -257,7 +255,8 @@ def updateScreen(route=[]):
         updateSurfaceAndRect(congestion_menu)
     elif menu_level == 3: # study spaces
         determine_congestion_level()
-        recommended_spaces_list = updateSurfaceAndRect_StudySpace()
+        #recommended_spaces_list = updateSurfaceAndRect_StudySpace()
+        updateSurfaceAndRect_StudySpace()
 
     elif menu_level == 5:
         # map is shown properly on monitor
@@ -266,6 +265,7 @@ def updateScreen(route=[]):
         screen.blit(campus_map, (0,0))
         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
         # until then, here's a placeholder variable for route
+        route = determine_route(my_text)
         draw_route_on_map(route)
         
     pygame.display.flip()
@@ -312,30 +312,30 @@ while (time.time() < end_time):
                     if (my_text=='congestion map'):
                         # print('hit congestion map')
                         menu_level = 2
-                        tempText = my_text
-                        menu_buttons['main menu'] = menu_buttons.pop('congestion map')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['main menu'] = menu_buttons.pop('congestion map')
+                        # newText = my_text
+                        # newRect = rect
                         updateScreen()
                         break
                     if (my_text=='main menu'): 
-                        if (menu_level == 2):
-                            menu_buttons['congestion map'] = menu_buttons.pop('main menu')
-                        elif (menu_level == 3):
-                            menu_buttons['study spaces'] = menu_buttons.pop('main menu')
+                        # if (menu_level == 2):
+                        #     menu_buttons['congestion map'] = menu_buttons.pop('main menu')
+                        # elif (menu_level == 3):
+                        #     menu_buttons['study spaces'] = menu_buttons.pop('main menu')
                         menu_level = 1
-                        tempText = my_text
-                        #pygame.draw.circle(screen, (139,0,0), (160,120),35,0)
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # #pygame.draw.circle(screen, (139,0,0), (160,120),35,0)
+                        # newText = my_text
+                        # newRect = rect
                         updateScreen()
                         break
                     if (my_text=='study spaces'):
                         menu_level = 3
-                        tempText = my_text
-                        menu_buttons['main menu'] = menu_buttons.pop('study spaces')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['main menu'] = menu_buttons.pop('study spaces')
+                        # newText = my_text
+                        # newRect = rect
                         hall_name = my_text.lower()
                         updateScreen()
                         break
@@ -344,22 +344,23 @@ while (time.time() < end_time):
                     if (my_text in congestion_menu) and (menu_level == 2):
                         menu_level = 4
                         drawDashboard(my_text)
-                        tempText = my_text
-                        menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
-                        newText = my_text
-                        newRect = rect
+                        # tempText = my_text
+                        # menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
+                        # newText = my_text
+                        # newRect = rect
                         updateScreen()
                         break
                     
                     #TODO: check in lab if this works! it should show a map & draw lines between the recommended route
                     if (my_text in space_list) and (menu_level == 3):
                         menu_level = 5
-                        tempText = my_text
-                        menu_buttons['study spaces'] = menu_buttons.pop('main menu')
-                        newText = my_text
-                        newRect = rect
-                        route = determine_route(my_text)
-                        updateScreen(route)
+                        # tempText = my_text
+                        # menu_buttons['study spaces'] = menu_buttons.pop('main menu')
+                        # newText = my_text
+                        # newRect = rect
+                        #route = determine_route(my_text)
+                        #updateScreen(route)
+                        updateScreen()
                         break
                     if (my_text=='quit'):
                         sys.exit()

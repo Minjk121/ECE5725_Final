@@ -155,7 +155,7 @@ def in_out_by_hall(df, hall_name, index=0):
     filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
     filtered_df = filtered_df[['Info','In','Out']]
     s = filtered_df.iloc[0]
-    s = s.to_string()
+    s = s.astype('string')()
     # print(type(s))
     # print(s)
     # if num > 0: 

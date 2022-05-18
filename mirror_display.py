@@ -416,34 +416,34 @@ while (time.time() < end_time):
         if ( not GPIO.input(27) ):
             menu_level = 2 #go to congestion map
             updateScreen()
-            break
+            # break
         if ( not GPIO.input(23) ):
             menu_level = 3 #go to study spaces
             # hall_name = my_text.lower()
             updateScreen()
-            break
+            # break
 
     elif (menu_level == 2):
         if ( not GPIO.input(27) ): # Phillips
             menu_level = 4 #go to dashboard
             # drawDashboard("Phillips")
             updateScreen()
-            break
+            # break
         if ( not GPIO.input(23) ): # Duffield
             menu_level = 4 #go to dashboard
             # drawDashboard("Duffield")
             updateScreen()
-            break
+            # break
         if ( not GPIO.input(22)): # Upson
             menu_level = 4 #go to dashboard
             # drawDashboard("Upson")
             updateScreen()
-            break
+            # break
         if ( not GPIO.input(17)): #Rhodes
             menu_level = 4 #go to dashboard
             # drawDashboard("Rhodes")
             updateScreen()
-            break
+            # break
     elif (menu_level == 3):
         if ( not GPIO.input(27) ):
             route = determine_route(recommended_spaces_list[0])

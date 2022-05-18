@@ -109,6 +109,8 @@ def update_congestion_data():
 
 # creates a margin between text and text box
 def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
+    if text_color == SKYBLUE: 
+        my_font = pygame.font.Font(None, 25) 
     text_surface = my_font.render(displayString, True, text_color)
     box_surface = pygame.Surface(text_surface.get_rect().inflate(margin_x, margin_y).size)
     box_surface.fill(BLACK)
@@ -281,7 +283,7 @@ def updateScreen(route=[]):
         count = 1
         count_2 = 1
         text_surface = create_text_box(dashboard_hall.upper(), YELLOW, YELLOW, 10, 10)
-        screen.blit(text_surface, (int(screen_width/2)-30,int(screen_height/8)))
+        screen.blit(text_surface, (int(screen_width/2)-30,int(screen_height/8-50)))
 
         for images in mrtg_lst:
             # draw mrtg graphs
@@ -290,11 +292,11 @@ def updateScreen(route=[]):
 
             if count >= 6:
                 screen.blit(mrtg_graph, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))
-                screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-30))
+                screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-40))
                 count_2+=1
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
-                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-30))
+                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-40))
             count+=1
 
     elif menu_level == 5:

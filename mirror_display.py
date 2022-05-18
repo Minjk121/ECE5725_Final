@@ -289,15 +289,15 @@ def updateScreen(route=[]):
         for images in mrtg_lst:
             # draw mrtg graphs
             mrtg_graph = pygame.image.load("./img/"+images)
-            text_surface = create_text_box(images.replace("png",''), WHITE, SKYBLUE, 10, 10)
+            text_surface = create_text_box(images.replace("png",''), SKYBLUE, SKYBLUE, 10, 10)
 
             if count >= 6:
                 screen.blit(mrtg_graph, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))
-                screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-40))
+                screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-30))
                 count_2+=1
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
-                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-40))
+                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count340))
             count+=1
 
     elif menu_level == 5:

@@ -284,7 +284,7 @@ def updateScreen(route=[]):
         #     # draw mrtg graphs
             mrtg_graph = pygame.image.load("./img/"+images)
             if count >= 6:
-                screen.blit(mrtg_graph, (int(screen_width/8)*4, int(screen_height/6) * count_2))
+                screen.blit(mrtg_graph, (int(screen_width/8)*4+10, int(screen_height/6) * count_2))
                 count_2+=1
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))

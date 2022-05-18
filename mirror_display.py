@@ -288,7 +288,7 @@ def updateScreen(route=[]):
         df = congestion_df_dashboard
         for index, images in enumerate(mrtg_lst):
             # draw mrtg graphs
-            print("INDEX ISSSSS: "index)
+            print("INDEX ISSSSS: ", index)
             mrtg_graph = pygame.image.load("./img/"+images)
             text_surface = create_text_box(images.replace("png",''), SKYBLUE, SKYBLUE, 10, 10)
             text_info = create_text_box(mult_webscraper.in_out_by_hall(df, images, index-1) , SKYBLUE, SKYBLUE, 10, 10)

@@ -81,7 +81,7 @@ level_green = 0.0
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} 
 graph_buttons_rect={}
-congestion_button_rect={}
+congestion_buttons_rect={}
 space_buttons_rect={}
 
 menu_level = 1  # start on "main menu"
@@ -127,7 +127,7 @@ def updateSurfaceAndRect(buttons):
         if (menu_level == 1):
             menu_buttons_rect[my_text] = rect
         elif (menu_level == 2):
-            congestion_button_rect[my_text] = rect
+            congestion_buttons_rect[my_text] = rect
 
     if menu_level == 2:
         #print("congestion menu clicked")
@@ -320,7 +320,7 @@ while (time.time() < end_time):
             if (menu_level == 1):
                 buttons_rect_list = menu_buttons_rect
             elif (menu_level == 2):
-                buttons_rect_list = congestion_button_rect
+                buttons_rect_list = congestion_buttons_rect
             elif (menu_level == 3):
                 buttons_rect_list = space_buttons_rect
             else:

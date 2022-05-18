@@ -97,6 +97,11 @@ def convert_df_to_graph_lst(df, hall_name):
     filtered_df = df.loc[filter]
     graph_lst = list(filtered_df['Graph'])
     return graph_lst
+def convert_df_to_name_lst(df, hall_name):
+    filter = df['Hall Name'] == hall_name.lower()
+    filtered_df = df.loc[filter]
+    graph_lst = list(filtered_df['Location Name'])
+    return graph_lst
         
 def convert_url_to_df(urls):
 

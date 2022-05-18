@@ -280,37 +280,45 @@ def updateScreen(route=[]):
         # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8)))
         # dashboard_hall = my_text
         mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
-        print(mrtg_lst)
+        name_lst = mult_webscraper.convert_df_to_name_lst(congestion_df, dashboard_hall)
+        change_orienation = False
         count = 1
         count_2 = 1
         text_surface = create_text_box(dashboard_hall.upper(), YELLOW, YELLOW, 10, 10)
         # text_info = create_text_box("", SKYBLUE, SKYBLUE, 10, 10)
         screen.blit(text_surface, (int(screen_width/2)-30,int(screen_height/8-50)))
         df = congestion_df_dashboard
-        for index, images in enumerate(mrtg_lst):
+        for images in mrtg_lst:
             # draw mrtg graphs
-            print("INDEX ISSSSS: ", index)
             mrtg_graph = pygame.image.load("./img/"+images)
             text_surface = create_text_box(images.replace("png",''), SKYBLUE, SKYBLUE, 10, 10)
-            text_info = create_text_box("Daily In      Daily out", SKYBLUE, SKYBLUE, 10, 10)
-            
-            # text_info = create_text_box(mult_webscraper.in_out_by_hall(df, images), SKYBLUE, SKYBLUE, 10, 10)
-            
+            # text_info = create_text_box(mult_webscraper.in_out_by_hall(df, images), SKYBLUE, SKYBLUE, 10, 10) 
             if count >= 6:
                 screen.blit(mrtg_graph, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))
                 screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-30))
                 count_2+=1
+                change_orienation = True
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
                 screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-30))
-                screen.blit(text_info, (int(screen_width/2), int(screen_height/6) * count))
-
             count+=1
-
-
-
-        # if dashboard_hall == ''
-        # df = mult_webscraper.in_out_by_hall(df,dashboard_hall)
+        count = 1
+        if not change_orienation:
+            for names in name_lst:
+                text_info = create_text_box("Study Space           Current Traffic (Mb/s)", SKYBLUE, SKYBLUE, 10, 10)
+                name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
+                traff_info = create_text_box(congestion_data[names], SKYBLUE, SKYBLUE, 10, 10)
+                screen.blit(name_info, (int(screen_width/2)+50, int(screen_height/6) * count-30))
+                screen.blit(traff_info, (int(screen_width/2)+100, int(screen_height/6) * count-30))
+                screen.blit(text_info, (int(screen_width/2)+50, int(screen_height/6) * count))
+                count+=1
+        else:
+            for names in name_lst:
+                name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
+                traff_info = create_text_box(congestion_data[names], SKYBLUE, SKYBLUE, 10, 10)
+                screen.blit(name_info+":  ", (int(screen_width/8)+50, int(screen_height/6) * count-30))
+                screen.blit(traff_info, (int(screen_width/8)+100, int(screen_height/6) * count-30))
+                count+=1
 
     elif menu_level == 5:
         # map is shown properly on monitor

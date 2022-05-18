@@ -81,14 +81,12 @@ def convert_df_to_dict(df):
     congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872)}
 
     for spaces in space_list:
-        filter = df['Location Name'] == spaces
-        filtered_df = df.loc[filter]
+        filtered_df = df.loc[df['Location Name'] == spaces]
         # print(filtered_df)
         congestion_data[spaces] = float(filtered_df['In'].sum()) + float(filtered_df['Out'].sum())
 
     for halls in congestion_menu:
-        filter = df['Hall Name'] == halls.lower()
-        filtered_df = df.loc[filter]
+        filtered_df = df.loc[df['Hall Name'] == halls.lower()]
         congestion_data[halls] = float(filtered_df['In'].sum()) + float(filtered_df['Out'].sum())
 
     return congestion_data

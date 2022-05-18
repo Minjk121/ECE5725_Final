@@ -243,7 +243,7 @@ def drawDashboard(hall_name):
         file.write(response.content)
         file.close()
         mrtg_graph = pygame.image.load('sample_image.png')
-        screen.blit(mrtg_graph, (screen_width/8, (screen_height/8) * count))
+        screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
         # draw tables
         
 

@@ -298,13 +298,12 @@ def updateScreen(route=[]):
                 screen.blit(mrtg_graph, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))
                 screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-30))
                 count_2+=1
-                change_orientation = True
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
                 screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count-30))
             count+=1
         count = 1
-        if not change_orientation:
+        if dashboard_hall is not 'rhodes':
             for names in name_lst:
                 text_info = create_text_box("Study Space           Current Traffic (Mb/s)", SKYBLUE, SKYBLUE, 10, 10)
                 name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
@@ -313,7 +312,7 @@ def updateScreen(route=[]):
                 # screen.blit(traff_info, (int(screen_width/2)+100, int(screen_height/6) * count-30))
                 screen.blit(text_info, (int(screen_width/2)+50, int(screen_height/6) * count))
                 count+=1
-        if change_orientation:
+        else:
             for names in name_lst:
                 name_info = create_text_box(names+":  ", SKYBLUE, SKYBLUE, 10, 10)
                 # traff_info = create_text_box(str(congestion_data[names]), SKYBLUE, SKYBLUE, 10, 10)

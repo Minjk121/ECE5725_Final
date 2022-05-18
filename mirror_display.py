@@ -273,8 +273,17 @@ def updateScreen(route=[]):
         #updateSurfaceAndRect_StudySpace()
     
     elif menu_level == 4:
-        mrtg_graph = pygame.image.load("./img/duffield2-5400.120-day.png")
-        screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8)))
+        # mrtg_graph = pygame.image.load("./img/duffield2-5400.120-day.png")
+        # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8)))
+        # dashboard_hall = my_text
+        mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
+        print(mrtg_lst)
+        count = 1
+        for images in mrtg_lst:
+        #     # draw mrtg graphs
+            mrtg_graph = pygame.image.load("./img/"+images)
+            screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
+            count+=1
 
     elif menu_level == 5:
         # map is shown properly on monitor
@@ -370,14 +379,14 @@ while (time.time() < end_time):
                     if (my_text in congestion_menu):
                         menu_level = 4
                         dashboard_hall = my_text
-                        mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
-                        print(mrtg_lst)
-                        count = 1
-                        for images in mrtg_lst:
-                        #     # draw mrtg graphs
-                            mrtg_graph = pygame.image.load("./img/"+images)
-                            screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
-                            count+=1
+                        # mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
+                        # print(mrtg_lst)
+                        # count = 1
+                        # for images in mrtg_lst:
+                        # #     # draw mrtg graphs
+                        #     mrtg_graph = pygame.image.load("./img/"+images)
+                        #     screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
+                        #     count+=1
                         # tempText = my_text
                         # menu_buttons['congestion map'] = menu_buttons.pop('dashboard')
                         # newText = my_text

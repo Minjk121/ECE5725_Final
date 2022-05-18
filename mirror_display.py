@@ -341,7 +341,7 @@ while (time.time() < end_time):
                         break
                     # congestion map clicked & shows dashboard (menu 2->4)
                     # TODO: check if this works
-                    if (my_text in congestion_menu) and (menu_level == 2):
+                    if (my_text in congestion_menu):
                         menu_level = 4
                         drawDashboard(my_text)
                         # tempText = my_text
@@ -352,7 +352,7 @@ while (time.time() < end_time):
                         break
                     
                     #TODO: check in lab if this works! it should show a map & draw lines between the recommended route
-                    if (my_text in space_list) and (menu_level == 3):
+                    if (my_text in space_list):
                         menu_level = 5
                         # tempText = my_text
                         # menu_buttons['study spaces'] = menu_buttons.pop('main menu')

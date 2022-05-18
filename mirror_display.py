@@ -140,13 +140,12 @@ def updateSurfaceAndRect(buttons):
 # we will only consider the top five least congested areas for study space recommendations
 # default ordering is in alphabetical order, such that popular spaces like CIS lounge, ECE lounge, and Duffield
 # always show up near the top (if all else are equal)
-# function takes no inputs, return top tier list
+# function takes no inputs, return nothing, in-line edit recommend_spaces_list for top 4 study spaces
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
-    recommended_spaces = []
     for space, v in sorted(space_list.items()):
-        if (index < 6):
+        if (index < 5):
             congestion_colors = ['green','yellow','red']
             congestion_level = congestion_colors[int(v)-1]
             displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
@@ -155,15 +154,13 @@ def updateSurfaceAndRect_StudySpace():
             screen.blit(text_surface, rect)
             menu_buttons_rect[space] = rect
             index += 1
-            recommended_spaces.append(space)
+            recommended_spaces_list.append(space)
     
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
     rect = text_surface.get_rect(center=congestion_menu['main menu'])
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
-
-    return recommended_spaces
 
 
 # helper function to determine the route from outside of the engineering quad buildings to a specified study "space"
@@ -257,8 +254,8 @@ def updateScreen(route=[]):
         updateSurfaceAndRect(congestion_menu)
     elif menu_level == 3: # study spaces
         determine_congestion_level()
-        #recommended_spaces_list = updateSurfaceAndRect_StudySpace()
-        updateSurfaceAndRect_StudySpace()
+        recommended_spaces_list = updateSurfaceAndRect_StudySpace()
+        #updateSurfaceAndRect_StudySpace()
 
     elif menu_level == 5:
         # map is shown properly on monitor
@@ -371,6 +368,17 @@ while (time.time() < end_time):
     
     # for button presses, when doing "remote control" of the menu
     # if in congestion map, the buttons are top-to-bottom sequential
+    if (menu_level == 1):
+        if ( not GPIO.input(27) ):
+            menu_level = 2 #go to congestion map
+            updateScreen()
+            break
+        if ( not GPIO.input(23) ):
+            menu_level = 3 #go to study spaces
+            hall_name = my_text.lower()
+            updateScreen()
+            break
+
     if (menu_level == 2):
         if ( not GPIO.input(27) ): # Phillips
             menu_level = 4 #go to dashboard

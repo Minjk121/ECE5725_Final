@@ -457,7 +457,10 @@ while (time.time() < end_time):
                         # newRect = rect
                         #route = determine_route(my_text)
                         #updateScreen(route)
-                        updateScreen()
+                        route = determine_route(my_text)
+                        menu_level = 5 #go to routing
+                        updateScreen(route)
+                        #updateScreen()
                         break
                     if (my_text=='quit'):
                         sys.exit()

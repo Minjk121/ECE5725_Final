@@ -281,7 +281,7 @@ def updateScreen(route=[]):
         count = 1
         count_2 = 1
         text_surface = create_text_box(dashboard_hall.upper(), YELLOW, YELLOW, 10, 10)
-        screen.blit(text_surface, (int(screen_width/2)-10,int(screen_height/8)))
+        screen.blit(text_surface, (int(screen_width/2)-30,int(screen_height/8)))
 
         for images in mrtg_lst:
             # draw mrtg graphs
@@ -290,11 +290,11 @@ def updateScreen(route=[]):
 
             if count >= 6:
                 screen.blit(mrtg_graph, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))
-                screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))
+                screen.blit(text_surface, (int(screen_width/8)*4+30, int(screen_height/6) * count_2+30))
                 count_2+=1
             else:
                 screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/6) * count))
-                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count))
+                screen.blit(text_surface, (int(screen_width/8), int(screen_height/6) * count+30))
             count+=1
 
     elif menu_level == 5:

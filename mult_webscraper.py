@@ -190,7 +190,7 @@ def main():
 
     df = convert_url_to_df(urls)[1]
     # # print(df)
-    print(in_out_by_hall(df, "upson",3,1))
+    # print(in_out_by_hall(df, "upson",3,1))
     
 
     # images = 'duffield2-5400.120-day.png'

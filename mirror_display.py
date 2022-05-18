@@ -537,3 +537,6 @@ while (time.time() < end_time):
     if ( not GPIO.input(13) ):
         pygame.quit()
         sys.exit()
+
+    # update for the time
+    updateScreen()

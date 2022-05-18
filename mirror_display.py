@@ -17,7 +17,7 @@ os.putenv('SDL_FBDEV','/dev/fb0') #so that this will be visible on the monitor
 
 # in case the Pi freezes
 t0 = time.time()
-end_time = t0 + 600 # changed timeout to 10 min 
+end_time = t0 + 1200 # changed timeout to 10 min 
 update_time = t0 + 300 # update traffic rates by 5 min
 
 GPIO.setmode(GPIO.BCM)

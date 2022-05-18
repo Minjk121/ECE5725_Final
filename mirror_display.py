@@ -427,21 +427,25 @@ while (time.time() < end_time):
         if ( not GPIO.input(27) ): # Phillips
             menu_level = 4 #go to dashboard
             # drawDashboard("Phillips")
+            dashboard_hall = 'Phillips'
             updateScreen()
             # break
         if ( not GPIO.input(23) ): # Duffield
             menu_level = 4 #go to dashboard
             # drawDashboard("Duffield")
+            dashboard_hall = 'Duffield'
             updateScreen()
             # break
         if ( not GPIO.input(22)): # Upson
             menu_level = 4 #go to dashboard
             # drawDashboard("Upson")
+            dashboard_hall = 'Upson'
             updateScreen()
             # break
         if ( not GPIO.input(17)): #Rhodes
             menu_level = 4 #go to dashboard
             # drawDashboard("Rhodes")
+            dashboard_hall = 'Rhodes'
             updateScreen()
             # break
     elif (menu_level == 3):

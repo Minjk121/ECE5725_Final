@@ -319,9 +319,9 @@ while (time.time() < end_time):
             buttons_rect_list = {}
             if (menu_level == 1):
                 buttons_rect_list = menu_buttons_rect
-            if (menu_level == 2):
+            elif (menu_level == 2):
                 buttons_rect_list = congestion_button_rect
-            if (menu_level == 3):
+            elif (menu_level == 3):
                 buttons_rect_list = space_buttons_rect
             else:
                 buttons_rect_list = menu_buttons_rect
@@ -398,7 +398,7 @@ while (time.time() < end_time):
             updateScreen()
             break
 
-    if (menu_level == 2):
+    elif (menu_level == 2):
         if ( not GPIO.input(27) ): # Phillips
             menu_level = 4 #go to dashboard
             drawDashboard("Phillips")
@@ -419,7 +419,7 @@ while (time.time() < end_time):
             drawDashboard("Rhodes")
             updateScreen()
             break
-    if (menu_level == 3):
+    elif (menu_level == 3):
         if ( not GPIO.input(27) ):
             route = determine_route(recommended_spaces_list[0])
             menu_level = 5 #go to routing

@@ -200,10 +200,10 @@ def main():
     # df = convert_url_to_df(urls)[0]
     # # print(df)
 
-    df = convert_url_to_df(urls)[1]
+    # df = convert_url_to_df(urls)[1]
     
     # print(df['upson'])
-    in_out_by_hall(df, "upson")   
+    # in_out_by_hall(df, "upson")   
 
     # images = 'duffield2-5400.120-day.png'
     # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)

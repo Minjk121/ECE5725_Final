@@ -281,7 +281,8 @@ def updateScreen(route=[]):
         # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8)))
         # dashboard_hall = my_text
         mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
-        name_lst = mult_webscraper.convert_df_to_name_lst(congestion_df, dashboard_hall)
+        # name_lst = mult_webscraper.convert_df_to_name_lst(congestion_df, dashboard_hall)
+        name_lst = space_list
         change_orientation = False
         count = 1
         count_2 = 1
@@ -319,7 +320,7 @@ def updateScreen(route=[]):
                 name_info = create_text_box(names+":  ", SKYBLUE, SKYBLUE, 10, 10)
                 # traff_info = create_text_box(str(congestion_data[names]), SKYBLUE, SKYBLUE, 10, 10)
                 if count >=6:
-                    screen.blit(name_info, (int(screen_width/8)*4+30, int(screen_height/6) * count_2-30))
+                    screen.blit(name_info, (int(screen_width/8)*4+100, int(screen_height/6) * count_2-30))
                     count_2+=1
                 else:
                     screen.blit(name_info, (int(screen_width/4)+50, int(screen_height/6) * count-30))

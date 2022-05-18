@@ -284,6 +284,7 @@ def updateScreen(route=[]):
         count = 1
         count_2 = 1
         text_surface = create_text_box(dashboard_hall.upper(), YELLOW, YELLOW, 10, 10)
+        # text_info = create_text_box("", SKYBLUE, SKYBLUE, 10, 10)
         screen.blit(text_surface, (int(screen_width/2)-30,int(screen_height/8-50)))
         df = congestion_df_dashboard
         for index, images in enumerate(mrtg_lst):
@@ -291,7 +292,7 @@ def updateScreen(route=[]):
             print("INDEX ISSSSS: ", index)
             mrtg_graph = pygame.image.load("./img/"+images)
             text_surface = create_text_box(images.replace("png",''), SKYBLUE, SKYBLUE, 10, 10)
-            text_info = create_text_box(mult_webscraper.in_out_by_hall(df, images, index), SKYBLUE, SKYBLUE, 10, 10)
+            text_info = create_text_box(mult_webscraper.in_out_by_hall(df, images), SKYBLUE, SKYBLUE, 10, 10)
             
             if count >= 6:
                 screen.blit(mrtg_graph, (int(screen_width/8)*4+30, int(screen_height/6) * count_2))

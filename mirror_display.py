@@ -54,7 +54,7 @@ congestion_menu={'Phillips':(0.593*screen_width,0.345*screen_height),'Duffield':
 
 # the space list colors have been renamed so that we can actually sort them; 1 = green, 2 = yellow, 3 = red
 space_list={'Duffield atrium':'1','ECE lounge':'1','Upson 2nd floor':'1','Upson 3rd floor':'1','CIS lounge':'1','Rhodes 3rd floor':'1','Rhodes 4th floor':'1','Rhodes 5th floor':'1'}
-space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width,0.278*screen_height),3:(0.521*screen_width,0.463*screen_height),4:(0.521*screen_width,0.648*screen_height),5:(0.521*screen_width,0.833*screen_height)}
+space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width,0.278*screen_height),3:(0.521*screen_width,0.463*screen_height),4:(0.521*screen_width,0.648*screen_height),5:(0.521*screen_width,0.833*screen_height),"main menu":(0.781*screen_width,0.926*screen_height)}
 # space_list_pos={1:(1000,100),2:(1000,300),3:(1000,500),4:(1000,700),5:(1000,900)}
 # space_list_pos={'1':(1000,100),'2':(1000,300),'3':(1000,500),'4':(1000,700),'5':(1000,900), 'main menu': (1500, 1000)}
 
@@ -163,7 +163,7 @@ def updateSurfaceAndRect_StudySpace():
     
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
-    rect = text_surface.get_rect(center=congestion_menu['main menu'])
+    rect = text_surface.get_rect(center=space_list_pos['main menu'])
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
 
@@ -231,7 +231,7 @@ def draw_route_on_map(route):
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
     rect = text_surface.get_rect(center=tuple(map(int,congestion_menu['main menu'])))
     screen.blit(text_surface, rect)
-    menu_buttons_rect['main menu'] = rect
+    congestion_buttons_rect['main menu'] = rect
 
 def drawDashboard(hall_name):
     mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, hall_name)

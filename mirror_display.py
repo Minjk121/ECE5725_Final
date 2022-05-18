@@ -320,12 +320,12 @@ def updateScreen(route=[]):
                 name_info = create_text_box(names+":  ", SKYBLUE, SKYBLUE, 10, 10)
                 traff_info = create_text_box(str(congestion_data[names])+"Mb/s", SKYBLUE, SKYBLUE, 10, 10)
                 if count >=6:
-                    screen.blit(name_info, (int(screen_width/8)*4+300, int(screen_height/6) * count_2-30))
+                    screen.blit(name_info, (int(screen_width/8)*4+270, int(screen_height/6) * count_2-30))
                     screen.blit(traff_info, (int(screen_width/8)*4+400, int(screen_height/6) * count_2-30))
                     count_2+=1
                 else:
                     screen.blit(name_info, (int(screen_width/4)+50, int(screen_height/6) * count-30))
-                    screen.blit(traff_info, (int(screen_width/8)+400, int(screen_height/6) * count-30))
+                    screen.blit(traff_info, (int(screen_width/8)+370, int(screen_height/6) * count-30))
                 count+=1
                 
 

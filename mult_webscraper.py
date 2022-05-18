@@ -157,7 +157,7 @@ def in_out_by_hall(df, hall_name, index=0):
     s = filtered_df.iloc[0]
     s = s.astype('string')
     # print(type(s))
-    # print(s)
+    print(s)
     # if num > 0: 
     #     filtered_df = filtered_df[number]
     # fig, ax = plt.subplots()

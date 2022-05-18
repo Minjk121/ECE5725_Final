@@ -202,8 +202,8 @@ def main():
             ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes5-1-5400.25.html', 'Rhodes 5th floor'),
             ]
 
-    # df = convert_url_to_df(urls)[0]
-    # # print(df)
+    df = convert_url_to_df(urls)[0]
+    print(df)
 
     # df = convert_url_to_df(urls)[1]
     

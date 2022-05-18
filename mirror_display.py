@@ -238,20 +238,14 @@ def draw_route_on_map(route):
 def drawDashboard(hall_name):
     mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, hall_name)
     count = 1
-    # for images in mrtg_lst:
+    for images in mrtg_lst:
     #     # draw mrtg graphs
     #     response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
     #     file = open("sample_image.png", "wb")
     #     file.write(response.content)
     #     file.close()
-    response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120-day.png")
-
-    file = open("sample_image.png", "wb")
-    file.write(response.content)
-    file.close()
-    mrtg_graph = pygame.image.load('sample_image.png')
-    # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
-    screen.blit(mrtg_graph, 0,0)
+        mrtg_graph = pygame.image.load(images)
+        screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
         # draw tables
         
 

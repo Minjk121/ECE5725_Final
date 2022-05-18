@@ -141,6 +141,12 @@ def convert_url_to_df(urls):
          'In': daily_in,
          'Out': daily_out
         })
+    for images in mrtg_lst:
+        # draw mrtg graphs
+        response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
+        file = open(images, "wb")
+        file.write(response.content)
+        file.close()
     # df_daily_in_out.swapaxes("index", "columns")
     return df_whole, df_daily_in_out
 

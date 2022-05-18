@@ -150,18 +150,21 @@ def convert_url_to_df(urls):
     # df_daily_in_out.swapaxes("index", "columns")
     return df_whole, df_daily_in_out
 
-# gets dashboard dataframe & returns txt file of traffic rates in hall
-def in_out_by_hall(df, hall_name, num=0, number=0):
+# gets dashboard dataframe & returns string of traffic rates in hall
+def in_out_by_hall(df, hall_name, index=0):
     filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
-    filtered_df = filtered_df[['Info','In','Out']].swapaxes("index", "columns")
-
+    filtered_df = filtered_df[['Info','In','Out']]
+    s = filtered_df.iloc[0].to_string()
+    # print(type(s))
+    # print(s)
     # if num > 0: 
     #     filtered_df = filtered_df[number]
-    fig, ax = plt.subplots()
-    table = ax.table(cellText=filtered_df.values, colLabels=filtered_df.columns, loc='center')
-    fig.tight_layout()
-    plt.show()
-    plt.savefig('table.png', dpi=300, bbox_inches='tight')
+    # fig, ax = plt.subplots()
+    # table = ax.table(cellText=filtered_df.values, colLabels=filtered_df.columns, loc='center')
+    # fig.tight_layout()
+    # plt.show()
+    # plt.savefig('table.png', dpi=300, bbox_inches='tight')
+    return filtered_df
 
     
 
@@ -194,10 +197,10 @@ def main():
     # df = convert_url_to_df(urls)[0]
     # # print(df)
 
-    # df = convert_url_to_df(urls)[1]
-    # # print(df)
-    # print(in_out_by_hall(df, "upson",3,1))
+    df = convert_url_to_df(urls)[1]
     
+    # print(df['upson'])
+    in_out_by_hall(df, "upson")   
 
     # images = 'duffield2-5400.120-day.png'
     # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)

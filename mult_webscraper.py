@@ -154,7 +154,8 @@ def convert_url_to_df(urls):
 def in_out_by_hall(df, hall_name, index=0):
     filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
     filtered_df = filtered_df[['Info','In','Out']]
-    s = filtered_df.iloc[0].to_string()
+    s = filtered_df.iloc[0]
+    s = s.to_string()
     # print(type(s))
     # print(s)
     # if num > 0: 

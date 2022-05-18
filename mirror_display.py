@@ -450,5 +450,5 @@ while (time.time() < end_time):
         break
     # panic button
     if ( not GPIO.input(13) ):
+        pygame.quit()
         sys.exit()
-pygame.quit()

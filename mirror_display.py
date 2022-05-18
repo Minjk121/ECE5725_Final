@@ -7,7 +7,7 @@ import pygame
 from pygame.locals import * # for event MOUSE variables
 import os
 import mult_webscraper
-import datetime
+from datetime import datetime
 import requests
 import pygame.display
 
@@ -140,7 +140,7 @@ def updateSurfaceAndRect(buttons):
         # add time to the screen!
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
-        text_surface = create_text_box(current_time, WHITE, SKYBLUE, 50,50)
+        text_surface = create_text_box(current_time, WHITE, BLACK, 50,50)
         rect = text_surface.get_rect(center=tuple(map(int,(0.373*screen_width,0.417*screen_height))))
         screen.blit(text_surface, rect)
     

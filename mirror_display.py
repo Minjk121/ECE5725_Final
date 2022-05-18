@@ -140,7 +140,7 @@ def updateSurfaceAndRect(buttons):
         # add time to the screen!
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
-        my_font = pygame.font.Font(None, 40) 
+        my_font = pygame.font.Font(None, 100) 
         text_surface = my_font.render(current_time, True, WHITE)
         rect = text_surface.get_rect(center=tuple(map(int,(0.373*screen_width,0.417*screen_height))))
         screen.blit(text_surface, rect)

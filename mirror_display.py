@@ -81,6 +81,7 @@ level_green = 0.0
 screen.fill(BLACK) # erase the workspace
 menu_buttons_rect={} 
 graph_buttons_rect={}
+congestion_button_rect={}
 space_buttons_rect={}
 
 menu_level = 1  # start on "main menu"
@@ -123,7 +124,10 @@ def updateSurfaceAndRect(buttons):
         text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50,50)
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
-        menu_buttons_rect[my_text] = rect
+        if (menu_level == 1):
+            menu_buttons_rect[my_text] = rect
+        elif (menu_level == 2):
+            congestion_button_rect[my_text] = rect
 
     if menu_level == 2:
         #print("congestion menu clicked")
@@ -141,30 +145,27 @@ def updateSurfaceAndRect(buttons):
 # we will only consider the top five least congested areas for study space recommendations
 # default ordering is in alphabetical order, such that popular spaces like CIS lounge, ECE lounge, and Duffield
 # always show up near the top (if all else are equal)
-# function takes no inputs, return top tier list
+# function takes no inputs, return nothing, in-line edit recommend_spaces_list for top 4 study spaces
 def updateSurfaceAndRect_StudySpace():
     #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
-    recommended_spaces = []
     for space, v in sorted(space_list.items()):
-        if (index < 6):
+        if (index < 5):
             congestion_colors = ['green','yellow','red']
             congestion_level = congestion_colors[int(v)-1]
             displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
             text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
             rect = text_surface.get_rect(center=space_list_pos[index])
             screen.blit(text_surface, rect)
-            menu_buttons_rect[space] = rect
+            space_buttons_rect[space] = rect
             index += 1
-            recommended_spaces.append(space)
+            recommended_spaces_list.append(space)
     
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
     rect = text_surface.get_rect(center=congestion_menu['main menu'])
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
-
-    return recommended_spaces
 
 
 # helper function to determine the route from outside of the engineering quad buildings to a specified study "space"
@@ -223,12 +224,12 @@ def draw_route_on_map(route):
         text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
-        menu_buttons_rect[my_text] = rect
+        #menu_buttons_rect[my_text] = rect
     
 
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
-    rect = text_surface.get_rect(center=congestion_menu['main menu'])
+    rect = text_surface.get_rect(center=tuple(map(int,congestion_menu['main menu'])))
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
 
@@ -263,8 +264,8 @@ def updateScreen(route=[]):
         updateSurfaceAndRect(congestion_menu)
     elif menu_level == 3: # study spaces
         determine_congestion_level()
-        #recommended_spaces_list = updateSurfaceAndRect_StudySpace()
-        updateSurfaceAndRect_StudySpace()
+        recommended_spaces_list = updateSurfaceAndRect_StudySpace()
+        #updateSurfaceAndRect_StudySpace()
 
     elif menu_level == 5:
         # map is shown properly on monitor
@@ -315,7 +316,16 @@ while (time.time() < end_time):
         elif (event.type is MOUSEBUTTONUP):
             pos = pygame.mouse.get_pos()
             x,y = pos
-            for (my_text, rect) in menu_buttons_rect.items():
+            buttons_rect_list = {}
+            if (menu_level == 1):
+                buttons_rect_list = menu_buttons_rect
+            if (menu_level == 2):
+                buttons_rect_list = congestion_button_rect
+            if (menu_level == 3):
+                buttons_rect_list = space_buttons_rect
+            else:
+                buttons_rect_list = menu_buttons_rect
+            for (my_text, rect) in buttons_rect_list.items():
                 if (rect.collidepoint(pos)):
                     if (my_text=='congestion map'):
                         # print('hit congestion map')
@@ -349,7 +359,7 @@ while (time.time() < end_time):
                         break
                     # congestion map clicked & shows dashboard (menu 2->4)
                     # TODO: check if this works
-                    if (my_text in congestion_menu) and (menu_level == 2):
+                    if (my_text in congestion_menu):
                         menu_level = 4
                         drawDashboard(my_text)
                         # tempText = my_text
@@ -360,7 +370,7 @@ while (time.time() < end_time):
                         break
                     
                     #TODO: check in lab if this works! it should show a map & draw lines between the recommended route
-                    if (my_text in space_list) and (menu_level == 3):
+                    if (my_text in space_list):
                         menu_level = 5
                         # tempText = my_text
                         # menu_buttons['study spaces'] = menu_buttons.pop('main menu')
@@ -377,40 +387,57 @@ while (time.time() < end_time):
     
     # for button presses, when doing "remote control" of the menu
     # if in congestion map, the buttons are top-to-bottom sequential
+    if (menu_level == 1):
+        if ( not GPIO.input(27) ):
+            menu_level = 2 #go to congestion map
+            updateScreen()
+            break
+        if ( not GPIO.input(23) ):
+            menu_level = 3 #go to study spaces
+            hall_name = my_text.lower()
+            updateScreen()
+            break
+
     if (menu_level == 2):
-        menu_level = 4 #go to dashboard
         if ( not GPIO.input(27) ): # Phillips
+            menu_level = 4 #go to dashboard
             drawDashboard("Phillips")
             updateScreen()
             break
         if ( not GPIO.input(23) ): # Duffield
+            menu_level = 4 #go to dashboard
             drawDashboard("Duffield")
             updateScreen()
             break
         if ( not GPIO.input(22)): # Upson
+            menu_level = 4 #go to dashboard
             drawDashboard("Upson")
             updateScreen()
             break
         if ( not GPIO.input(17)): #Rhodes
+            menu_level = 4 #go to dashboard
             drawDashboard("Rhodes")
             updateScreen()
             break
     if (menu_level == 3):
-        menu_level = 5 #go to routing
         if ( not GPIO.input(27) ):
             route = determine_route(recommended_spaces_list[0])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
         if ( not GPIO.input(23)):
             route = determine_route(recommended_spaces_list[1])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
         if ( not GPIO.input(22)):
             route = determine_route(recommended_spaces_list[2])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
         if ( not GPIO.input(17)):
             route = determine_route(recommended_spaces_list[3])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
     

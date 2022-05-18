@@ -169,7 +169,7 @@ def in_out_by_hall(df, hall_name, index=0):
     # fig.tight_layout()
     # plt.show()
     # plt.savefig('table.png', dpi=300, bbox_inches='tight')
-    return str1+'\n'+str2+'\n'+str3
+    return str1#+'\n'+str2+'\n'+str3
 
     
 

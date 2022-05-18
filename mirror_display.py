@@ -227,7 +227,7 @@ def draw_route_on_map(route):
 
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
-    rect = text_surface.get_rect(center=congestion_menu['main menu'])
+    rect = text_surface.get_rect(center=tuple(map(int,congestion_menu['main menu'])))
     screen.blit(text_surface, rect)
     menu_buttons_rect['main menu'] = rect
 

@@ -111,7 +111,8 @@ def update_congestion_data():
 def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
     if text_color == SKYBLUE: 
         my_font = pygame.font.Font(None, 25) 
-    else: my_font = pygame.font.Font(None, 40) # 25
+    else: 
+        my_font = pygame.font.Font(None, 40) # 25
     text_surface = my_font.render(displayString, True, text_color)
     box_surface = pygame.Surface(text_surface.get_rect().inflate(margin_x, margin_y).size)
     box_surface.fill(BLACK)
@@ -315,7 +316,7 @@ def updateScreen(route=[]):
         else:
             for names in name_lst:
                 name_info = create_text_box(names, SKYBLUE, SKYBLUE, 10, 10)
-                traff_info = create_text_box(congestion_data[names], SKYBLUE, SKYBLUE, 10, 10)
+                traff_info = create_text_box(str(congestion_data[names]), SKYBLUE, SKYBLUE, 10, 10)
                 screen.blit(name_info+":  ", (int(screen_width/8)+50, int(screen_height/6) * count-30))
                 screen.blit(traff_info, (int(screen_width/8)+100, int(screen_height/6) * count-30))
                 count+=1

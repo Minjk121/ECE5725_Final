@@ -262,6 +262,7 @@ def updateScreen(route=[]):
         determine_congestion_level()
         # map is shown properly on monitor
         campus_map = pygame.image.load('./img/map.png')
+        campus_map = pygame.image.load("./img/duffield2-5400.120-day.png")
         campus_map = pygame.transform.scale(campus_map, (screen_width, screen_height)) # TODO: change to full screen & update coordinates of halls
         screen.blit(campus_map, (0,0))
         updateSurfaceAndRect(congestion_menu)

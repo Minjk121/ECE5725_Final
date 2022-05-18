@@ -8,6 +8,7 @@ from pygame.locals import * # for event MOUSE variables
 import os
 import mult_webscraper
 import datetime
+import requests
 
 ## pygame/piTFT setup
 os.putenv('SDL_VIDEODRIVER','fbcon') 
@@ -236,9 +237,14 @@ def drawDashboard(hall_name):
     count = 1.0
     for images in mrtg_lst:
         # draw mrtg graphs
-        mrtg_graph = pygame.image.load(images)
+        response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
+        file = open("sample_image.png", "wb")
+        file.write(response.content)
+        file.close()
+        mrtg_graph = pygame.image.load('sample_image.png')
         screen.blit(mrtg_graph, (screen_width/8.0, (screen_height/8.0) * count))
         # draw tables
+        
 
 # general all-purpose use helper function to update screen
 # OPTIONAL input argument: route, so that we can continue to use updateScreen as a generalized function

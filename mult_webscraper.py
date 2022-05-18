@@ -145,20 +145,24 @@ def convert_url_to_df(urls):
     return df_whole, df_daily_in_out
 
 # gets dashboard dataframe & returns txt file of traffic rates in hall
-def in_out_by_hall(df, hall_name):
-    filter = df['Hall Name'] == hall_name.lower()
-    filtered_df = df.loc[filter]
+def in_out_by_hall(df, hall_name, num=0, number=0):
+    filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
     filtered_df = filtered_df[['Info','In','Out']].swapaxes("index", "columns")
 
+    # if num > 0: 
+    #     filtered_df = filtered_df[number]
     fig, ax = plt.subplots()
-    table = ax.table(cellText=df.values, colLabels=df.columns, loc='center')
-    # open('./table.txt', 'w').write(tabulate(table))
-    # with open('table.txt', 'w') as f:
-    #     f.write(tabulate(table))
-    # print(table)
-    # return 'table.txt'
+    table = ax.table(cellText=filtered_df.values, colLabels=filtered_df.columns, loc='center')
+    fig.tight_layout()
+    plt.show()
+    plt.savefig('table.png', dpi=300, bbox_inches='tight')
 
-# in mirror_display:
+    
+
+# # in mirror_display:
+# def chart():
+#     chart_txt = font.render(table.txt, True, WHITE)
+#     screen.blit(chart_txt, ((400 - (chart_txt.get_width()/2)),(300 - (chart_txt.get_height()/2))))
 
     
 def main():
@@ -183,12 +187,19 @@ def main():
 
     # df = convert_url_to_df(urls)[0]
     # # print(df)
-    # df = convert_url_to_df(urls)[1]
+
+    df = convert_url_to_df(urls)[1]
     # # print(df)
-    # print(in_out_by_hall(df, "upson"))
+    print(in_out_by_hall(df, "upson",3,1))
     
-    # print(convert_df_to_graph_lst(df, 'Upson'))
-    # save_df_as_image(df)
+
+    # images = 'duffield2-5400.120-day.png'
+    # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
+    # # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120-day.png")
+
+    # file = open("sample_image.png", "wb")
+    # file.write(response.content)
+    # file.close()
    
     return convert_url_to_df(urls)[0], convert_url_to_df(urls)[1]
     

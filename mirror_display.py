@@ -371,6 +371,7 @@ while (time.time() < end_time):
                         menu_level = 4
                         dashboard_hall = my_text
                         mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
+                        print(mrtg_lst)
                         count = 1
                         for images in mrtg_lst:
                         #     # draw mrtg graphs

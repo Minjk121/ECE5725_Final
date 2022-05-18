@@ -538,5 +538,7 @@ while (time.time() < end_time):
         pygame.quit()
         sys.exit()
 
-    # update for the time
-    updateScreen()
+    
+    if (menu_level==1):
+        # update screen for time
+        updateScreen()

@@ -281,8 +281,8 @@ def updateScreen(route=[]):
         # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8)))
         # dashboard_hall = my_text
         mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
-        # name_lst = mult_webscraper.convert_df_to_name_lst(congestion_df, dashboard_hall)
-        name_lst = space_list
+        name_lst = mult_webscraper.convert_df_to_name_lst(congestion_df, dashboard_hall)
+        # name_lst = space_list
         change_orientation = False
         count = 1
         count_2 = 1

@@ -372,39 +372,45 @@ while (time.time() < end_time):
     # for button presses, when doing "remote control" of the menu
     # if in congestion map, the buttons are top-to-bottom sequential
     if (menu_level == 2):
-        menu_level = 4 #go to dashboard
         if ( not GPIO.input(27) ): # Phillips
+            menu_level = 4 #go to dashboard
             drawDashboard("Phillips")
             updateScreen()
             break
         if ( not GPIO.input(23) ): # Duffield
+            menu_level = 4 #go to dashboard
             drawDashboard("Duffield")
             updateScreen()
             break
         if ( not GPIO.input(22)): # Upson
+            menu_level = 4 #go to dashboard
             drawDashboard("Upson")
             updateScreen()
             break
         if ( not GPIO.input(17)): #Rhodes
+            menu_level = 4 #go to dashboard
             drawDashboard("Rhodes")
             updateScreen()
             break
     if (menu_level == 3):
-        menu_level = 5 #go to routing
         if ( not GPIO.input(27) ):
             route = determine_route(recommended_spaces_list[0])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
         if ( not GPIO.input(23)):
             route = determine_route(recommended_spaces_list[1])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
         if ( not GPIO.input(22)):
             route = determine_route(recommended_spaces_list[2])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
         if ( not GPIO.input(17)):
             route = determine_route(recommended_spaces_list[3])
+            menu_level = 5 #go to routing
             updateScreen(route)
             break
     

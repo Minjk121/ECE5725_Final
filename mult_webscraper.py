@@ -154,10 +154,14 @@ def convert_url_to_df(urls):
 def in_out_by_hall(df, hall_name, index=0):
     filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
     filtered_df = filtered_df[['Info','In','Out']]
-    s = filtered_df.iloc[0]
-    s = s.astype('string')
+    s = filtered_df.values.tolist()
     # print(type(s))
-    print(s)
+    s_each = s[index]
+    # print(s_each)
+    str1 = '         '.join(s_each[0])
+    str2 = ' '.join(s_each[1])
+    str3 = ' '.join(s_each[2])
+    # print(str1+'\n'+str2+'\n'+str3)
     # if num > 0: 
     #     filtered_df = filtered_df[number]
     # fig, ax = plt.subplots()
@@ -165,7 +169,7 @@ def in_out_by_hall(df, hall_name, index=0):
     # fig.tight_layout()
     # plt.show()
     # plt.savefig('table.png', dpi=300, bbox_inches='tight')
-    return filtered_df
+    return str1+'\n'+str2+'\n'+str3
 
     
 

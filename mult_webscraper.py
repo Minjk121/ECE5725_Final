@@ -151,23 +151,23 @@ def convert_url_to_df(urls):
     return df_whole, df_daily_in_out
 
 # gets dashboard dataframe & returns string of traffic rates in hall
-def in_out_by_hall(df, hall_name, index=0):
-    filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
-    filtered_df = filtered_df[['Info','In','Out']]
-    # filtered_df = filtered_df[['Info','In','Out']]
-    s = filtered_df.values.tolist()
-    # print(type(s))
-    print("HERE index:",index)
-    print(s)
-    s_each = s[0]
+# def in_out_by_hall(df, hall_name, index=0):
+#     filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
+#     filtered_df = filtered_df[['Info','In','Out']]
+#     # filtered_df = filtered_df[['Info','In','Out']]
+#     s = filtered_df.values.tolist()
+#     # print(type(s))
+#     print("HERE index:",index)
+#     print(s)
+#     s_each = s[0]
     
-    print(len(s))
-    # print(s_each)
-    str1 = '         '.join(s_each[0])
-    str2 = ' '.join(s_each[1])
-    str3 = ' '.join(s_each[2])
+#     print(len(s))
+#     # print(s_each)
+#     str1 = '         '.join(s_each[0])
+#     str2 = ' '.join(s_each[1])
+#     str3 = ' '.join(s_each[2])
 
-    return str1#+'\n'+str2+'\n'+str3
+#     return str1#+'\n'+str2+'\n'+str3
 
     
 

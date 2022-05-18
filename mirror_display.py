@@ -136,6 +136,14 @@ def updateSurfaceAndRect(buttons):
         elif (menu_level == 2):
             congestion_buttons_rect[my_text] = rect
 
+    if menu_level == 1:
+        # add time to the screen!
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        text_surface = create_text_box(current_time, WHITE, SKYBLUE, 50,50)
+        rect = text_surface.get_rect(center=tuple(map(int,(0.373*screen_width,0.417*screen_height))))
+        screen.blit(text_surface, rect)
+    
     if menu_level == 2:
         #print("congestion menu clicked")
         for study_space, text_pos in buttons.items():

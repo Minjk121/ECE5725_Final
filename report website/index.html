@@ -67,7 +67,7 @@
 
       <hr>
       <div class="center-block">
-          <iframe width="640" height="360" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+          <iframe width="640" height="360" src="https://www.youtube.com/watch?v=GuM8vTq0jd4" frameborder="0" allowfullscreen></iframe>
           <h4 style="text-align:center;">Demonstration Video</h4>
       </div>
 
@@ -83,7 +83,8 @@
 
       <div class="row">
           <div class="col-md-4" style="text-align:center;">
-          <img class="img-rounded" src="pics/network_graph.PNG" alt="example network graph" width="240" height="240">
+          <img class="img-rounded" src="img/network_graph.PNG" alt="example network graph" width="240" height="240">
+          <br><span style="text-align:center;">Example MRTG Graph Data</span>
           </div>
           <div class="col-md-8" style="font-size:18px;">
           <h2>Project Objective:</h2>
@@ -103,6 +104,8 @@
               <h3>Phase 1: Data Acquisition</h3>
               <p style="text-align: left;padding: 0px 30px;">This project has multiple moving parts. There is the data collection portion, which necessitates a way to pull the website traffic data from the individual Wireless APs that are scattered through campus, in rooms and in hallways. At first, we wanted to get a representation of this kind of network data by pinging the individual APs and comparing the ping latency against a calibrated threshold for an idea of how saturated with traffic the AP was. However, we soon found that due to the structure of the campus WiFi network, this nature of sleuthing was prohibitively difficult. The campus network are organized into clusters called <i>Nodes</i>, which are intra-building uplinks within each building's network room. Within each node (of which there are nine, ranging in geographical location from Clara Dickson to Goldwin Smith to Faris), individual buildings such as Phillips or Rhodes are serviced.</p>
               <p style="text-align: left;padding: 0px 30px;">In the end, we utilized the MRTG website and information as provided to us by Cornell IT. In this way we were able to find the actual incoming and outgoing data traffic (in kb/s or Mb/s) in real time of individual access points. Thus we were able to find the actual network traffic data to correlate to the level of campus congestion in different areas of campus, which we imported into a Pandas DataFrame using a webscraper and collated by physical location (determined by fieldwork, as the APs are sometimes named opaquely, such as RHODES-30042-3-AP: an AP in a hallway on the third floor of Rhodes).</p>
+              <br><img src="img/rhodes_hallway_access_point.jpg" alt="route hallway access point" style="border:1px solid #000;width:30%;">
+              <br><span style="text-align:center;">Rhodes Hallway Access Point</span>
               <br>
 
               <h3>Phase 2: Data Processing</h3>
@@ -112,7 +115,7 @@
               <h3>Phase 3: User Interface Decisions</h3>
               <p style="text-align: left;padding: 0px 30px;">We wanted to use a smart mirror. However, in the testing process we foudn out that this would have been stretching the timeline, so we dropped it. There is more information in the Testing section about this design decision.</p>
               <p style="text-align: left;padding: 0px 30px;">We briefly considered somehow uploading our map and associated work to a webserver so that any student on the RedRover WiFi would be able to access the data and congestion map. We researched into various ways to do this, including setting up an Apache webserver on the Raspberry Pi to host a website. However, we ran into difficulties doing this, and  in the interest of time eventually decided to not utilize webservers. More information about the testing that occurred before making this design decision can be found in the Testing section.</p>
-              <p style="text-align: left;padding: 0px 30px;">The current project desing utilizes a piTFT and monitor-based user interface. The mouse allows the user to physically click buttons on the monitor to select options on a menu, as well as offering buttons on the piTFT to do the same. <span style="background-color:yellow;">COME AND FINISH THIS</span></p>              
+              <p style="text-align: left;padding: 0px 30px;">The current project desing utilizes a piTFT and monitor-based user interface. The mouse allows the user to physically click buttons on the monitor to select options on a menu, as well as offering buttons on the piTFT to do the same. The following buttons allow for <span style="background-color:yellow;">COME AND FINISH THIS</span></p>              
       </div>
 
     <hr id='drawings'>
@@ -120,7 +123,8 @@
       <div style="text-align:center;">
               <h2><span style="background-color:yellow;">Drawings: NEED TO WRITE</span></h2>
               <p style="text-align: left;padding: 0px 30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nulla, consectetur at leo vel, pretium bibendum nisl. Cras blandit quam a enim ultrices, eu convallis enim posuere. Donec eleifend enim sed purus consectetur, vitae cursus lectus varius. Vivamus consectetur felis nec est venenatis posuere. Phasellus vitae aliquet erat. In laoreet lacinia mollis. Quisque iaculis nisl fermentum pharetra lobortis. Donec rhoncus dui sem, ac molestie leo tristique vel. Phasellus in nibh feugiat, fringilla lectus in, elementum magna. Etiam quis dui condimentum, tempus ex in, dapibus est. Cras ut congue augue. Donec ac enim ex. Ut id tristique risus, vel porttitor quam. Sed ultricies enim eu nibh porttitor, vel sodales enim feugiat. Fusce volutpat venenatis magna ac ultrices. Curabitur eget urna ut nulla mattis convallis non eu diam.</p>
-              <img src="pics/route_calculation_flowchart.PNG" alt="route calculation flowchart" style="border:1px solid #000;">
+              <img src="img/route_calculation_flowchart.PNG" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
+              <br><span style="text-align:center;">Route Calculation Logic Flowchart</span>
       </div>
 
     <hr id='testing'>
@@ -146,11 +150,11 @@
     <div class="row" style="text-align:center;">
           <h2>Work Distribution</h2>
           <div style="text-align:center;">
-              <img class="img-rounded" src="pics/group.jpg" alt="Generic placeholder image" style="width:80%;">
+              <img class="img-rounded" src="img/group.jpg" alt="Generic placeholder image" style="width:80%;">
               <h4>Project Group Picture</h4>
           </div>
           <div class="col-md-6" style="font-size:16px">
-              <img class="img-rounded" src="pics/a.png" alt="Generic placeholder image" width="240" height="240">
+              <img class="img-rounded" src="img/a.png" alt="Generic placeholder image" width="240" height="240">
               <h3>Minjung Kwon</h3>
               <p class="lead">mk2592@cornell.edu</p>
               <p>Circuit Design</p>
@@ -158,7 +162,7 @@
               <p>Program implementation</p>
           </div>
           <div class="col-md-6" style="font-size:16px">
-              <img class="img-rounded" src="pics/b.png" alt="Generic placeholder image" width="240" height="240">
+              <img class="img-rounded" src="img/b.png" alt="Generic placeholder image" width="240" height="240">
               <h3>Esther In</h3>
               <p class="lead">ei53@cornell.edu</p>
               <p>Program design</p>

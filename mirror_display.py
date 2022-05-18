@@ -61,9 +61,7 @@ space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width
 recommended_spaces_list = [] 
 
 # congestion_data contains study spaces + halls
-df = mult_webscraper.main()
-congestion_df = df[0] # data frame
-congestion_df_dashboard = df[1] # data frame
+congestion_df = mult_webscraper.main() # data frame
 congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
 ''' 
 {'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
@@ -99,8 +97,8 @@ def determine_congestion_level():
 
 # updates and returns dictionary type of congestion data
 def update_congestion_data():
-    df = mult_webscraper.main() # data frame (df1, df2)
-    return mult_webscraper.convert_df_to_dict(df[0])
+    df = mult_webscraper.main() # data frame
+    return mult_webscraper.convert_df_to_dict(df)
 
 # creates a margin between text and text box
 def create_text_box(displayString, text_color, box_color, margin_x, margin_y):
@@ -257,7 +255,8 @@ def updateScreen(route=[]):
         updateSurfaceAndRect(congestion_menu)
     elif menu_level == 3: # study spaces
         determine_congestion_level()
-        recommended_spaces_list = updateSurfaceAndRect_StudySpace()
+        #recommended_spaces_list = updateSurfaceAndRect_StudySpace()
+        updateSurfaceAndRect_StudySpace()
 
     elif menu_level == 5:
         # map is shown properly on monitor
@@ -266,6 +265,7 @@ def updateScreen(route=[]):
         screen.blit(campus_map, (0,0))
         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
         # until then, here's a placeholder variable for route
+        route = determine_route(my_text)
         draw_route_on_map(route)
         
     pygame.display.flip()
@@ -358,8 +358,9 @@ while (time.time() < end_time):
                         # menu_buttons['study spaces'] = menu_buttons.pop('main menu')
                         # newText = my_text
                         # newRect = rect
-                        route = determine_route(my_text)
-                        updateScreen(route)
+                        #route = determine_route(my_text)
+                        #updateScreen(route)
+                        updateScreen()
                         break
                     if (my_text=='quit'):
                         sys.exit()

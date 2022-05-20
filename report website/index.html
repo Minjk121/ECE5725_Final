@@ -133,12 +133,12 @@
 
               <h3>Phase 4: Route Recommendation Logic</h3>
               <p style="text-align: left;padding: 0px 30px;">Recommending a route to a study space, given a study space that a user has selected, was one of the things that we knew we wanted to do at the beginning of the project. Our plan was to have a finite state machine, or flow chart, of logic that would be reasonable given the information about campus congestion available. As noted earlier in this report, we correlated the network traffic data at the AP level with the amount of campus congestion, by physically going into the study space or room and noting the amount of congestion, as well as the quantified traffic data.</p>
-              <p style="text-align: left;padding: 0px 30px;">We defined the three levels of campus congestion as follows:
+              <p style="text-align: left;padding: 0px 30px;">We defined the three levels of campus congestion as follows:</p>
                 <ul style="text-align:left;">
                   <li><b>Green:</b> easy to find a table or place to sit</li>
                   <li><b>Yellow:</b> need to search for a table, but there are still a few immediately available</li>
                   <li><b>Red:</b> there are no tables or spots available in the space</li>
-                </ul></p>
+                </ul>
 
               <p style="text-align: left;padding: 0px 30px;">More information about how we implemented this can be found in the Drawings section, under Route Calculation Logic.</p>
               <br>
@@ -149,7 +149,7 @@
 
       <div style="text-align:center;">
               <h2>Drawings</h2>
-              <img src="img/software schematics.png" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
+              <img src="img/software_schematics.png" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
               <br><span style="text-align:center;">Software Flowchart. The green box indicates the mirror_display.py, and blue arrow shows the flow of the traffic data from the website.</span>
               <h3>mult_webscraper.py</h3>
               <p style="text-align: left;padding: 0px 30px;">mult_webscraper.py gets daily incoming and outgoing data traffic, port name, hall name and graph image from the mrtg.cit.cornell.edu. It returns the information in data frame and filters to get a certain information. There are multiple helper function that converts data type into dictionary type, list of graphs, list of hall names and images downloaded in img directory. Whenever the main function runs, the whole data are updated from the Cornell CIT website.  </p>

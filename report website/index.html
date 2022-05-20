@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Campus Congestion</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -87,7 +87,7 @@
           <br><span style="text-align:center;">Example MRTG Graph Data</span>
           </div>
           <div class="col-md-8" style="font-size:18px;">
-          <h2>Project Objective:</h2>
+          <h2>Project Objective</h2>
           <ul>
             <li>Access the data from the different APs that are present in a room </li>
             <li>Create a graphical representation over a map of the level of campus congestion in common areas</li>
@@ -127,7 +127,22 @@
                 <br><img src="img/button_display.PNG" alt="buttons on piTFT" style="border:1px solid #000;width:50%;">
                 <br><span style="text-align:center;">Buttons on piTFT</span>
               <br>
-              <p style="text-align: left;padding: 0px 30px;"><span style="background-color:yellow;">COME AND FINISH THIS</span></p>              
+              <p style="text-align: left;padding: 0px 30px;">As such, for an example, in the Congestion Map menu the first button (27) would correspond to Phillips, the second (23) to Duffield, the third (22) to Upson, and the last (17) to Rhodes.</p>
+              <p style="text-align: left;padding: 0px 30px;">Clicking the "buttons" on the monitor with the mouse will also allow the user to select options. Buttons are denoted by white font text and light blue outlines. There are buttons on the main menu, Congestion Map, Study Space list, and Route Recommendation. </p>
+              <br>
+
+              <h3>Phase 4: Route Recommendation Logic</h3>
+              <p style="text-align: left;padding: 0px 30px;">Recommending a route to a study space, given a study space that a user has selected, was one of the things that we knew we wanted to do at the beginning of the project. Our plan was to have a finite state machine, or flow chart, of logic that would be reasonable given the information about campus congestion available. As noted earlier in this report, we correlated the network traffic data at the AP level with the amount of campus congestion, by physically going into the study space or room and noting the amount of congestion, as well as the quantified traffic data.</p>
+              <p style="text-align: left;padding: 0px 30px;">We defined the three levels of campus congestion as follows:
+                <ul style="text-align:left;">
+                  <li><b>Green:</b> easy to find a table or place to sit</li>
+                  <li><b>Yellow:</b> need to search for a table, but there are still a few immediately available</li>
+                  <li><b>Red:</b> there are no tables or spots available in the space</li>
+                </ul></p>
+
+              <p style="text-align: left;padding: 0px 30px;">More information about how we implemented this can be found in the Drawings section, under Route Calculation Logic.</p>
+              <br>
+
       </div>
 
     <hr id='drawings'>
@@ -144,8 +159,10 @@
               <br>
               <img src="img/route_calculation_flowchart.PNG" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
               <br><span style="text-align:center;">Route Calculation Logic Flowchart</span>
-              <h3>Rout Calculation Logic</h3>
-              <p style="text-align: left;padding: 0px 30px;">Before planning out the finite state machine, we first considered the entrance locations of the halls. Assuming the user is coming from the dorm or the central campus, if the study space destination is Duffield or Phillips, then we know the user can straightly go to the hall through its entrance. If not, we then started considering the congestion in the building. For example, if all the buildings have high congestion levels meaning the building is full of crowds or have no study space, then it recommends to use the entrace of each hall instead of going through the crowds inside of the Eng. building. If not all the buildings are crowded and the user wants to go to either Upson or Rhodes where it can be routed through other halls, then we consider the congestion in Duffield, Phillips and Upson and recommends the route to the Upson or Rhodes based on its congestion level. The below flowchart explains the logic in detail as well.    </p>
+              <h3>Route Calculation Logic</h3>
+              <p style="text-align: left;padding: 0px 30px;">Before planning out the logic flow, we first considered the entrance locations of the halls. Assuming the user is coming from the dorm or the central campus, if the study space destination is Duffield or Phillips, then we know the user can straightly go to the hall through its entrance. (We did not consider Rhodes as "next to an entrance" as part of this assumption.) </p>
+              <p style="text-align: left;padding: 0px 30px;">pIf not, we then started considering the congestion in the building. For example, if all the buildings have high congestion levels meaning the building is full of crowds or have no study space, then it recommends to use the entrace of each hall instead of going through the crowds inside of the Engineering buildings. If not all the buildings are crowded and the user wants to go to either Upson or Rhodes where it can be routed through other halls, then we consider the congestion in Duffield, Phillips and Upson and recommends the route to the Upson or Rhodes based on its congestion level.</p>
+              <p style="text-align: left;padding: 0px 30px;">The above flowchart explains the logic in detail as well.</p>
               <br>
       </div>
 
@@ -158,6 +175,7 @@
 
               <h3>Testing Webserver Feasability</h3>
               <p style="text-align: left;padding: 0px 30px;">When it became clear that utilizing the smart mirror would be unrealistic given the constraints at the time, we switched gears to examine other avenues of user interface. One of the things we considered was somehow hosting the PyGame window on a webserver, accessible to anyone on the RedRover network by typing in the IP address of the hosting Raspberry Pi in a web browser. However, complications arose. Although we were able to successfully download, install, and host a small website on the Pi with Apache, we discovered that it is not possible to upload a PyGame script onto a webserver. We explored options to convert the PyGame script to JavaScript, or even modules such as <a href="https://gatc.ca/projects/pyjsdl/">pyjsdl</a> that would allow us to compile PyGame/Python scripts to JavaScript. However, although we downloaded, installed, and tried various debugging methods, we could not get the compilers to work on the Pi - even on other, simpler PyGame example scripts. Thus, we discarded the possibility of using a webserver to host the congestion map and menu as infeasible without extensive effort.</p>
+              <br>
       </div>
 
     <hr id='result'>
@@ -192,9 +210,10 @@
               <p style="text-align: left;padding: 0px 30px;">The following figures are the display of the recommend route with the black line connected based on the route caculation logic. This is shown when the study space is chosen to be the destination on the study space list. The red text box indicates the destination, and the blue text box indicates the hall to go through. Each following figure shows the route to the Duffield and Upson hall. Based on the fact that there are almost no people in the building on the morning (when the result was recorded), the route recommendation works successfully by recommending to use the entrance for Duffield and use the Duffield atrium to get to the Upson hall. </p>
               <img src="img/route_duff.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
               <img src="img/route_upson.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
-              <br><span style="text-align:center;">Route recommendation</span>
+              <br><span style="text-align:center;">Route Recommendation</span>
               <br><br>
               <p style="text-align: left;padding: 0px 30px;">Also, the system successully goes to the main menu and quits when the fifth and sixth button on the piTFT is clicked correspondingly. The update of the congestion data by five minutes was checked with the quit time of 20 minutes. The third button on the piTFT was sticky that required to push it hard or a few times. Other then that, there was no big difficutlties. </p>
+              <br>
       </div>
 
     <hr>

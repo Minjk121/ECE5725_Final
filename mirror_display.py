@@ -90,6 +90,9 @@ menu_level = 1  # start on "main menu"
 hall_name = ''
 dashboard_hall = ''
 
+
+### define helper functions
+
 # helper function to determine congestion level based on the congestion_data dictionary
 # (which is from the webscraper and converted from the dataframe)
 def determine_congestion_level():
@@ -163,7 +166,6 @@ def updateSurfaceAndRect(buttons):
 # always show up near the top (if all else are equal)
 # function takes no inputs, return nothing, in-line edit recommend_spaces_list for top 4 study spaces
 def updateSurfaceAndRect_StudySpace():
-    #space_list_ordered = sorted(space_list,key=space_list.get)
     index = 1
     congestion_colors = ['green','yellow','red']
     for space in sorted(space_list,key=space_list.get):
@@ -177,15 +179,15 @@ def updateSurfaceAndRect_StudySpace():
             space_buttons_rect[space] = rect
             index += 1
             recommended_spaces_list.append(space)
-        # sneaking rhodes in there
-    v_rhodes = space_list["CIS lounge"]
-    congestion_level = congestion_colors[int(v_rhodes)-1]
-    displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
-    text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
-    rect = text_surface.get_rect(center=space_list_pos[index])
-    screen.blit(text_surface, rect)
-    space_buttons_rect[space] = rect
-           #NOT AVAILABLE VIA BUTTONS ONLY MONITORS
+    # sneaking rhodes in there for demonstration purposes, in case it's not in study space list
+    # v_rhodes = space_list["CIS lounge"]
+    # congestion_level = congestion_colors[int(v_rhodes)-1]
+    # displayString = "#"+str(index)+": "+space+" (level "+congestion_level+")"
+    # text_surface = create_text_box(displayString, WHITE, SKYBLUE, 50, 50)
+    # rect = text_surface.get_rect(center=space_list_pos[index])
+    # screen.blit(text_surface, rect)
+    # space_buttons_rect[space] = rect
+    #        #NOT AVAILABLE VIA BUTTONS ONLY MONITORS
     
     # draw main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
@@ -361,27 +363,12 @@ def updateScreen(route=[]):
         
     pygame.display.flip()
 
-
-###NOTE: DON'T USE THIS BECAUSE WHEN updateScreen() IS CALLED IN THE WHILE LOOP, IT DOESN'T EVEN HIT THIS AT ALL
-# # specialized updateScreen because it needs route passed into it...
-# def updateRouteScreen(route):
-#     screen.fill(BLACK)
-#     if menu_level == 5: # study space route
-#         # map is shown properly on monitor
-#         campus_map = pygame.image.load('./img/map.png')
-#         campus_map = pygame.transform.scale(campus_map, (1400, 1080))
-#         screen.blit(campus_map, (250,0))
-#         #TODO: determine_route(space) needs to be stuck in somewhere based on what's clicked in menu level 3
-#         # until then, here's a placeholder variable for route
-#         #route = []
-#         #draw_route_on_map(route)
-#     pygame.display.flip()
-
+### initialize screen
 updateScreen()
 
+### while within the run time limit
 while (time.time() < end_time):
     time.sleep(0.2)
-    #stop_button()
 
     # update the congestion level data in script every five minutes
     if time.time() > update_time:

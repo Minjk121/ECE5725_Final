@@ -133,18 +133,28 @@
     <hr id='drawings'>
 
       <div style="text-align:center;">
-              <h2><span style="background-color:yellow;">Drawings: NEED TO WRITE</span></h2>
-              <p style="text-align: left;padding: 0px 30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nulla, consectetur at leo vel, pretium bibendum nisl. Cras blandit quam a enim ultrices, eu convallis enim posuere. Donec eleifend enim sed purus consectetur, vitae cursus lectus varius. Vivamus consectetur felis nec est venenatis posuere. Phasellus vitae aliquet erat. In laoreet lacinia mollis. Quisque iaculis nisl fermentum pharetra lobortis. Donec rhoncus dui sem, ac molestie leo tristique vel. Phasellus in nibh feugiat, fringilla lectus in, elementum magna. Etiam quis dui condimentum, tempus ex in, dapibus est. Cras ut congue augue. Donec ac enim ex. Ut id tristique risus, vel porttitor quam. Sed ultricies enim eu nibh porttitor, vel sodales enim feugiat. Fusce volutpat venenatis magna ac ultrices. Curabitur eget urna ut nulla mattis convallis non eu diam.</p>
+              <h2>Drawings</h2>
+              <img src="img/software schematics.png" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
+              <br><span style="text-align:center;">Software Flowchart. The green box indicates the mirror_display.py, and blue arrow shows the flow of the traffic data from the website.</span>
+              <h3>mult_webscraper.py</h3>
+              <p style="text-align: left;padding: 0px 30px;">mult_webscraper.py gets daily incoming and outgoing data traffic, port name, hall name and graph image from the mrtg.cit.cornell.edu. It returns the information in data frame and filters to get a certain information. There are multiple helper function that converts data type into dictionary type, list of graphs, list of hall names and images downloaded in img directory. Whenever the main function runs, the whole data are updated from the Cornell CIT website.  </p>
+              <br>
+              <h3>mirror_display.py</h3>
+              <p style="text-align: left;padding: 0px 30px;">mirror_display.py uses data from mult_webscraper.py and display map, charts and graphs to the monitor controlled by piTFT. It sets up Pygame to visualize and interact on the monitor with a mouse click and GPIO to get inputs from the piTFT and external buttons. It contains five different menus or displays. First menu is the main menu that shows real-time clock and two options to choose: showing a congestion map or study space list. If congestion map is clicked, it moves to the second menu that shows the map of the halls in the Engineering building with green, yellow or blue colored circles that each indicates the level of congestion in the hall. If one of the circle is selected, it shows the dashboard menu that contains the MRTG graph, study space name and network traffic rate of each access points near the study spaces in the hall. The user can get more specific information by looking into the dashboard. If the study space option is clicked in the main menu, the top four of the study spaces with the lowest traffic rates are shown with the color level of congestion. If the study space is clicked in the list, it leads the user to the route recommendation to get to the chosen study space through the lowest possible congestion in the building. The specific algorithm is shown in the next section. </p>
+              <br>
               <img src="img/route_calculation_flowchart.PNG" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
               <br><span style="text-align:center;">Route Calculation Logic Flowchart</span>
+              <h3>Rout Calculation Logic</h3>
+              <p style="text-align: left;padding: 0px 30px;">Before planning out the finite state machine, we first considered the entrance locations of the halls. Assuming the user is coming from the dorm or the central campus, if the study space destination is Duffield or Phillips, then we know the user can straightly go to the hall through its entrance. If not, we then started considering the congestion in the building. For example, if all the buildings have high congestion levels meaning the building is full of crowds or have no study space, then it recommends to use the entrace of each hall instead of going through the crowds inside of the Eng. building. If not all the buildings are crowded and the user wants to go to either Upson or Rhodes where it can be routed through other halls, then we consider the congestion in Duffield, Phillips and Upson and recommends the route to the Upson or Rhodes based on its congestion level. The below flowchart explains the logic in detail as well.    </p>
+              <br>
       </div>
 
     <hr id='testing'>
 
       <div style="text-align:center;">
               <h2>Testing</h2>
-              <h3><span style="background-color:yellow;">Testing Smart Mirror Feasability: NEED TO WRITE</span></h3>
-              <p style="text-align: left;padding: 0px 30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nulla, consectetur at leo vel, pretium bibendum nisl. </p>
+              <h3>Testing Smart Mirror Feasability</h3>
+              <p style="text-align: left;padding: 0px 30px;">For the Smart Mirror hardware model, we received the model that was designed for the <a href="https://courses.ece.cornell.edu/ece5990/ECE5725_Fall2017_projects/Lab_jh2635_sl2928/Lab_jh2635_sl2928/">Magic Selfie Mirror</a> project in Fall 2017. The model has 22 IR sensors with four 8-3 encoders to build two 16-4 encoders that output the coordinate on the mirror. Before testing the mirror, we realized that some wires are disconnected from the soldering and started to falling out of the connection because the stripped wires were flexible but too thin and had unstable connection to the board. After investigating the board and wiring, we soldered the disconnected wires (Power, GND and Sensor Output) to the board and used Raspberry Pi and breadboard to see if the sensors are working. To test the basic functionality, the GPIO pins were used randomly, avoiding the special function pins like I2C, SPI and UART pins. When we tested the sensors, we found out that some of the sensors are not working or not sensitive enough to detect the motion. The output coordinate did not change as we move our hand's position on the mirror. Also, the coordiate in the same positiion was ouputted differently. Moreover, the short-length connections of wires and boards blocked the monitor and the strong reflection of the mirror made it hard to see the result on the monitor through the mirror. We concluded that the mirror is not a good visualization method and tried to seek the other methods to visualize and control our system. Due to the non-robustness of the connection and sensitivity of the sensor and unclear visualization, we decided to utilize piTFT as a remote control to our system. </p>
 
               <h3>Testing Webserver Feasability</h3>
               <p style="text-align: left;padding: 0px 30px;">When it became clear that utilizing the smart mirror would be unrealistic given the constraints at the time, we switched gears to examine other avenues of user interface. One of the things we considered was somehow hosting the PyGame window on a webserver, accessible to anyone on the RedRover network by typing in the IP address of the hosting Raspberry Pi in a web browser. However, complications arose. Although we were able to successfully download, install, and host a small website on the Pi with Apache, we discovered that it is not possible to upload a PyGame script onto a webserver. We explored options to convert the PyGame script to JavaScript, or even modules such as <a href="https://gatc.ca/projects/pyjsdl/">pyjsdl</a> that would allow us to compile PyGame/Python scripts to JavaScript. However, although we downloaded, installed, and tried various debugging methods, we could not get the compilers to work on the Pi - even on other, simpler PyGame example scripts. Thus, we discarded the possibility of using a webserver to host the congestion map and menu as infeasible without extensive effort.</p>
@@ -153,9 +163,38 @@
     <hr id='result'>
 
       <div style="text-align:center;">
-              <h2><span style="background-color:yellow;">Results: need to write</span></h2>
-              <p style="text-align: left;padding: 0px 30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem nulla, consectetur at leo vel, pretium bibendum nisl. Cras blandit quam a enim ultrices, eu convallis enim posuere. Donec eleifend enim sed purus consectetur, vitae cursus lectus varius. Vivamus consectetur felis nec est venenatis posuere. Phasellus vitae aliquet erat. In laoreet lacinia mollis. Quisque iaculis nisl fermentum pharetra lobortis. Donec rhoncus dui sem, ac molestie leo tristique vel. Phasellus in nibh feugiat, fringilla lectus in, elementum magna. Etiam quis dui condimentum, tempus ex in, dapibus est. Cras ut congue augue. Donec ac enim ex. Ut id tristique risus, vel porttitor quam. Sed ultricies enim eu nibh porttitor, vel sodales enim feugiat. Fusce volutpat venenatis magna ac ultrices. Curabitur eget urna ut nulla mattis convallis non eu diam.</p>
-              <p>also there's a known issue where our pitft buttons are sticky so they continue pressing multiple times</p>
+              <h2>Results</h2>
+              <p style="text-align: left;padding: 0px 30px;">When the mirror_display.py program starts to run, the main menu is displayed with a current time in the form of hour, minute and second which is updated by each second. It also shows two option choices, congestion map and study spaces, that lead to the next display.  </p>
+              <img src="img/main_menu.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <br><span style="text-align:center;">Main menu with real-time clock and two options.</span>
+              <br><br>
+              
+              <p style="text-align: left;padding: 0px 30px;">If the congestion map text box is clicked or the first button in the piTFT is pushed, the campus map with colored circles showing the congestion level successfully shown on the monitor. The color of the circles are updated by every five minutes by loading the congestion data from the CIT website. The user can choose the main menu by clicking or pushing the fifth button on piTFT to go back to the main menu.</p>
+              <img src="img/congestion_map.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <br><span style="text-align:center;">Congestion map</span>
+              <br><br>
+              
+              <p style="text-align: left;padding: 0px 30px;">Clicking the text box of the hall on map or pushing one of four buttons on piTFT will lead the user to the network traffic dashboard of the chosen hall. The order of the buttons are the same as the order of the hall from the top of the map: Phillips (#1), Duffield (#2), Upson (#3) and Rhodes (#4). The dashboard contains the each access point's daily MRTG graph with its image name, the name of the study spacem and current total traffic rate (Mb/s) of the study space. Each hall has a different number of study space with the number of access points. For example, Phillips hall has only one access points in ECE lounge, but the Rhodes hall has study spaces in multiple floors. Also, the CIS lounge in Rhodes has a several access points. The dashboards of all four halls are shown below: </p>
+              <img src="img/phillips_dash.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <img src="img/duffield_dash.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <img src="img/upson_dash.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <img src="img/rhodes_dash.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <br><span style="text-align:center;">Dashboards of all four halls in the Engineering building</span>
+              <br><br>
+              <p style="text-align: left;padding: 0px 30px;">On the right buttom of the graph, the red dot indicates the current network traffic of each access point. It is observed that the numerical traffic rate of the CIS lounge is much higher than the reading on the graph. It is intentionally coded to get a high traffic rate in CIS lounge to show the diverse colors of the cirlces in the congestion map because the demo was done in the morning when the congestion level is low in all the halls.</p>
+              <br>
+
+              <p style="text-align: left;padding: 0px 30px;">The following figure is the display of the study space list when the second option is chosen in the main menu. The list successfully shows the list of four study spaces with the lowest congestion in the building. It also shows the color level in the text box. In the figure, the current levels of congestion are the same in four buildings. In this case, the list is sorted in alphabetical order as shown.</p>
+              <img src="img/study_list.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <br><span style="text-align:center;">Study space list</span>
+              <br><br>
+
+              <p style="text-align: left;padding: 0px 30px;">The following figures are the display of the recommend route with the black line connected based on the route caculation logic. This is shown when the study space is chosen to be the destination on the study space list. The red text box indicates the destination, and the blue text box indicates the hall to go through. Each following figure shows the route to the Duffield and Upson hall. Based on the fact that there are almost no people in the building on the morning (when the result was recorded), the route recommendation works successfully by recommending to use the entrance for Duffield and use the Duffield atrium to get to the Upson hall. </p>
+              <img src="img/route_duff.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <img src="img/route_upson.jpg" alt="route calculation flowchart" style="border:1px solid #000;width:50%;">
+              <br><span style="text-align:center;">Route recommendation</span>
+              <br><br>
+              <p style="text-align: left;padding: 0px 30px;">Also, the system successully goes to the main menu and quits when the fifth and sixth button on the piTFT is clicked correspondingly. The update of the congestion data by five minutes was checked with the quit time of 20 minutes. The third button on the piTFT was sticky that required to push it hard or a few times. Other then that, there was no big difficutlties. </p>
       </div>
 
     <hr>
@@ -163,7 +202,7 @@
     <div class="row" style="text-align:center;">
           <h2>Work Distribution</h2>
           <div style="text-align:center;">
-              <img class="img-rounded" src="img/group.jpg" alt="Generic placeholder image" style="width:80%;">
+              <img class="img-rounded" src="img/the_team.jpg" alt="Generic placeholder image" style="width:50%;">
               <h4>Project Group Picture</h4>
           </div>
           <div class="col-md-6" style="font-size:16px">

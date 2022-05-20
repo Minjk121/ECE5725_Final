@@ -126,7 +126,7 @@
                 </ul>
                 <br><img src="img/button_display.PNG" alt="buttons on piTFT" style="border:1px solid #000;width:50%;">
                 <br><span style="text-align:center;">Buttons on piTFT</span>
-              <br>
+              <br><br>
               <p style="text-align: left;padding: 0px 30px;">As such, for an example, in the Congestion Map menu the first button (27) would correspond to Phillips, the second (23) to Duffield, the third (22) to Upson, and the last (17) to Rhodes.</p>
               <p style="text-align: left;padding: 0px 30px;">Clicking the "buttons" on the monitor with the mouse will also allow the user to select options. Buttons are denoted by white font text and light blue outlines. There are buttons on the main menu, Congestion Map, Study Space list, and Route Recommendation. </p>
               <br>
@@ -157,12 +157,14 @@
               <h3>mirror_display.py</h3>
               <p style="text-align: left;padding: 0px 30px;">mirror_display.py uses data from mult_webscraper.py and display map, charts and graphs to the monitor controlled by piTFT. It sets up Pygame to visualize and interact on the monitor with a mouse click and GPIO to get inputs from the piTFT and external buttons. It contains five different menus or displays. First menu is the main menu that shows real-time clock and two options to choose: showing a congestion map or study space list. If congestion map is clicked, it moves to the second menu that shows the map of the halls in the Engineering building with green, yellow or blue colored circles that each indicates the level of congestion in the hall. If one of the circle is selected, it shows the dashboard menu that contains the MRTG graph, study space name and network traffic rate of each access points near the study spaces in the hall. The user can get more specific information by looking into the dashboard. If the study space option is clicked in the main menu, the top four of the study spaces with the lowest traffic rates are shown with the color level of congestion. If the study space is clicked in the list, it leads the user to the route recommendation to get to the chosen study space through the lowest possible congestion in the building. The specific algorithm is shown in the next section. </p>
               <br>
-              <img src="img/route_calculation_flowchart.PNG" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
-              <br><span style="text-align:center;">Route Calculation Logic Flowchart</span>
+
               <h3>Route Calculation Logic</h3>
               <p style="text-align: left;padding: 0px 30px;">Before planning out the logic flow, we first considered the entrance locations of the halls. Assuming the user is coming from the dorm or the central campus, if the study space destination is Duffield or Phillips, then we know the user can straightly go to the hall through its entrance. (We did not consider Rhodes as "next to an entrance" as part of this assumption.) </p>
               <p style="text-align: left;padding: 0px 30px;">pIf not, we then started considering the congestion in the building. For example, if all the buildings have high congestion levels meaning the building is full of crowds or have no study space, then it recommends to use the entrace of each hall instead of going through the crowds inside of the Engineering buildings. If not all the buildings are crowded and the user wants to go to either Upson or Rhodes where it can be routed through other halls, then we consider the congestion in Duffield, Phillips and Upson and recommends the route to the Upson or Rhodes based on its congestion level.</p>
-              <p style="text-align: left;padding: 0px 30px;">The above flowchart explains the logic in detail as well.</p>
+              <p style="text-align: left;padding: 0px 30px;">The below flowchart explains the logic in detail as well.</p>
+              <br>
+              <img src="img/route_calculation_flowchart.PNG" alt="route calculation flowchart" style="border:1px solid #000;width:70%;">
+              <br><span style="text-align:center;">Route Calculation Logic Flowchart</span>
               <br>
       </div>
 

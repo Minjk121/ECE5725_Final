@@ -65,10 +65,14 @@ def daily_in_out(url):
     day_cur_in = float(in_lst[2].split()[0])
     day_cur_out = float(out_lst[2].split()[0])
 
-    if "kb/s" in in_lst[2]:
-        day_cur_in *= 0.001
-    if "kb/s" in out_lst[2]:
-        day_cur_out *= 0.001
+    if "b/s" in in_lst[2]:
+        if "k" in in_lst[2]:
+            day_cur_in *= 0.001
+        elif "M" not in in_lst[2]: day_cur_in *= 0.000001
+    if "b/s" in out_lst[2]:
+        if "k" in out_lst[2]:
+            day_cur_out *= 0.001
+        elif "M" not in out_lst[2]: day_cur_out *= 0.000001
 
     # print(day_cur_in)
 

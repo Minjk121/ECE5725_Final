@@ -1,3 +1,9 @@
+# =========================================================================
+# mirror_display.py
+#==========================================================================
+# uses data from mult_webscraper.py and displays the map, 
+# charts and graphs to the monitor controlled by piTFT.
+
 from contextlib import redirect_stderr
 from ossaudiodev import control_labels
 import time
@@ -11,30 +17,29 @@ from datetime import datetime
 import requests
 import pygame.display
 
-## pygame/piTFT setup
+# pygame/piTFT setup
 os.putenv('SDL_VIDEODRIVER','fbcon') 
-os.putenv('SDL_FBDEV','/dev/fb0') #so that this will be visible on the monitor
+os.putenv('SDL_FBDEV','/dev/fb0') # makes visible on the monitor
 
-# in case the Pi freezes
+# Timeout setup in case the Pi freezes
 t0 = time.time()
-end_time = t0 + 1200 # changed timeout to 10 min 
+end_time = t0 + 1200 # timeout after 10 min 
 update_time = t0 + 300 # update traffic rates by 5 min
 
 GPIO.setmode(GPIO.BCM)
-# exit/panic button; the button closest to the motor driver
+# Exit/Panic button; the button closest to the motor driver
 GPIO.setup(13, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 # menu buttons (on the piTFT)
 GPIO.setup(27, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(22, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-# "main menu" button (on the breadboard, closest to the cobbler)
+# "Main Menu" button (on the breadboard, closest to the cobbler)
 GPIO.setup(26, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
-# initialize pygame for piTFT 
+# Initializes pygame for piTFT 
 pygame.display.init()
 pygame.init()
-# pygame.mouse.set_visible(False)
 WHITE=255,255,255
 BLACK=0,0,0
 RED=139,0,0
@@ -42,51 +47,46 @@ GREEN=0,128,0
 YELLOW=255,255,0
 SKYBLUE=137,207,240
 
-# Full monitor mode
+# Variables for full display
 infoObject = pygame.display.Info()
 screen=pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
 screen_width = infoObject.current_w
 screen_height = infoObject.current_h
-my_font = pygame.font.Font(None, 40) # 25
-# these store the screen coordinates of the logs
+my_font = pygame.font.Font(None, 40) 
+
+# Stores the screen coordinates of the logs
 menu_buttons={'congestion map':(0.573*screen_width,0.417*screen_height),'study spaces':(0.573*screen_width,0.602*screen_height)}
 congestion_menu={'Phillips':(0.593*screen_width,0.345*screen_height),'Duffield':(0.485*screen_width,0.432*screen_height),'Upson':(0.527*screen_width,0.582*screen_height),'Rhodes':(0.625*screen_width,0.807*screen_height),"main menu":(0.781*screen_width,0.926*screen_height)}
-# menu_buttons={'congestion map':(1100,450),'study spaces':(1100,650)}
-# congestion_menu={'Phillips':(1140,373),'Duffield':(932,467),'Upson':(1012,629),'Rhodes':(1200,872),"main menu":(1500,1000)}
 
-# the space list colors have been renamed so that we can actually sort them; 1 = green, 2 = yellow, 3 = red
+# Space list dictionaries (1 = green, 2 = yellow, 3 = red)
 space_list={'Duffield atrium':'1','ECE lounge':'1','Upson 2nd floor':'1','Upson 3rd floor':'1','CIS lounge':'1','Rhodes 3rd floor':'1','Rhodes 4th floor':'1','Rhodes 5th floor':'1'}
 space_list_pos={1:(0.521*screen_width,0.093*screen_height),2:(0.521*screen_width,0.278*screen_height),3:(0.521*screen_width,0.463*screen_height),4:(0.521*screen_width,0.648*screen_height),5:(0.521*screen_width,0.833*screen_height),"main menu":(0.781*screen_width,0.926*screen_height)}
-# space_list_pos={1:(1000,100),2:(1000,300),3:(1000,500),4:(1000,700),5:(1000,900)}
-# space_list_pos={'1':(1000,100),'2':(1000,300),'3':(1000,500),'4':(1000,700),'5':(1000,900), 'main menu': (1500, 1000)}
 
-# need this for remote control/button functionality
+# Adds remote control/button functionality
 recommended_spaces_list = [] 
 
-# congestion_data contains study spaces + halls
+# Calls congestion_data containing study space & hall data
 df = mult_webscraper.main()
-congestion_df = df[0] # data frame
-congestion_df_dashboard = df[1] # df for dashboard
-congestion_data = mult_webscraper.convert_df_to_dict(congestion_df) # dictionary
-''' 
-{'Duffield atrium': 15053.199999999999, 'ECE lounge': 139.8, 'Upson 2nd floor': 6562.700000000001, 
-'Upson 3rd floor': 9788.3, 'CIS lounge': 11801.9, 'Rhodes 3rd floor': 7744.799999999999, 
-'Rhodes 4th floor': 7257.500000000001, 'Rhodes 5th floor': 1268.6, 'Phillips': 139.8, 'Duffield': 15053.199999999999,
- 'Upson': 16351.0, 'Rhodes': 28072.8} 
- '''
+congestion_df = df[0]
+congestion_df_dashboard = df[1]
 
-# thresholds in Mb, additive
-level_red = 200.0 #Mb/s
-level_yellow = 100.0 #Mb/s
+# Converts to dictionary type
+congestion_data = mult_webscraper.convert_df_to_dict(congestion_df)
+
+# Sets thresholds in Mb/s, additive
+level_red = 200.0
+level_yellow = 100.0
 level_green = 0.0
 
-screen.fill(BLACK) # erase the workspace
+# Erases the workspace
+screen.fill(BLACK) 
 menu_buttons_rect={} 
 graph_buttons_rect={}
 congestion_buttons_rect={}
 space_buttons_rect={}
 
-menu_level = 1  # start on "main menu"
+# Starts on "main menu"
+menu_level = 1  
 hall_name = ''
 dashboard_hall = ''
 
@@ -196,24 +196,28 @@ def updateSurfaceAndRect_StudySpace():
     menu_buttons_rect['main menu'] = rect
 
 
-# helper function to determine the route from outside of the engineering quad buildings to a specified study "space"
-# takes one input
-# returns an ordered array of the recommended route (starting from index 0)
+#==================================================================================================
+# determine_route()
+#==================================================================================================
+# Determines the route from outside of the engineering quad buildings to a specified study "space"
+# Takes one input & Returns an ordered array of the recommended route (starting from index 0)
+
 def determine_route(space):
-    # duffield atrium and ECE lounge accesible without crossing through any other area; short circuit
+ 
+    # Duffield atrium and ECE lounge accesible without crossing through any other area; short circuit
     if (space == 'Duffield atrium'): return ['Duffield']
     if (space == 'ECE lounge'): return ['Phillips']
 
-    # short circuit: if duffield, phillips, and upson are all congested, skip them and go straight to upson/rhodes
+    # Short circuit: if duffield, phillips, and upson are all congested, skip them and go straight to upson/rhodes
     if ('Rhodes' in space) and (space_list['Duffield atrium'] == 3 and space_list['ECE lounge'] == 3):
         return ["Rhodes"]
 
-    # otherwise, determine route through buildings
+    # Otherwise, determine route through buildings
     # the values, even in strings, can be compared with operators such as >, <, >=, etc
     route = []
 
-    # start from duffield atrium if it is green or yellow level, otherwise start at phillips
-    # but if phillips is red then go through upson instead
+    # Start from duffield atrium if it is green or yellow level, otherwise start at phillips
+    # But if phillips is red then go through upson instead
     route_start = ""
     if (int(space_list['Duffield atrium']) <= 2):
         route_start = "Duffield"
@@ -222,28 +226,34 @@ def determine_route(space):
     else: route_start = "Upson"
     route.append(route_start)
 
-    # if in rhodes, need to go through upson; if in upson, of course go through upson
+    # If in rhodes, need to go through upson; if in upson, of course go through upson
     route.append('Upson')
-    # if in upson, end here
+    
+    # If in upson, end here
     if ('Upson' in space):
         #print (route)
         return route
     
-    # if nothing above and code comes all the way down here, the space must be in rhodes
+    # If nothing above and code comes all the way down here, the space must be in rhodes
     route.append('Rhodes')
     #print("THE ROUTE IS ",route)
     return route
- 
-# show map & draw route on it - specialized version of updateSurfaceAndRect
+
+#==================================================================================================
+# draw_route_on_map()
+#==================================================================================================
+# Shows map and draws a route on it
+
 def draw_route_on_map(route):
-    # between each label, draw the line
-    # do this first so that the line appears behind the label
+ 
+    # Draws the line between each label
+    # Order of drawing matters - the line appears behind the label
     for i in range(len(route) - 1):
         line_start_pos = tuple(map(int,congestion_menu[route[i]]))
         line_end_pos = tuple(map(int,congestion_menu[route[i+1]]))
-        pygame.draw.line(screen, BLACK, line_start_pos, line_end_pos, 5) # increase the last parameter for thicker line
+        pygame.draw.line(screen, BLACK, line_start_pos, line_end_pos, 5) # increases the last parameter for thicker line
 
-    # for each item in the route, draw label on the map
+    # Draws label on the map for each item in the route 
     for i in range(len(route)):
         my_text = route[i]
         displayString = my_text
@@ -252,34 +262,19 @@ def draw_route_on_map(route):
         text_pos = congestion_menu[my_text]
         rect = text_surface.get_rect(center=tuple(map(int,text_pos)))
         screen.blit(text_surface, rect)
-        #menu_buttons_rect[my_text] = rect
     
-
-    # draw main menu button
+    # Draws main menu button
     text_surface = create_text_box('main menu', WHITE, SKYBLUE, 50, 50)
     rect = text_surface.get_rect(center=tuple(map(int,congestion_menu['main menu'])))
     screen.blit(text_surface, rect)
     congestion_buttons_rect['main menu'] = rect
 
-# def drawDashboard(hall_name):
-#     mrtg_lst = mult_webscraper.convert_df_to_graph_lst(congestion_df, dashboard_hall)
-#     count = 1
-#     for images in mrtg_lst:
-#     #     # draw mrtg graphs
-#         response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
-#         file = open("sample_image.png", "wb")
-#         file.write(response.content)
-#         file.close()
-
-#         print(images + " are here!")
-#         mrtg_graph = pygame.image.load("./img/duffield2-5400.120-day.png")
-#         # screen.blit(mrtg_graph, (int(screen_width/8), int(screen_height/8) * count))
-#         # draw tables
-        
-
-# general all-purpose use helper function to update screen
+#==================================================================================================
+# updateScreen()
+#==================================================================================================
+# General all-purpose use helper function to update screen
 # OPTIONAL input argument: route, so that we can continue to use updateScreen as a generalized function
-#   while also correctly updating the route 
+# while also correctly updating the route 
 def updateScreen(route=[]):
     screen.fill(BLACK)
     if menu_level == 1: # main menu

@@ -1,6 +1,7 @@
-'''
-webscraper that gets data & images from the multiple mrtg websites
-'''
+# ==========================================================================
+# mult_webscraper.py
+# ==========================================================================
+# Gets data and images from the multiple mrtg websites
 
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -9,35 +10,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from tabulate import tabulate
 import numpy as np
-# import matplotlib
-# import seaborn as sns
 
-# def get_in_out_df_by_port(df, png):
-#     filter = df['Graph'] == png
-#     filtered_df = df.loc[filter]
-#     # print(filtered_df)
-#     congestion_data[spaces] = f
-#     port_df = 
-#     return port_df
+# ==========================================================================
+# daily_in_out()
+# ==========================================================================
+# Returns tuple of daily average (in, out)
 
-# def save_df_as_image(df, path="dashboard_img.png"):
-    # Set background to white
-    # norm = matplotlib.colors.Normalize(-1,1)
-    # colors = [[norm(-1.0), "white"],
-    #         [norm( 1.0), "white"]]
-    # cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", colors)
-    # # Make plot
-    # plot = sns.heatmap(df, annot=True, cmap=cmap, cbar=False)
-    # fig = plot.get_figure()
-    # fig.savefig(path)
-
-# def save_df_as_image(df, path="dashboard_img.png"):
-#     df_styled = df.style.background_gradient() #adding a gradient based on values in cell
-#     dfi.export(df_styled, path)
-
-# returns tuple of daily average (in, out)
 def daily_in_out(url):
-    # page to scrape
+
+    # Requests a page to scrape
     request = requests.get(url, timeout=5)
     soup = BeautifulSoup(request.text, features="html.parser")
 
@@ -52,14 +33,11 @@ def daily_in_out(url):
         for i in item.findAll("td"):
             if 'Traffic' not in i.text:
                 in_lst.append(i.text)
-                # print(i.text)
     for item in soup.findAll("tr", {"class":"out"}):
         for i in item.findAll("td"):
             if 'Traffic' not in i.text:
                 out_lst.append(i.text)
-
     for item in soup.findAll("img", {"alt":"day"}):
-        # print(item["src"])
         mrtg = item["src"]
 
     day_cur_in = float(in_lst[2].split()[0])
@@ -74,11 +52,13 @@ def daily_in_out(url):
             day_cur_out *= 0.001
         elif "M" not in out_lst[2]: day_cur_out *= 0.000001
 
-    # print(day_cur_in)
-
     return (day_cur_in, day_cur_out, mrtg, port, in_lst, out_lst)
 
-# convert df to dictionary of congestion_data
+# ==========================================================================
+# Conversion Helper Functions
+# ==========================================================================
+
+# Converts df to dictionary of congestion_data
 def convert_df_to_dict(df):
     congestion_data = {}
     space_list={'Duffield atrium':'green','ECE lounge':'green','Upson 2nd floor':'green','Upson 3rd floor':'green','CIS lounge':'green','Rhodes 3rd floor':'green','Rhodes 4th floor':'green','Rhodes 5th floor':'green'}
@@ -95,20 +75,22 @@ def convert_df_to_dict(df):
 
     return congestion_data
 
-# convert df to list of mrtg graphs
+# Converts df to list of mrtg graphs
 def convert_df_to_graph_lst(df, hall_name):
     filter = df['Hall Name'] == hall_name.lower()
     filtered_df = df.loc[filter]
     graph_lst = list(filtered_df['Graph'])
     return graph_lst
+
+# Converts df to list of hall names on campus
 def convert_df_to_name_lst(df, hall_name):
     filter = df['Hall Name'] == hall_name.lower()
     filtered_df = df.loc[filter]
     graph_lst = list(filtered_df['Location Name'])
     return graph_lst
-        
-def convert_url_to_df(urls):
 
+# Converts url to df
+def convert_url_to_df(urls):
     name_lst = []
     hall_lst = []
     port_lst = []
@@ -121,9 +103,7 @@ def convert_url_to_df(urls):
     daily_out=[]
 
     for url, location in urls: 
-        # hall_name = url.split('/')[-1].split('-')[0]
         result = daily_in_out(url)
-
         hall_name = result[3].split('-')[0]
         hall_lst.append(hall_name)
         name_lst.append(location) 
@@ -134,7 +114,6 @@ def convert_url_to_df(urls):
         daily_in.append(result[4][0:3])
         daily_out.append(result[5][0:3])
         info_lst.append(['Daily Max','Daily Average', 'Current'])
-
 
     df_whole = pd.DataFrame(
         {'Port Name': port_lst,
@@ -150,50 +129,25 @@ def convert_url_to_df(urls):
          'In': daily_in,
          'Out': daily_out
         })
+
     for images in mrtg_lst:
-        # draw mrtg graphs
+        # Draws mrtg graphs
         response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
         file = open("./img/"+images, "wb")
         file.write(response.content)
         file.close()
-    # df_daily_in_out.swapaxes("index", "columns")
+
     return df_whole, df_daily_in_out
-
-# gets dashboard dataframe & returns string of traffic rates in hall
-# def in_out_by_hall(df, hall_name, index=0):
-#     filtered_df = df.loc[df['Hall Name'] == hall_name.lower()]
-#     filtered_df = filtered_df[['Info','In','Out']]
-#     # filtered_df = filtered_df[['Info','In','Out']]
-#     s = filtered_df.values.tolist()
-#     # print(type(s))
-#     print("HERE index:",index)
-#     print(s)
-#     s_each = s[0]
-    
-#     print(len(s))
-#     # print(s_each)
-#     str1 = '         '.join(s_each[0])
-#     str2 = ' '.join(s_each[1])
-#     str3 = ' '.join(s_each[2])
-
-#     return str1#+'\n'+str2+'\n'+str3
-
-    
-
-# # in mirror_display:
-# def chart():
-#     chart_txt = font.render(table.txt, True, WHITE)
-#     screen.blit(chart_txt, ((400 - (chart_txt.get_width()/2)),(300 - (chart_txt.get_height()/2))))
-
     
 def main():
+    # List of CIT websites for data
     urls = [('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips1-5400.252.html', 'ECE lounge'),
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120.html', 'Duffield atrium'), # near phillips
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.132.html', 'Duffield atrium'), # near upsonv
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.119.html', 'Duffield atrium'), # near duffield
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.131.html', 'Duffield atrium'), # Mattins
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.33.html', 'Upson 2nd floor'), # middle
-            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.3.html', 'Upson 2nd floor'), #stairs
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120.html', 'Duffield atrium'), 
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.132.html', 'Duffield atrium'), 
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.119.html', 'Duffield atrium'), 
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/phillips2-5400.131.html', 'Duffield atrium'), 
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.33.html', 'Upson 2nd floor'), 
+            ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson3-5400r.3.html', 'Upson 2nd floor'), 
             ('http://mrtg.cit.cornell.edu/switch/WorkDir/upson5-5400r.71.html', 'Upson 3rd floor'),
             ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.194.html', 'CIS lounge'),
             ('http://mrtg.cit.cornell.edu/switch/WorkDir/rhodes2-2-5400.202.html', 'CIS lounge'),
@@ -209,24 +163,7 @@ def main():
     df = convert_url_to_df(urls)[0]
     print(df)
 
-    # df = convert_url_to_df(urls)[1]
-    
-    # print(df['upson'])
-    # in_out_by_hall(df, "upson")   
-
-    # images = 'duffield2-5400.120-day.png'
-    # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/"+images)
-    # response = requests.get("http://mrtg.cit.cornell.edu/switch/WorkDir/duffield2-5400.120-day.png")
-
-    # file = open("sample_image.png", "wb")
-    # file.write(response.content)
-    # file.close()
-   
     return convert_url_to_df(urls)[0], convert_url_to_df(urls)[1]
-    
-    # data = convert_df_to_dict(df)
-    # print(data)
-    
 
 if __name__ == "__main__":
     main()
